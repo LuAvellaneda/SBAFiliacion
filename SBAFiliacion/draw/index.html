@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+
+<script src="paper-full.min.js"></script>
+
+
+<script>
+    
+paper.install(window);
+var plantilla = "";
+var lastZoomScale;
+var puntoIni;
+var medio;
+var canvas;
+var path;
+var loadImage;
+var action = "draw";
+var mode = "draw";
+var raster;
+
+	window.onload = function() {
+    
+	canvas = document.getElementById('myCanvas');
+
+	paper.setup(canvas);
+    //paper.importJSON();
+    
+    //raster = new Raster('plantilla');
+    raster = new Raster(plantilla);
+    //raster.source = plantilla;
+    
+    raster.onLoad = function() {
+        webkit.messageHandlers.loginAction.postMessage( view.viewSize );
+    };
+    
+    
+	//raster = new Raster('plantilla');
+	// Create a Paper.js Path to draw a line into it:
+/*
+	path = new Path.Rectangle([view.center.x-50, view.center.y-50], [100, 100]);
+	path.strokeColor = 'black';
+*/
+	/*
+	view.onFrame = function(event) {
+			// On each frame, rotate the path by 3 degrees:
+			path.rotate(0.5);
+		}
+		*/
+	canvas.addEventListener("touchstart", startHandler, false);
+	canvas.addEventListener("touchmove", moveHandler, false);
+	canvas.addEventListener("touchend",endHandler,false);
+
+	var tool = new Tool();
+    
+	tool.onMouseDown = function(event) {
+
+		//alert(event.changedTouches);
+		if(action == "draw"){
+			if(mode == "draw"){
+				path = new Path();
+				path.strokeColor = "red";
+				path.blendMode = 'normal';
+			}
+
+			if(mode == "erase"){
+				path = new Path();
+				path.strokeColor = "red";
+				path.blendMode = 'destination-out';
+				path.strokeWidth = 30;
+			}
+		}
+
+	}
+
+	tool.onMouseDrag = function(event) {
+		if(action == "draw"){
+			path.add(event.point);
+		}
+
+	}
+
+	tool.onMouseUp = function(event) {
+		if(action == "draw"){
+			path.simplify();
+
+			/*var lay = projectExport.activeLayer;
+			lay.addChild(path.clone());*/
+
+		}
+
+	}
+
+}
+
+/*
+function me(){
+	alert("me");
+}
+*/
+
+
+
+
+function startHandler(event){
+    
+
+    //event.preventDefault();
+	 if(event.targetTouches.length == 1){
+	 
+	}
+
+
+
+	if(event.targetTouches.length == 2){
+
+		var p1 = event.targetTouches[0];
+		var p2 = event.targetTouches[1];
+		puntoIni = new Point(p1.pageX,p1.pageY);
+		var lastZoomScale = Math.sqrt(Math.pow(p2.pageX - p1.pageX, 2) + Math.pow(p2.pageY - p1.pageY, 2));
+
+		medio = new Point( (p1.pageX + p2.pageX)/2 , (p1.pageY+p2.pageY)/2 );
+		medio =  view.viewToProject(medio);
+		action = "zoom";
+
+	} else if(event.targetTouches.length == 1){
+			action = "draw";
+	}
+
+}
+
+
+
+function moveHandler(event){
+	event.preventDefault();
+	var zoom = false;
+
+
+
+
+	if(event.targetTouches.length == 2){
+
+
+		var p1 = event.targetTouches[0];
+		var p2 = event.targetTouches[1];
+
+		var zoomScale = Math.sqrt(Math.pow(p2.pageX - p1.pageX, 2) + Math.pow(p2.pageY - p1.pageY, 2));
+		zoomScale = zoomScale * 0.3;
+		if( lastZoomScale ) {
+		   zoom = zoomScale - lastZoomScale;
+		}
+
+		lastZoomScale = zoomScale;
+
+	}
+
+	if(zoom){
+
+		var total = (view.zoom + (zoom/100));
+		//view.zoom = total;
+
+		var a, beta, pc;
+		beta = view.zoom / total;
+
+
+		medio2 = new Point( (p1.pageX + p2.pageX)/2 , (p1.pageY+p2.pageY)/2 );
+		medio2 =  view.viewToProject(medio2);
+
+		pc = medio.subtract(view.center);
+		a = medio.subtract(pc.multiply(beta)).subtract(view.center);
+
+		var offset = medio.subtract(medio2);
+
+		view.zoom = total;
+		view.center = view.center.add(a).add(offset);
+
+
+	}
+
+}
+
+function endHandler(event){
+	lastZoomScale  = null;
+	action = "draw";
+}
+
+function exportar() {
+    //raster.remove();
+    //var json = paperScope.project.exportJSON();
+    
+    var p1 = new Promise(
+             function(resolve, reject) {
+                         webkit.messageHandlers.loginAction.postMessage( canvas.toDataURL() );
+                 //var aca = canvas.toDataURL("image/png;base64;");
+                 //resolve(aca);
+             }
+         );
+         
+         p1.then(
+             // Registrar el valor de la promesa cumplida
+             function(val) {
+                 webkit.messageHandlers.loginAction.postMessage("desde js");
+             })
+             .catch(
+                // Registrar la razón del rechazo
+                function(reason) {
+                webkit.messageHandlers.loginAction.postMessage(reason.toString());
+        }
+    );
+}
+
+</script>
+</head>
+
+<body style="padding:0; margin:0">
+    <a href="javascript:exportar()" class="exportar">Exportar</a>
+    <canvas resize id="myCanvas" style="width:100%; height:100%; position:absolute; z-index:1; border:0 "></canvas>
+</body>
+</html>

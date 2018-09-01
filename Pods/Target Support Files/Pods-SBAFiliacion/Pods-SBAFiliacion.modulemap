@@ -1,0 +1,6 @@
+framework module Pods_SBAFiliacion {
+  umbrella header "Pods-SBAFiliacion-umbrella.h"
+
+  export *
+  module * { export * }
+}
