@@ -48,7 +48,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
         super.viewDidLoad()
         //if let url = URL(string: "http://localhost/intest/public/sba/ejemplar/exportar") {
-        if let url = URL(string: "http://192.168.1.5/intest/public/sba/ejemplar/exportar") {
+        if let url = URL(string: "http://192.168.1.22/intest/public/sba/ejemplar/exportar") {
         //if let url = URL(string: "http://www.myproject.com.ar/ejemplares.json") {
             Alamofire.request(url).responseJSON { (response) in
                 

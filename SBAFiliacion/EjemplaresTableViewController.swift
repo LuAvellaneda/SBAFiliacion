@@ -56,6 +56,8 @@ class EjemplaresTableViewController: UITableViewController {
 
         cell.textLabel?.text = dataSource[indexPath.row].nombre
         cell.detailTextLabel?.text = dataSource[indexPath.row].sexo
+        
+        //cell.backgroundColor = UIColor.green
 
         return cell
     }
@@ -107,8 +109,11 @@ class EjemplaresTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowFicha" {
-            let fichaViewController = segue.destination as! FichaViewController
-            fichaViewController.ejemplar = ejemplarSeleccionado
+            //let fichaViewController = segue.destination as! FichaViewController
+            //fichaViewController.ejemplar = ejemplarSeleccionado
+            if let vc = segue.destination.childViewControllers[0] as? EjemplarTableViewController {
+                vc.ejemplar = ejemplarSeleccionado
+            }
         }
         
     }

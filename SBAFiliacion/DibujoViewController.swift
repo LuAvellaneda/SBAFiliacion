@@ -29,6 +29,7 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             let url = DibujoViewController.storeImageToDocumentDirectory(image: image,fileName: "dibujo_\(ejemplar_id).png")
             print(url)
             navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
             
  
             

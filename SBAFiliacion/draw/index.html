@@ -29,11 +29,14 @@ var raster;
     //paper.importJSON();
     
     //raster = new Raster('plantilla');
-    raster = new Raster(plantilla);
+    raster = new Raster(plantilla, view.center);
     //raster.source = plantilla;
     
     raster.onLoad = function() {
-        webkit.messageHandlers.loginAction.postMessage( view.viewSize );
+        //webkit.messageHandlers.loginAction.postMessage( view.matrix );
+        //rvar width = paper.view.size.width;
+        //var scale = (width / raster.bounds.width);
+        //raster.scale(scale);
     };
     
     
