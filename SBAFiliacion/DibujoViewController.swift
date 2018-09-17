@@ -27,7 +27,7 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             let b64 = message.body as! String
             let image = base64Convert(base64String: b64)
             let url = DibujoViewController.storeImageToDocumentDirectory(image: image,fileName: "dibujo_\(ejemplar_id).png")
-            print(url)
+            //print(url)
             navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
             

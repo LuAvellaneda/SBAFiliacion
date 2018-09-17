@@ -26,19 +26,16 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         return 2
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ficha", for: indexPath) as! EjemplarFichaTableViewCell
-            
             return cell
             
         }
         
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "fotos", for: indexPath) as! EjemplarFotoTableViewCell
-            
             return cell
             
         }
@@ -46,7 +43,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         return UITableViewCell()
     }
     
-    
+    /*
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 200
@@ -54,7 +51,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             return UITableViewAutomaticDimension
         }
     }
-    
+    */
     
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
@@ -72,23 +69,16 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if indexPath.row == 1 {
             if let cell = cell as? EjemplarFotoTableViewCell {
-                cell.collectionView.dataSource = self
-                cell.collectionView.delegate = self
-                cell.collectionView.reloadData()
-                //cell.collectionView.isScrollEnabled = false
-                
+                celdaFotos = cell
             }
         }
+        
     }
-    
-    
-    
-    
     
     
     var ejemplar: Ejemplar? {
         didSet {
-            let ejemplar_id = ejemplar?.id
+            //let ejemplar_id = ejemplar?.id
             navigationItem.title = ejemplar?.nombre
             
             dataSource.append(FichaDetalle("Nombre", ejemplar?.nombre))
@@ -100,11 +90,16 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     var dataSource = [FichaDetalle]()
     var imagePicker: UIImagePickerController!
     
+    var fotos = [UIImage]()
+    var celdaFotos = EjemplarFotoTableViewCell()
+    
     @IBOutlet weak var fichaTableView: UITableView!
     
-    @IBOutlet weak var fichaImage: UIImageView!
+    @IBOutlet weak var fichaImagen: UIImageView!
     
-    @IBAction func abrirCamara(_ sender: Any) {
+    
+    @IBAction func abrirCamara(_ sender: UIBarButtonItem) {
+    
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
@@ -114,17 +109,18 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func viewWillAppear(_ animated: Bool) {
         
-        /*
         if let ejemplar_id = ejemplar?.id {
             let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let dibujo:URL = directorio.appendingPathComponent("dibujo_\(ejemplar_id).png")
             
             if let image: UIImage = UIImage(contentsOfFile: dibujo.path) {
-                self.fichaImage.image = image
+                //fotos.append(image)
+                //celdaFotos.fotos = fotos
+                self.fichaImagen.image = image
             }
-            fichaTableView.reloadData()
+            //fichaTableView.reloadData()
         }
- */
+        
     }
     
     override func viewDidLoad() {
@@ -141,7 +137,9 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         picker.dismiss(animated: true, completion: nil)
         
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        self.fichaImage.image = image
+        //self.fichaImagen.image = image
+        fotos.append(image)
+        celdaFotos.fotos = fotos
         
     }
     
@@ -158,7 +156,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             let dibujoViewController = segue.destination as! DibujoViewController
             dibujoViewController.ejemplar = self.ejemplar
             
-            
         }
         
     }
@@ -171,7 +168,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
 extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionViewDelegate
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
@@ -180,7 +177,8 @@ extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionV
         
         //let shoes = Shoe.fetchShoes()
         //cell.image = shoes[indexPath.item].images?.first
-        cell.info = "Pelo"
+        let data = dataSource[indexPath.row]
+        cell.info = data.value
         
         
         return cell
