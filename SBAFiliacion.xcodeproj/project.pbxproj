@@ -25,6 +25,7 @@
 		A042C6522115D30000BB27F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A042C6512115D30000BB27F9 /* Assets.xcassets */; };
 		A042C6552115D30000BB27F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A042C6532115D30000BB27F9 /* LaunchScreen.storyboard */; };
 		A04FCD55211F0DCB00FAFDF4 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */; };
+		A06971FE215061C200A75BE6 /* HarasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06971FD215061C200A75BE6 /* HarasTableViewController.swift */; };
 		A0979BA1211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */; };
 		A0979BA2211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */; };
 		A0CE13F2212F91B100CD353C /* DibujoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CE13F1212F91B100CD353C /* DibujoViewController.swift */; };
@@ -60,6 +61,7 @@
 		A042C6542115D30000BB27F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A042C6562115D30000BB27F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		A06971FD215061C200A75BE6 /* HarasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarasTableViewController.swift; sourceTree = "<group>"; };
 		A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A0CE13F1212F91B100CD353C /* DibujoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DibujoViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				A042C64B2115D2FE00BB27F9 /* Main.storyboard */,
 				6FA1EDA2214EF42200ACBEC7 /* MapaViewController.swift */,
 				A03A953F212B0B7A00802E08 /* EjemplarTableViewController.swift */,
+				A06971FD215061C200A75BE6 /* HarasTableViewController.swift */,
 				A0E79C5D214DC6C2004828CF /* EjemplarFichaTableViewCell.swift */,
 				A0E79C65214DC922004828CF /* EjemplarFichaCollectionViewCell.swift */,
 				A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */,
@@ -306,6 +309,7 @@
 				A0E79C66214DC922004828CF /* EjemplarFichaCollectionViewCell.swift in Sources */,
 				A0E79C69214DF528004828CF /* EjemplarFotoTableViewCell.swift in Sources */,
 				A0979BA1211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift in Sources */,
+				A06971FE215061C200A75BE6 /* HarasTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

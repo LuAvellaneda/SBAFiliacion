@@ -27,6 +27,8 @@ class EjemplarFotoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,6 +44,7 @@ extension EjemplarFotoTableViewCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fotos.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {

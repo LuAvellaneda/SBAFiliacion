@@ -29,11 +29,18 @@ class MapaViewController: UIViewController, MKMapViewDelegate {
         
         
         
-        let haras =  Haras(title: "Firmamento",subtitle: "Córdoba",coordinate: CLLocationCoordinate2D(latitude: -31.4155, longitude: -64.2032))
+        let haras =  Haras(title: "Firmamento",subtitle: "Mar del Plata, BS.AS",coordinate: CLLocationCoordinate2D(latitude: -36.0398042, longitude: -60.9772331))
+        
         mapa.addAnnotation(haras)
         
-        let haras2 =  Haras(title: "La Pasión",subtitle: "San Luis",coordinate: CLLocationCoordinate2D(latitude: -33.3311, longitude: -66.3683))
+        let haras2 =  Haras(title: "La Pasión",subtitle: "Solis, BS.AS",coordinate: CLLocationCoordinate2D(latitude: -34.2981689, longitude: -59.3282848))
         mapa.addAnnotation(haras2)
+        
+        let haras3 =  Haras(title: "El Paraiso",subtitle: "La Luisa, BS.AS",coordinate: CLLocationCoordinate2D(latitude: -34.1247545, longitude: -59.9230457))
+        mapa.addAnnotation(haras3)
+        
+        let haras4 =  Haras(title: "Abolengo",subtitle: "Capitán Sarmiento, BS.AS",coordinate: CLLocationCoordinate2D(latitude: -34.168972, longitude: -59.8080936))
+        mapa.addAnnotation(haras4)
     }
    
 
@@ -74,7 +81,10 @@ class MapaViewController: UIViewController, MKMapViewDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showHaras" {
-            print("ok")
+            var view = sender as! MKAnnotationView
+            if let vc = segue.destination as? HarasTableViewController {
+                vc.harasNombre = view.annotation?.title!
+            }
         }
     }
     

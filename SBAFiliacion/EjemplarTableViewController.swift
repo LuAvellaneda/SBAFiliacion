@@ -12,10 +12,12 @@ import UIKit
 struct FichaDetalle{
     var label: String?
     var value: String?
+    var icono: String?
     
-    init(_ label:String?, _ value:String?) {
+    init(_ label:String?, _ value:String? ,_ icono:String?) {
         self.label = label
         self.value = value
+        self.icono = icono
     }
 }
 
@@ -81,9 +83,12 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             //let ejemplar_id = ejemplar?.id
             navigationItem.title = ejemplar?.nombre
             
-            dataSource.append(FichaDetalle("Nombre", ejemplar?.nombre))
-            dataSource.append(FichaDetalle("Sexo", ejemplar?.sexo))
-            dataSource.append(FichaDetalle("Pelo", "Zaino"))
+            //dataSource.append(FichaDetalle("Nombre", ejemplar?.nombre))
+            //dataSource.append(FichaDetalle("Sexo", ejemplar?.sexo))
+            dataSource.append(FichaDetalle("Pelo", "Zaino colorado","pelo"))
+            dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
+            dataSource.append(FichaDetalle("Microchip", "981032110034069","microchip"))
+            dataSource.append(FichaDetalle("C", "12/05/1980","calendario"))
             
         }
     }
@@ -178,6 +183,7 @@ extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionV
         //let shoes = Shoe.fetchShoes()
         //cell.image = shoes[indexPath.item].images?.first
         let data = dataSource[indexPath.row]
+        cell.iconoString = data.icono
         cell.info = data.value
         
         

@@ -14,8 +14,12 @@ class EjemplarFotoCollectionViewCell: UICollectionViewCell {
     public var caballo:UIImage! {
         didSet {
             imagen.image = caballo
+            imagen.layer.masksToBounds = true
+            imagen.layer.cornerRadius = 6.0
         }
     }
+    
+    
     
 }
 

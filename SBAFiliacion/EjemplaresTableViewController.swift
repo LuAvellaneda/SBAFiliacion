@@ -7,8 +7,25 @@
 //
 
 import UIKit
+import AVFoundation
 
-class EjemplaresTableViewController: UITableViewController {
+class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOutputObjectsDelegate {
+    
+    @IBAction func openScan (_ sender: UIBarButtonItem) {
+    
+        do {
+            try scanCode()
+        } catch {
+            print("noo")
+        }
+        
+        
+    }
+    
+    enum error:Error {
+        case noCameraAvailable
+        case videoInputInitFail
+    }
     
     let db: PersistenceManager
     var dataSource = [Ejemplar]()
@@ -31,6 +48,46 @@ class EjemplaresTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        if metadataObjects.count > 0 {
+            let lectura = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+            if lectura.type == AVMetadataObject.ObjectType.code128 {
+                let valor = lectura.stringValue!
+                print(valor)
+                
+            }
+        }
+    }
+    
+    func scanCode() throws {
+        let session = AVCaptureSession()
+        
+        guard let avCaptureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
+            print("no camera")
+            throw error.noCameraAvailable
+        }
+        
+        guard let avCaptureInput = try? AVCaptureDeviceInput(device: avCaptureDevice) else {
+            throw error.videoInputInitFail
+        }
+        
+        let avCaptureMetadataOutput = AVCaptureMetadataOutput()
+        avCaptureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        
+        session.addInput(avCaptureInput)
+        session.addOutput(avCaptureMetadataOutput)
+        
+        avCaptureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.code128]
+        
+        let avCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
+        //avCaptureVideoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        avCaptureVideoPreviewLayer.frame = view.bounds
+        view.layer.addSublayer(avCaptureVideoPreviewLayer)
+        
+        session.startRunning()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,3 +177,5 @@ class EjemplaresTableViewController: UITableViewController {
     
 
 }
+
+
