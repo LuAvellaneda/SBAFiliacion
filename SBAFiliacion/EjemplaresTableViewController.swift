@@ -9,15 +9,47 @@
 import UIKit
 import AVFoundation
 
+import Alamofire
+
 class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     @IBAction func openScan (_ sender: UIBarButtonItem) {
-    
+        
+        let url_save:String = "http://localhost/sbafiliacion/save.php";
+        let params:Parameters = ["nombre":"Lucas","apellido":"Avellaneda"]
+        let fileURL = Bundle.main.url(forResource: "ficha", withExtension: "jpg")!
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(fileURL , withName: "image1")
+            for (key, value) in params
+            {
+                multipartFormData.append((value as! String).data(using: String.Encoding.utf8)!, withName: key)
+            }
+        },
+        to: url_save,
+        encodingCompletion: { encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    //debugPrint(response)
+                }
+                upload.uploadProgress(closure: { //Get Progress
+                    progress in
+                    print(progress.fractionCompleted)
+                })
+            case .failure(let encodingError):
+                print(encodingError)
+            }
+        })
+
+        
+        /*
         do {
             try scanCode()
         } catch {
             print("noo")
         }
+        */
         
         
     }
@@ -120,25 +152,35 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
             // Delete the row from the data source
+            db.delete(dataSource[indexPath.row])
+            dataSource.remove(at: indexPath.row)
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Eliminar"
+    }
+    
+    
+    
 
     /*
     // Override to support rearranging the table view.
@@ -168,7 +210,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         if segue.identifier == "ShowFicha" {
             //let fichaViewController = segue.destination as! FichaViewController
             //fichaViewController.ejemplar = ejemplarSeleccionado
-            if let vc = segue.destination.childViewControllers[0] as? EjemplarTableViewController {
+            if let vc = segue.destination.children[0] as? EjemplarTableViewController {
                 vc.ejemplar = ejemplarSeleccionado
             }
         }

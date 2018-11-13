@@ -26,8 +26,9 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             
             let b64 = message.body as! String
             let image = base64Convert(base64String: b64)
-            let url = DibujoViewController.storeImageToDocumentDirectory(image: image,fileName: "dibujo_\(ejemplar_id).png")
-            //print(url)
+            
+            _ = DibujoViewController.storeImageToDocumentDirectory(image: image,fileName: "dibujo_\(ejemplar_id).png")
+            
             navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
             
@@ -89,7 +90,7 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
     }
     
     public static func storeImageToDocumentDirectory(image: UIImage, fileName: String) -> URL? {
-        guard let data = UIImagePNGRepresentation(image) else {
+        guard let data = image.pngData() else {
             return nil
         }
         let fileURL = self.fileURLInDocumentDirectory(fileName)

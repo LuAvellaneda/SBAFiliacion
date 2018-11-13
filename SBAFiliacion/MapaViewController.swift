@@ -50,7 +50,7 @@ class MapaViewController: UIViewController, MKMapViewDelegate {
     }
     
     func zoomOnMap(location:CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         mapa.setRegion(coordinateRegion, animated: true)
     }
     
@@ -81,7 +81,7 @@ class MapaViewController: UIViewController, MKMapViewDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showHaras" {
-            var view = sender as! MKAnnotationView
+            let view = sender as! MKAnnotationView
             if let vc = segue.destination as? HarasTableViewController {
                 vc.harasNombre = view.annotation?.title!
             }

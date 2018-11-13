@@ -27,7 +27,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let ejemplar = Ejemplar(context: db.context)
             ejemplar.nombre = info["nombre"] as? String
             ejemplar.sexo = info["sexo"] as? String
-            ejemplar.id = info["id"] as! Int32
+            ejemplar.id = info["ejemplar_id"] as! Int32
             db.save()
         }
         print("FIN")
@@ -47,9 +47,11 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        
         //if let url = URL(string: "http://localhost/intest/public/sba/ejemplar/exportar") {
-        if let url = URL(string: "http://192.168.1.22/intest/public/sba/ejemplar/exportar") {
-        //if let url = URL(string: "http://www.myproject.com.ar/ejemplares.json") {
+        //if let url = URL(string: "http://192.168.1.22/intest/public/sba/ejemplar/exportar") {
+        if let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json") {
             Alamofire.request(url).responseJSON { (response) in
                 
                 if let result = response.result.value {
