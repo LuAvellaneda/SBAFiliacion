@@ -17,10 +17,22 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         
         let url_save:String = "http://localhost/sbafiliacion/save.php";
         let params:Parameters = ["nombre":"Lucas","apellido":"Avellaneda"]
-        let fileURL = Bundle.main.url(forResource: "ficha", withExtension: "jpg")!
+        //let fileURL = Bundle.main.url(forResource: "ficha", withExtension: "jpg")!
+        
+        let ejemplares: [Ejemplar] = db.fetch(Ejemplar.self)
+        
+        let ejemplar = ejemplares[0]
+        
+        let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let dibujo:URL = directorio.appendingPathComponent("dibujo_\(ejemplar.id).png")
+        
+       let fileURL = dibujo
+       
+        
+    
         
         Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(fileURL , withName: "image1")
+            multipartFormData.append(fileURL , withName: "image")
             for (key, value) in params
             {
                 multipartFormData.append((value as! String).data(using: String.Encoding.utf8)!, withName: key)
@@ -31,7 +43,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseJSON { response in
-                    //debugPrint(response)
+                    debugPrint(response)
                 }
                 upload.uploadProgress(closure: { //Get Progress
                     progress in
