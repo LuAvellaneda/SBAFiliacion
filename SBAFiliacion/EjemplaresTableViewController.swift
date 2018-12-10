@@ -28,9 +28,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         
        let fileURL = dibujo
        
-        
-    
-        
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(fileURL , withName: "image")
             for (key, value) in params
@@ -55,13 +52,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         })
 
         
-        /*
-        do {
-            try scanCode()
-        } catch {
-            print("noo")
-        }
-        */
+        
         
         
     }
@@ -83,7 +74,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.dataSource = db.fetch(Ejemplar.self)
+        
         //navigationController?.navigationBar.prefersLargeTitles = true
         
 
@@ -92,6 +83,11 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.dataSource = db.fetch(Ejemplar.self)
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {

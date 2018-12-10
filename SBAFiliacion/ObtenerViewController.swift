@@ -13,6 +13,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     var db: PersistenceManager
     var dataSource = [[String:Any]]()
+    var indiceActual = 0
     
     required init?(coder aDecoder: NSCoder) {
         self.db = PersistenceManager.shared
@@ -34,6 +35,10 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     @IBAction func Obtener() {
         
+        /*
+        guardarData(indiceActual)
+        */
+        
         dataSource.forEach { (info) in
             let ejemplar = Ejemplar(context: db.context)
             ejemplar.nombre = info["nombre"] as? String
@@ -41,6 +46,31 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             ejemplar.id = info["id"] as! Int32
             db.save()
         }
+        
+    }
+    
+    func guardarData(_ posicion: Int) {
+        
+        /*
+        // DATA JSON
+        let info = dataSource[posicion]
+        let nombre = info["nombre"] as? String
+        
+        // VER SI NECESITA BAJAR DATA
+        
+        let url = URL(string: "https://hdqwalls.com/wallpapers/imac-pro-5k-ad.jpg")!
+        
+        let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
+        Alamofire.download(url, to: destination).response { response in
+            
+            if response.error == nil, let imagePath = response.destinationURL?.path {
+                print(imagePath)
+            }
+            
+            print(response.error)
+        }
+        */
+        
         
     }
     
@@ -56,7 +86,6 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
     }
     
@@ -65,14 +94,10 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
         
-        //nota.alpha = 0
-        
-        
-        let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
+        //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
+        let url = URL(string: "http://myproject.com.ar/ejemplares.json")!
         URLCache.shared.removeAllCachedResponses()
         
-        //if let url = URL(string: "http://localhost/intest/public/sba/ejemplar/exportar") {
-        //if let url = URL(string: "http://192.168.1.22/intest/public/sba/ejemplar/exportar") {
         
         Alamofire.request(url).responseJSON { (response) in
             
@@ -96,8 +121,6 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                     self.nota.text = json["nota"] as? String
                     
                     self.obtenerBtn.setTitle("\(total)", for: .normal)
-                    
-                    
                     
                     self.dataSource = json["ejemplares"] as! [[String:Any]]
                     self.tableView.reloadData()

@@ -126,7 +126,7 @@
 		A042C6462115D2FE00BB27F9 /* SBAFiliacion */ = {
 			isa = PBXGroup;
 			children = (
-				A0E813EB21335BB7004082DE /* draw */,
+				A0E813EB21335BB7004082DE /* Draw */,
 				A0E79C67214DF4F1004828CF /* Fotos */,
 				A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */,
 				A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */,
@@ -159,7 +159,7 @@
 			path = Fotos;
 			sourceTree = "<group>";
 		};
-		A0E813EB21335BB7004082DE /* draw */ = {
+		A0E813EB21335BB7004082DE /* Draw */ = {
 			isa = PBXGroup;
 			children = (
 				6FA1ED99214EB9BD00ACBEC7 /* Oswald-Bold.ttf */,
@@ -173,7 +173,7 @@
 				80C46F0021B705CE002AAC80 /* fichanueva.jpg */,
 				A0E813EE21335BB7004082DE /* ficha.jpg */,
 			);
-			path = draw;
+			path = Draw;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
