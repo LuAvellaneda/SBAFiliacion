@@ -14,6 +14,7 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
     
     let db: PersistenceManager
     var webView: WKWebView!
+    
     var ejemplar: Ejemplar?
     
     required init?(coder aDecoder: NSCoder) {
@@ -102,8 +103,10 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
         let config = WKWebViewConfiguration()
         config.preferences = preferences
         config.userContentController = contentController
+        
         self.webView = WKWebView(frame: self.view.bounds, configuration: config)
         webView.uiDelegate = self
+        webView.constraints 
         
         self.view.addSubview(webView)
         

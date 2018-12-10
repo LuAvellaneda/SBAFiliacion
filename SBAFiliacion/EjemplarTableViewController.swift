@@ -108,8 +108,8 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
-        
         self.present(imagePicker, animated: true, completion: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,7 +150,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         celdaFotos.fotos = fotos
         
     }
-    
 
     
     // MARK: - Navigation
