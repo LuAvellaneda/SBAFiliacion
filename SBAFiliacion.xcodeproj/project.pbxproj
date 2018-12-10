@@ -15,6 +15,7 @@
 		6FA1EDA0214EB9BE00ACBEC7 /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA1ED9A214EB9BD00ACBEC7 /* Oswald-SemiBold.ttf */; };
 		6FA1EDA1214EB9BE00ACBEC7 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA1ED9B214EB9BE00ACBEC7 /* Oswald-Medium.ttf */; };
 		6FA1EDA3214EF42200ACBEC7 /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1EDA2214EF42200ACBEC7 /* MapaViewController.swift */; };
+		80C46F0121B705CE002AAC80 /* fichanueva.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 80C46F0021B705CE002AAC80 /* fichanueva.jpg */; };
 		A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019952D2122541600801DF7 /* ObtenerViewController.swift */; };
 		A030E76921287ABC00F455E5 /* EjemplaresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */; };
 		A03A9540212B0B7A00802E08 /* EjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A953F212B0B7A00802E08 /* EjemplarTableViewController.swift */; };
@@ -49,6 +50,7 @@
 		6FA1ED9B214EB9BE00ACBEC7 /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
 		6FA1EDA2214EF42200ACBEC7 /* MapaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		7BEE2EA70768CAA460056DB7 /* Pods_SBAFiliacion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SBAFiliacion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80C46F0021B705CE002AAC80 /* fichanueva.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fichanueva.jpg; sourceTree = "<group>"; };
 		A019952D2122541600801DF7 /* ObtenerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerViewController.swift; sourceTree = "<group>"; };
 		A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjemplaresTableViewController.swift; sourceTree = "<group>"; };
 		A03A953F212B0B7A00802E08 /* EjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjemplarTableViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				6FA1ED9A214EB9BD00ACBEC7 /* Oswald-SemiBold.ttf */,
 				A0E813EC21335BB7004082DE /* index.html */,
 				A0E813ED21335BB7004082DE /* paper-full.min.js */,
+				80C46F0021B705CE002AAC80 /* fichanueva.jpg */,
 				A0E813EE21335BB7004082DE /* ficha.jpg */,
 			);
 			path = draw;
@@ -235,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A042C6552115D30000BB27F9 /* LaunchScreen.storyboard in Resources */,
+				80C46F0121B705CE002AAC80 /* fichanueva.jpg in Resources */,
 				6FA1ED9F214EB9BE00ACBEC7 /* Oswald-Bold.ttf in Resources */,
 				A0E813EF21335BB7004082DE /* index.html in Resources */,
 				A042C6522115D30000BB27F9 /* Assets.xcassets in Resources */,

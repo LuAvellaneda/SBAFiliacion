@@ -76,6 +76,7 @@
     
 paper.install(window);
 var plantilla = "";
+var trazo = "";
 var lastZoomScale;
 var puntoIni;
 var medio;
@@ -85,29 +86,45 @@ var loadImage;
 var action = "draw";
 var mode = "draw";
 var raster;
+var raster_img;
 var colorActivo = "red";
 var strockActivo = 3;
+var canvasExport;
+var projectExport;
 
-	window.onload = function() {
+
+window.onload = function() {
     
 	canvas = document.getElementById('myCanvas');
-
-	paper.setup(canvas);
-    //paper.importJSON();
     
-    //raster = new Raster('plantilla');
-    raster = new Raster(plantilla, view.center);
-    //raster.source = plantilla;
+    //CANVAS EXPORT
+    canvasExport = document.createElement('canvas');
+    canvasExport.width = 3056/2;
+    canvasExport.height = 1761/2;
+    projectExport = new Project(canvasExport);
+    raster_img = new Raster(plantilla,new Point(3056/4, 1761/4));
+    if(trazo != "") {
+        projectExport.importJSON(trazo);
+    }
+    
+    
+    //INIT
+	paper.setup(canvas);
+    raster = new Raster(plantilla,new Point(3056/4, 1761/4));
+    
+    if(trazo != "") {
+        paper.importJSON(trazo);
+        view.update();
+    }
     
     raster.onLoad = function() {
         //webkit.messageHandlers.loginAction.postMessage( view.matrix );
         //rvar width = paper.view.size.width;
         //var scale = (width / raster.bounds.width);
         //raster.scale(scale);
-        
     };
     
-    view.zoom = 0.35;
+    //view.zoom = 0.35;
     
     
 	//raster = new Raster('plantilla');
@@ -160,22 +177,14 @@ var strockActivo = 3;
 		if(action == "draw"){
 			path.simplify();
 
-			/*var lay = projectExport.activeLayer;
-			lay.addChild(path.clone());*/
+			var lay = projectExport.activeLayer;
+			lay.addChild(path.clone());
 
 		}
 
 	}
 
 }
-
-/*
-function me(){
-	alert("me");
-}
-*/
-
-
 
 
 function startHandler(event){
@@ -265,12 +274,37 @@ function exportar() {
     //var json = paperScope.project.exportJSON();
     
     var p1 = new Promise(
-             function(resolve, reject) {
-                         webkit.messageHandlers.loginAction.postMessage( canvas.toDataURL() );
-                 //var aca = canvas.toDataURL("image/png;base64;");
-                 //resolve(aca);
-             }
-         );
+                         function(resolve, reject) {
+                         
+                             if(true) {
+                         
+                                //view.zoom = 1;
+                                view.update();
+                         
+                                //var canvasJson = project.exportJSON();
+                                //canvasExportProject.importJSON(canvasJson);
+                                //canvasExportProject.view.update();
+                                //canvasExportProject
+                         
+                                //raster = new Raster(plantilla,new Point(3056/4, 1761/4));
+                                dibujo = canvasExport.toDataURL();
+                                raster_img.remove();
+                                projectExport.view.update();
+                                trazo = canvasExport.toDataURL();
+                                trazoJSON = projectExport.exportJSON();
+                         
+                                var data = {
+                                    trazo: trazo,
+                                    trazoJSON: trazoJSON,
+                                    id: 99,
+                                    dibujo: dibujo
+                                }
+                                webkit.messageHandlers.loginAction.postMessage( data );
+                         
+                             }
+                         
+                         }
+             );
          
          p1.then(
              // Registrar el valor de la promesa cumplida

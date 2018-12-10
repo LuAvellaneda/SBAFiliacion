@@ -12,8 +12,14 @@ import WebKit
 
 class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
     
+    let db: PersistenceManager
     var webView: WKWebView!
     var ejemplar: Ejemplar?
+    
+    required init?(coder aDecoder: NSCoder) {
+        db = PersistenceManager.shared
+        super.init(coder: aDecoder)
+    }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "loginAction" {
@@ -21,13 +27,31 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             //print(ejemplar?.nombre)
             //print(" \(message.body)")
             
+            let messageBody = message.body as! [String:Any]
+            let dibujo = messageBody ["dibujo"] as! String
+            let trazo = messageBody ["trazo"] as! String
+            let trazoJSON = messageBody["trazoJSON"] as! String
+            let id = messageBody ["id"] as! Int
+            
+            //if let messageBody = message.body as? [String: Any], let age = messageBody["age"] as? Int {
+                //print("Age: \(age)")
+            //}
+            
             let ejemplar_id = ejemplar!.id
             
             
-            let b64 = message.body as! String
+            let b64 = dibujo
             let image = base64Convert(base64String: b64)
+            let image_trazo = base64Convert(base64String: trazo)
             
-            _ = DibujoViewController.storeImageToDocumentDirectory(image: image,fileName: "dibujo_\(ejemplar_id).png")
+            
+            let url_dibujo = DibujoViewController.storeImageToDocumentDirectory(image: image,fileName: "dibujo_\(ejemplar_id).png")!
+            let url_thumb = DibujoViewController.storeImageToDocumentDirectory(image: image_trazo,fileName: "dibujo_\(ejemplar_id)_trazo.png")!
+            
+            //Guardar el trazo
+            
+            ejemplar?.trazo = trazoJSON
+            db.save()
             
             navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
@@ -42,6 +66,8 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let trazo = ejemplar?.trazo
+        
         
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
@@ -49,7 +75,8 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
         let contentController = WKUserContentController()
         contentController.add(self, name: "loginAction")
         
-        let fichaPath = Bundle.main.path(forResource: "ficha", ofType: "jpg")
+        
+        let fichaPath = Bundle.main.path(forResource: "fichanueva", ofType: "jpg")
         let fichaUrl = URL(fileURLWithPath: fichaPath!)
         let imageData:NSData = NSData.init(contentsOf: fichaUrl)!
         let strBase64 = imageData.base64EncodedString()
@@ -59,7 +86,18 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             injectionTime: WKUserScriptInjectionTime.atDocumentEnd,
             forMainFrameOnly: true
         )
+        
+        if(trazo != nil){
+            let trazoScript = WKUserScript(
+                source: "var trazo = '\(trazo!)';",
+                injectionTime: WKUserScriptInjectionTime.atDocumentEnd,
+                forMainFrameOnly: true
+            )
+            contentController.addUserScript(trazoScript)
+        }
+        
         contentController.addUserScript(userScript)
+        
         
         let config = WKWebViewConfiguration()
         config.preferences = preferences
