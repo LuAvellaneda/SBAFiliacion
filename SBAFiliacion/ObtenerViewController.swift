@@ -43,6 +43,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let ejemplar = Ejemplar(context: db.context)
             ejemplar.nombre = info["nombre"] as? String
             ejemplar.sexo = info["sexo"] as? String
+            ejemplar.por = info["por"] as? String
             ejemplar.fotos = Int32(0)
             ejemplar.id = info["id"] as! Int32
             db.save()
@@ -88,15 +89,17 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
     }
     
     override func viewDidAppear(_ animated: Bool) {
     
         super.viewDidAppear(animated)
+        print("viewDidApper")
         self.view.layoutIfNeeded()
         
         //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
-        let url = URL(string: "http://myproject.com.ar/ejemplares.json")!
+        let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
         URLCache.shared.removeAllCachedResponses()
         
         
@@ -106,6 +109,8 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             if let result = response.result.value {
                 
                 let json = result as! Dictionary<String,Any>
+                
+                print(json)
                 
                 let total = json["ejemplares_cantidad"] as! Int32
                 

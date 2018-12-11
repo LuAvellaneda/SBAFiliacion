@@ -101,6 +101,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var fichaTableView: UITableView!
     @IBOutlet weak var fichaImagen: UIImageView!
     
+    @IBOutlet weak var por: UILabel!
     
     @IBAction func abrirCamara(_ sender: UIBarButtonItem) {
     
@@ -123,10 +124,11 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             let dibujo:URL = directorio.appendingPathComponent("dibujo_\(ejemplar_id).png")
             
             if let image: UIImage = UIImage(contentsOfFile: dibujo.path) {
-                //fotos.append(image)
-                //celdaFotos.fotos = fotos
                 self.fichaImagen.image = image
             }
+            
+            //Info Ejemplar
+            por.text? = (ejemplar?.por) ?? ""
             
             //Fotos
             let cantidadFotos = (ejemplar?.fotos)!
@@ -139,8 +141,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
                 }
                 
             }
-            
-            
+        
             
         }
         

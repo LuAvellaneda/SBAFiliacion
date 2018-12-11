@@ -128,8 +128,7 @@
 			children = (
 				A0E813EB21335BB7004082DE /* Draw */,
 				A0E79C67214DF4F1004828CF /* Fotos */,
-				A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */,
-				A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */,
+				A0514D7721C06E1B0056AA8F /* CoreData */,
 				A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */,
 				A0CE13F1212F91B100CD353C /* DibujoViewController.swift */,
 				A042C6472115D2FE00BB27F9 /* AppDelegate.swift */,
@@ -148,6 +147,15 @@
 				A042C6512115D30000BB27F9 /* Assets.xcassets */,
 			);
 			path = SBAFiliacion;
+			sourceTree = "<group>";
+		};
+		A0514D7721C06E1B0056AA8F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */,
+				A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		A0E79C67214DF4F1004828CF /* Fotos */ = {
