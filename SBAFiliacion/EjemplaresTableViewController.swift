@@ -15,7 +15,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     @IBAction func openScan (_ sender: UIBarButtonItem) {
         
-        let url_save:String = "http://localhost/sbafiliacion/save.php";
+        let url_save:String = "http://myproject.com.ar/jc/save.php";
         let params:Parameters = ["nombre":"Lucas","apellido":"Avellaneda"]
         //let fileURL = Bundle.main.url(forResource: "ficha", withExtension: "jpg")!
         
@@ -24,7 +24,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         let ejemplar = ejemplares[0]
         
         let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let dibujo:URL = directorio.appendingPathComponent("dibujo_\(ejemplar.id).png")
+        let dibujo:URL = directorio.appendingPathComponent("dibujo_\(ejemplar.id)_trazo.png")
         
        let fileURL = dibujo
        
@@ -47,7 +47,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
                     print(progress.fractionCompleted)
                 })
             case .failure(let encodingError):
-                print(encodingError)
+                print("Error")
+                //print(encodingError)
             }
         })
 

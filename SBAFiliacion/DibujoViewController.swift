@@ -31,9 +31,7 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             let trazo = messageBody ["trazo"] as! String
             let trazoJSON = messageBody["trazoJSON"] as! String
             
-
             let ejemplar_id = ejemplar!.id
-            
             
             let b64 = dibujo
             let image = base64Convert(base64String: b64)

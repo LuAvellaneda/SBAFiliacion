@@ -20,6 +20,7 @@ extension Ejemplar {
     @NSManaged public var nombre: String?
     @NSManaged public var sexo: String?
     @NSManaged public var trazo: String?
+    @NSManaged public var visto: Bool
     @NSManaged public var fotos: Int32
     @NSManaged public var id: Int32
 
