@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 struct FichaDetalle{
     var label: String?
     var value: String?
@@ -22,6 +21,7 @@ struct FichaDetalle{
 }
 
 class EjemplarTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,13 +65,13 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
                 cell.collectionView.delegate = self
                 cell.collectionView.reloadData()
                 //cell.collectionView.isScrollEnabled = false
-                
             }
         }
         
         if indexPath.row == 1 {
             if let cell = cell as? EjemplarFotoTableViewCell {
                 celdaFotos = cell
+                celdaFotos.fotos = fotos
             }
         }
         
@@ -80,11 +80,9 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     var ejemplar: Ejemplar? {
         didSet {
-            //let ejemplar_id = ejemplar?.id
+            
             navigationItem.title = ejemplar?.nombre
             
-            //dataSource.append(FichaDetalle("Nombre", ejemplar?.nombre))
-            //dataSource.append(FichaDetalle("Sexo", ejemplar?.sexo))
             dataSource.append(FichaDetalle("Pelo", "Zaino colorado","pelo"))
             dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
             dataSource.append(FichaDetalle("Microchip", "981032110034069","microchip"))
@@ -92,6 +90,8 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
         }
     }
+    
+    let db: PersistenceManager
     var dataSource = [FichaDetalle]()
     var imagePicker: UIImagePickerController!
     
@@ -99,7 +99,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     var celdaFotos = EjemplarFotoTableViewCell()
     
     @IBOutlet weak var fichaTableView: UITableView!
-    
     @IBOutlet weak var fichaImagen: UIImageView!
     
     
@@ -110,6 +109,11 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         imagePicker.sourceType = .camera
         self.present(imagePicker, animated: true, completion: nil)
         
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        db = PersistenceManager.shared
+        super.init(coder: aDecoder)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,14 +127,28 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
                 //celdaFotos.fotos = fotos
                 self.fichaImagen.image = image
             }
-            //fichaTableView.reloadData()
+            
+            //Fotos
+            let cantidadFotos = (ejemplar?.fotos)!
+            if(cantidadFotos > 0) {
+                
+                for index in 1...cantidadFotos {
+                    let foto:URL = directorio.appendingPathComponent("foto_\(ejemplar_id)_\(index).png")
+                    let image:UIImage = UIImage(contentsOfFile: foto.path)!
+                    fotos.append(image)
+                }
+                
+            }
+            
+            
+            
         }
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,18 +156,31 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-
-        picker.dismiss(animated: true, completion: nil)
-        
         let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
-        //self.fichaImagen.image = image
+        
+        let siguienteIndiceFotos = (ejemplar?.fotos)! + 1
+        let id = (ejemplar?.id)!
+        
+        let nombre = "foto_\(id)_\(siguienteIndiceFotos).png"
+        
+        _ = EjemplarTableViewController.storeImageToDocumentDirectory(image: image,fileName: nombre)
+        
+        ejemplar?.fotos = siguienteIndiceFotos
+        db.save()
+        
         fotos.append(image)
         celdaFotos.fotos = fotos
         
+        picker.dismiss(animated: true, completion: nil)
+        
     }
+
 
     
     // MARK: - Navigation
@@ -167,6 +198,26 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
     }
     
+    public static func storeImageToDocumentDirectory(image: UIImage, fileName: String) -> URL? {
+        guard let data = image.pngData() else {
+            return nil
+        }
+        let fileURL = self.fileURLInDocumentDirectory(fileName)
+        do {
+            try data.write(to: fileURL)
+            return fileURL
+        } catch {
+            return nil
+        }
+    }
+    
+    public static var documentsDirectoryURL: URL {
+        return FileManager.default.urls(for:.documentDirectory, in: .userDomainMask)[0]
+    }
+    public static func fileURLInDocumentDirectory(_ fileName: String) -> URL {
+        return self.documentsDirectoryURL.appendingPathComponent(fileName)
+    }
+    
 
 }
 
@@ -180,16 +231,15 @@ extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "item", for: indexPath) as! EjemplarFichaCollectionViewCell
         
-        //let shoes = Shoe.fetchShoes()
-        //cell.image = shoes[indexPath.item].images?.first
         let data = dataSource[indexPath.row]
         cell.iconoString = data.icono
         cell.info = data.value
         
-        
         return cell
+        
     }
     
 }

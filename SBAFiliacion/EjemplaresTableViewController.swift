@@ -52,10 +52,9 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         })
 
         
-        
-        
-        
     }
+    
+    
     
     enum error:Error {
         case noCameraAvailable
@@ -73,7 +72,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.dataSource = db.fetch(Ejemplar.self)
         
         //navigationController?.navigationBar.prefersLargeTitles = true
         

@@ -25,19 +25,13 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "loginAction" {
             
-            //print(ejemplar?.nombre)
-            //print(" \(message.body)")
             
             let messageBody = message.body as! [String:Any]
             let dibujo = messageBody ["dibujo"] as! String
             let trazo = messageBody ["trazo"] as! String
             let trazoJSON = messageBody["trazoJSON"] as! String
-            let id = messageBody ["id"] as! Int
             
-            //if let messageBody = message.body as? [String: Any], let age = messageBody["age"] as? Int {
-                //print("Age: \(age)")
-            //}
-            
+
             let ejemplar_id = ejemplar!.id
             
             
@@ -50,21 +44,22 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             let url_thumb = DibujoViewController.storeImageToDocumentDirectory(image: image_trazo,fileName: "dibujo_\(ejemplar_id)_trazo.png")!
             
             //Guardar el trazo
+            print(url_dibujo)
+            print(url_thumb)
             
             ejemplar?.trazo = trazoJSON
             db.save()
             
             navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
-            
- 
-            
+
         }
     }
     
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         let trazo = ejemplar?.trazo
@@ -87,7 +82,8 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             injectionTime: WKUserScriptInjectionTime.atDocumentEnd,
             forMainFrameOnly: true
         )
-        
+        contentController.addUserScript(userScript)
+ 
         if(trazo != nil){
             let trazoScript = WKUserScript(
                 source: "var trazo = '\(trazo!)';",
@@ -97,8 +93,6 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             contentController.addUserScript(trazoScript)
         }
         
-        contentController.addUserScript(userScript)
-        
         
         let config = WKWebViewConfiguration()
         config.preferences = preferences
@@ -106,7 +100,6 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
         
         self.webView = WKWebView(frame: self.view.bounds, configuration: config)
         webView.uiDelegate = self
-        webView.constraints 
         
         self.view.addSubview(webView)
         
@@ -152,6 +145,5 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
