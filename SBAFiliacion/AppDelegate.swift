@@ -16,6 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        /*
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "inicio")
+        let navVC = UINavigationController(rootViewController: vc)
+        let share = UIApplication.shared.delegate as? AppDelegate
+        share?.window?.rootViewController = navVC
+        share?.window?.makeKeyAndVisible()
+        */
+        
+        //let rootController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "inicio")
+        //self.window?.rootViewController = rootController
+        
+        if(UserDefaults.standard.bool(forKey: "userLogin")) {
+            let mainNavigationController = self.window?.rootViewController as! MainNavigationController
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "inicio") as UIViewController
+            let vcLogin = storyboard.instantiateViewController(withIdentifier: "login") as UIViewController
+            mainNavigationController.viewControllers = [vcLogin,vc]
+        }
+        
+        
         return true
     }
 
