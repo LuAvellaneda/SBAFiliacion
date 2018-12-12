@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
-    let veterinarios =  ["veterinario"]
+    let veterinarios =  ["2641","4408","6176","6876","7264","57119"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class LoginViewController: UIViewController,UICollectionViewDelegate,UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! VeterinarioCollectionViewCell
-        let veterinario_img = UIImage(named: "veterinario")
+        let veterinario_img = UIImage(named: veterinarios[indexPath.row])
         cell.veterinario = veterinario_img
         return cell
     }
