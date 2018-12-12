@@ -44,19 +44,66 @@
                                     <segue destination="uNd-1x-FSK" kind="show" identifier="logged" id="0Vl-bN-PzE"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fAC-AV-GoW">
+                                <rect key="frame" x="0.0" y="70" width="768" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="pL1-Zf-Nva"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ffj-XZ-r4n">
+                                    <size key="itemSize" width="160" height="160"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="zv1-fm-eRK" customClass="VeterinarioCollectionViewCell" customModule="SBAFiliacion" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NR3-lF-Kif">
+                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="NR3-lF-Kif" firstAttribute="leading" secondItem="zv1-fm-eRK" secondAttribute="leading" id="2VJ-T9-UaI"/>
+                                            <constraint firstItem="NR3-lF-Kif" firstAttribute="top" secondItem="zv1-fm-eRK" secondAttribute="top" id="C49-5o-VoS"/>
+                                            <constraint firstAttribute="trailing" secondItem="NR3-lF-Kif" secondAttribute="trailing" id="PjK-hV-OR1"/>
+                                            <constraint firstAttribute="bottom" secondItem="NR3-lF-Kif" secondAttribute="bottom" id="QOs-fx-4QZ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imagen" destination="NR3-lF-Kif" id="eHg-AP-LxV"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="doM-n0-jF3" id="EX6-Xn-ly6"/>
+                                    <outlet property="delegate" destination="doM-n0-jF3" id="3h1-lH-noY"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fAC-AV-GoW" firstAttribute="leading" secondItem="zQb-GP-Lhf" secondAttribute="leading" id="CT4-Oe-GIZ"/>
+                            <constraint firstItem="zQb-GP-Lhf" firstAttribute="trailing" secondItem="fAC-AV-GoW" secondAttribute="trailing" id="OE9-GB-7KH"/>
                             <constraint firstItem="Zt2-Ba-iS8" firstAttribute="centerX" secondItem="tW5-tA-8Q5" secondAttribute="centerX" id="Son-Lr-id7"/>
+                            <constraint firstItem="fAC-AV-GoW" firstAttribute="top" secondItem="zQb-GP-Lhf" secondAttribute="top" constant="50" id="Xig-P7-ezb"/>
                             <constraint firstItem="Zt2-Ba-iS8" firstAttribute="centerY" secondItem="tW5-tA-8Q5" secondAttribute="centerY" id="snP-Ld-get"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zQb-GP-Lhf"/>
                     </view>
                     <navigationItem key="navigationItem" id="FX4-xh-oqM"/>
+                    <connections>
+                        <outlet property="veterinariosCollectionView" destination="fAC-AV-GoW" id="zWV-z6-tDP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEF-fs-CAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1401" y="-388"/>
+            <point key="canvasLocation" x="-1401.5625" y="-388.4765625"/>
         </scene>
         <!--Usuario View Controller-->
         <scene sceneID="EZc-la-WxM">
@@ -465,7 +512,7 @@
         <scene sceneID="LJB-Tw-gme">
             <objects>
                 <tableViewController id="VWf-hK-iaJ" customClass="EjemplaresTableViewController" customModule="SBAFiliacion" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oLh-z0-isE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oLh-z0-isE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
