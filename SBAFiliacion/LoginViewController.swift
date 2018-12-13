@@ -27,13 +27,14 @@ class LoginViewController: UIViewController,UICollectionViewDelegate,UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return veterinarios.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! VeterinarioCollectionViewCell
         let veterinario_img = UIImage(named: veterinarios[indexPath.row])
         cell.veterinario = veterinario_img
+    
         return cell
     }
     

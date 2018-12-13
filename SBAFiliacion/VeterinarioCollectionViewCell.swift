@@ -15,9 +15,16 @@ class VeterinarioCollectionViewCell: UICollectionViewCell {
     
     public var veterinario:UIImage! {
         didSet {
+            var context = CIContext(options: nil)
             imagen.image = veterinario
             imagen.layer.masksToBounds = true
-            imagen.layer.cornerRadius = 6.0
+            imagen.layer.cornerRadius = imagen.frame.size.width/2
+            let currentFilter = CIFilter(name: "CIPhotoEffectMono")
+            currentFilter!.setValue(CIImage(image: imagen.image!), forKey: kCIInputImageKey)
+            let output = currentFilter!.outputImage
+            let cgimg = context.createCGImage(output!,from: output!.extent)
+            let processedImage = UIImage(cgImage: cgimg!)
+            imagen.image = processedImage
         }
     }
 }

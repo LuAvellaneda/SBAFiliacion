@@ -44,36 +44,43 @@
                                     <segue destination="uNd-1x-FSK" kind="show" identifier="logged" id="0Vl-bN-PzE"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="91R-V4-AHi">
+                                <rect key="frame" x="310.5" y="20" width="147" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="147" id="bBI-fh-k67"/>
+                                    <constraint firstAttribute="height" constant="128" id="u1D-II-NMl"/>
+                                </constraints>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fAC-AV-GoW">
-                                <rect key="frame" x="0.0" y="70" width="768" height="160"/>
+                                <rect key="frame" x="14" y="198" width="740" height="90"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="pL1-Zf-Nva"/>
+                                    <constraint firstAttribute="height" constant="90" id="pL1-Zf-Nva"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ffj-XZ-r4n">
-                                    <size key="itemSize" width="160" height="160"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ffj-XZ-r4n">
+                                    <size key="itemSize" width="90" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="zv1-fm-eRK" customClass="VeterinarioCollectionViewCell" customModule="SBAFiliacion" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NR3-lF-Kif">
-                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="NR3-lF-Kif" firstAttribute="leading" secondItem="zv1-fm-eRK" secondAttribute="leading" id="2VJ-T9-UaI"/>
-                                            <constraint firstItem="NR3-lF-Kif" firstAttribute="top" secondItem="zv1-fm-eRK" secondAttribute="top" id="C49-5o-VoS"/>
-                                            <constraint firstAttribute="trailing" secondItem="NR3-lF-Kif" secondAttribute="trailing" id="PjK-hV-OR1"/>
-                                            <constraint firstAttribute="bottom" secondItem="NR3-lF-Kif" secondAttribute="bottom" id="QOs-fx-4QZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="NR3-lF-Kif" secondAttribute="bottom" id="0Zo-gn-Ra2"/>
+                                            <constraint firstItem="NR3-lF-Kif" firstAttribute="top" secondItem="zv1-fm-eRK" secondAttribute="top" id="3VN-Jb-gRX"/>
+                                            <constraint firstAttribute="trailing" secondItem="NR3-lF-Kif" secondAttribute="trailing" id="APx-iJ-4ed"/>
+                                            <constraint firstItem="NR3-lF-Kif" firstAttribute="leading" secondItem="zv1-fm-eRK" secondAttribute="leading" id="tqa-dd-YqU"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imagen" destination="NR3-lF-Kif" id="eHg-AP-LxV"/>
@@ -88,10 +95,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fAC-AV-GoW" firstAttribute="leading" secondItem="zQb-GP-Lhf" secondAttribute="leading" id="CT4-Oe-GIZ"/>
-                            <constraint firstItem="zQb-GP-Lhf" firstAttribute="trailing" secondItem="fAC-AV-GoW" secondAttribute="trailing" id="OE9-GB-7KH"/>
+                            <constraint firstItem="fAC-AV-GoW" firstAttribute="leading" secondItem="zQb-GP-Lhf" secondAttribute="leading" constant="14" id="CT4-Oe-GIZ"/>
+                            <constraint firstItem="zQb-GP-Lhf" firstAttribute="trailing" secondItem="fAC-AV-GoW" secondAttribute="trailing" constant="14" id="OE9-GB-7KH"/>
                             <constraint firstItem="Zt2-Ba-iS8" firstAttribute="centerX" secondItem="tW5-tA-8Q5" secondAttribute="centerX" id="Son-Lr-id7"/>
-                            <constraint firstItem="fAC-AV-GoW" firstAttribute="top" secondItem="zQb-GP-Lhf" secondAttribute="top" constant="50" id="Xig-P7-ezb"/>
+                            <constraint firstItem="fAC-AV-GoW" firstAttribute="firstBaseline" secondItem="91R-V4-AHi" secondAttribute="baseline" constant="50" id="jyb-Nk-OI6"/>
+                            <constraint firstItem="91R-V4-AHi" firstAttribute="centerX" secondItem="tW5-tA-8Q5" secondAttribute="centerX" id="poj-7J-JvE"/>
+                            <constraint firstItem="91R-V4-AHi" firstAttribute="top" secondItem="zQb-GP-Lhf" secondAttribute="top" id="ppZ-vz-9bJ"/>
                             <constraint firstItem="Zt2-Ba-iS8" firstAttribute="centerY" secondItem="tW5-tA-8Q5" secondAttribute="centerY" id="snP-Ld-get"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zQb-GP-Lhf"/>
@@ -512,7 +521,7 @@
         <scene sceneID="LJB-Tw-gme">
             <objects>
                 <tableViewController id="VWf-hK-iaJ" customClass="EjemplaresTableViewController" customModule="SBAFiliacion" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oLh-z0-isE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oLh-z0-isE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -846,6 +855,7 @@
         <image name="_ejemplar" width="370" height="370"/>
         <image name="download" width="32" height="32"/>
         <image name="haras" width="570" height="570"/>
+        <image name="logo" width="858" height="752"/>
         <image name="raza" width="128" height="128"/>
         <image name="veterinario" width="320" height="320"/>
     </resources>
