@@ -584,6 +584,7 @@
         <!--Navigation Controller-->
         <scene sceneID="x71-QW-95T">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JQn-dR-UXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="pG4-oX-kyz" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BlF-Jr-zH4">
                         <rect key="frame" x="0.0" y="20" width="320" height="50"/>
@@ -593,9 +594,8 @@
                         <segue destination="VWf-hK-iaJ" kind="relationship" relationship="rootViewController" id="RGV-uo-Wv1"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JQn-dR-UXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="-1867"/>
+            <point key="canvasLocation" x="1724" y="-1867"/>
         </scene>
         <!--Ejemplares-->
         <scene sceneID="9gp-gj-8oY">
@@ -651,21 +651,81 @@
                             <outlet property="delegate" destination="VWf-hK-iaJ" id="GZv-xt-Sra"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Ejemplares" id="Xzo-6h-mVk">
+                    <navigationItem key="navigationItem" title="Ejemplares" largeTitleDisplayMode="always" id="Xzo-6h-mVk">
                         <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="xEL-RQ-l87">
                             <connections>
                                 <action selector="openScan:" destination="VWf-hK-iaJ" id="Zb9-pl-d52"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Yfw-M6-WSE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="Yfw-M6-WSE">
+                            <connections>
+                                <action selector="add:" destination="VWf-hK-iaJ" id="q1j-Fv-G1g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="xAu-DJ-mQ8" kind="showDetail" identifier="ShowFicha" id="cs8-Oh-DIb"/>
+                        <segue destination="qQI-bf-X3Q" kind="popoverPresentation" identifier="filtros" popoverAnchorBarButtonItem="Yfw-M6-WSE" id="Qai-ft-FGU">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hja-Ti-O1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2591" y="-1867"/>
+        </scene>
+        <!--Haras Filtros Table View Controller-->
+        <scene sceneID="NHG-ZV-Dg0">
+            <objects>
+                <tableViewController id="qQI-bf-X3Q" customClass="HarasFiltrosTableViewController" customModule="SBAFiliacion" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wlp-aT-U4G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="P0l-Ni-jjg">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="A6s-RO-p8t" detailTextLabel="tlx-UY-C5Q" style="IBUITableViewCellStyleValue1" id="58e-8S-e0r">
+                                <rect key="frame" x="0.0" y="72" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="58e-8S-e0r" id="AQ4-G9-3gH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A6s-RO-p8t">
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tlx-UY-C5Q">
+                                            <rect key="frame" x="260" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="0ul-E4-9qz" kind="unwind" unwindAction="salir:" id="Isj-vi-yOm"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qQI-bf-X3Q" id="lq9-qf-Gg6"/>
+                            <outlet property="delegate" destination="qQI-bf-X3Q" id="Orf-Cp-kNh"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m7P-2k-074" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0ul-E4-9qz" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3470" y="-2533"/>
         </scene>
         <!--Ejemplar-->
         <scene sceneID="I70-TR-dAP">
@@ -875,13 +935,11 @@
                     <navigationItem key="navigationItem" title="Ejemplar" id="DOb-K9-QSy">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="compose" id="Dyz-gl-tjY">
-                                <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <segue destination="AZj-5Z-eod" kind="presentation" identifier="ShowDibujo" id="4LC-Z8-eeJ"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="camera" id="Y7V-We-6z4">
-                                <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <action selector="abrirCamara:" destination="0Yr-PG-B9w" id="VtR-BK-S6y"/>
                                 </connections>
@@ -980,6 +1038,6 @@
         <image name="veterinario" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qsx-FA-U5N"/>
+        <segue reference="cs8-Oh-DIb"/>
     </inferredMetricsTieBreakers>
 </document>

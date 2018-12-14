@@ -99,6 +99,11 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     let db: PersistenceManager
     var dataSource = [FichaDetalle]()
     var imagePicker: UIImagePickerController!
+    var filtro: Int32? {
+        didSet {
+            print("Set haras")
+        }
+    }
     
     var fotos = [UIImage]()
     var celdaFotos = EjemplarFotoTableViewCell()

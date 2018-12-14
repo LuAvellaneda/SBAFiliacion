@@ -12,6 +12,13 @@ import AVFoundation
 import Alamofire
 
 class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOutputObjectsDelegate {
+    @IBAction func add(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "filtros", sender: self)
+    }
+    
+    @IBAction func salir(_ sender : UIStoryboardSegue) {
+        print("salir")
+    }
     
     @IBAction func openScan (_ sender: UIBarButtonItem) {
         
@@ -65,6 +72,11 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     let db: PersistenceManager
     var dataSource = [Ejemplar]()
     var ejemplarSeleccionado: Ejemplar?
+    var porHaras: Int32?  {
+        didSet{
+            print("listo. seteado")
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         db = PersistenceManager.shared
