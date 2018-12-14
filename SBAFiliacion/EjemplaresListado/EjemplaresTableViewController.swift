@@ -22,6 +22,9 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     @IBAction func openScan (_ sender: UIBarButtonItem) {
         
+        
+        
+        /*
         let url_save:String = "http://myproject.com.ar/jc/save.php";
         let params:Parameters = ["nombre":"Lucas","apellido":"Avellaneda"]
         //let fileURL = Bundle.main.url(forResource: "ficha", withExtension: "jpg")!
@@ -58,6 +61,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
                 //print(encodingError)
             }
         })
+ 
+        */
 
         
     }
