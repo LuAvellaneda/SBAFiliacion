@@ -77,9 +77,9 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     let db: PersistenceManager
     var dataSource = [Ejemplar]()
     var ejemplarSeleccionado: Ejemplar?
-    var porHaras: Int32?  {
+    var porHaras: String?  {
         didSet{
-            print("listo. seteado")
+            self.navigationItem.prompt = porHaras
         }
     }
     
