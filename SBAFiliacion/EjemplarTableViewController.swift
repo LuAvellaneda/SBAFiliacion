@@ -87,6 +87,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         didSet {
             
             navigationItem.title = ejemplar?.nombre
+            navigationItem.prompt = ejemplar?.nombre
             
             dataSource.append(FichaDetalle("Pelo", "Zaino colorado","pelo"))
             dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
@@ -151,6 +152,8 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
                 }
                 
             }
+            
+            
         
             
         }

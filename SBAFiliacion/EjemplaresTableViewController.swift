@@ -87,7 +87,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         super.viewDidLoad()
         self.dataSource = db.fetch(Ejemplar.self)
         
-        //navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = true
         
 
         // Uncomment the following line to preserve selection between presentations

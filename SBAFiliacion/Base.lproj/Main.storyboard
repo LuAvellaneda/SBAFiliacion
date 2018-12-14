@@ -584,16 +584,16 @@
         <!--Navigation Controller-->
         <scene sceneID="x71-QW-95T">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JQn-dR-UXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="pG4-oX-kyz" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BlF-Jr-zH4">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="BlF-Jr-zH4">
+                        <rect key="frame" x="0.0" y="20" width="320" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
                         <segue destination="VWf-hK-iaJ" kind="relationship" relationship="rootViewController" id="RGV-uo-Wv1"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JQn-dR-UXF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1724" y="-1867"/>
         </scene>
@@ -652,7 +652,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Ejemplares" largeTitleDisplayMode="always" id="Xzo-6h-mVk">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="xEL-RQ-l87">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="xEL-RQ-l87">
                             <connections>
                                 <action selector="openScan:" destination="VWf-hK-iaJ" id="Zb9-pl-d52"/>
                             </connections>
@@ -665,21 +665,19 @@
                     </navigationItem>
                     <connections>
                         <segue destination="xAu-DJ-mQ8" kind="showDetail" identifier="ShowFicha" id="cs8-Oh-DIb"/>
-                        <segue destination="qQI-bf-X3Q" kind="popoverPresentation" identifier="filtros" popoverAnchorBarButtonItem="Yfw-M6-WSE" id="Qai-ft-FGU">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
+                        <segue destination="qQI-bf-X3Q" kind="show" identifier="filtros" id="Qai-ft-FGU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hja-Ti-O1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2591" y="-1867"/>
+            <point key="canvasLocation" x="2529" y="-1867"/>
         </scene>
         <!--Haras Filtros Table View Controller-->
         <scene sceneID="NHG-ZV-Dg0">
             <objects>
                 <tableViewController id="qQI-bf-X3Q" customClass="HarasFiltrosTableViewController" customModule="SBAFiliacion" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wlp-aT-U4G">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="P0l-Ni-jjg">
@@ -725,7 +723,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7P-2k-074" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0ul-E4-9qz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3470" y="-2533"/>
+            <point key="canvasLocation" x="3320" y="-1867"/>
         </scene>
         <!--Ejemplar-->
         <scene sceneID="I70-TR-dAP">

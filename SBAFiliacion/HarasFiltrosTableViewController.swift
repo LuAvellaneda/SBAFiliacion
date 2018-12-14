@@ -37,6 +37,8 @@ class HarasFiltrosTableViewController: UITableViewController {
         data.append(HarasStruct.init(id: 8, name: "La Olimpia", zone: "Zona 1"))
         data.append(HarasStruct.init(id: 9, name: "Presidente Roca", zone: "Zona 1"))
         data.append(HarasStruct.init(id: 10, name: "Imperial", zone: "Zona 1"))
+        
+        navigationItem.title = "Haras"
     }
 
     // MARK: - Table view data source
