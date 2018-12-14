@@ -25,7 +25,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,13 +36,28 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
         }
         
+        
+        
         if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "fotos", for: indexPath) as! EjemplarFotoTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
+            cell.titulo = "Destetado"
             return cell
         }
         
         if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
+            cell.titulo = "Sin tarjeta"
+            return cell
+        }
+        
+        if indexPath.row == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
+            cell.titulo = "Muerto"
+            return cell
+        }
+        
+        if indexPath.row == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "fotos", for: indexPath) as! EjemplarFotoTableViewCell
             return cell
         }
         
@@ -153,8 +168,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
                 
             }
             
-            
-        
             
         }
         
