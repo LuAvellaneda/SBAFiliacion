@@ -90,7 +90,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = db.fetch(Ejemplar.self)
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -105,6 +104,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.dataSource = db.fetch(Ejemplar.self)
+        tableView.reloadData()
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {

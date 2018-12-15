@@ -9,7 +9,34 @@
 import UIKit
 
 class NuevoEjemplarTableViewController: UITableViewController {
-
+    
+    let db:PersistenceManager = PersistenceManager.shared
+    
+    
+    let dataSourceSexo: [(nombre:String, value:Int)] = [("Macho",1), ("Hembra",2)]
+    let dataSourcePelo: [(nombre:String, value:Int)] = [("Alazan",7),("Alazan o Tordillo",3),("Alazan Tostado",2),("Moro",13),("No Consigna",14),("Oscuro",8),("Rosillo",11),("Ruano",15),("Tordillo",9),("Zaino",1),("Zaino Colorado",4),("Zaino Doradillo",6),("Zaino Negro",5),("Zaino o Tordillo",10)]
+    
+    
+    @IBOutlet weak var nombre: UITextField!
+    @IBOutlet weak var padre: UITextField!
+    @IBOutlet weak var madre: UITextField!
+    @IBOutlet weak var microchip: UITextField!
+    @IBOutlet weak var sexo: UIPickerView!
+    @IBOutlet weak var pelo: UIPickerView!
+    @IBOutlet weak var nota: UITextView!
+    
+    @IBAction func guardar(_ sender: UIBarButtonItem) {
+        
+        let ejemplar = Ejemplar(context: db.context)
+        ejemplar.nombre = nombre.text!
+        ejemplar.sexo = "Macho"
+        ejemplar.fotos = Int32(0)
+        ejemplar.id = 99
+        db.save()
+        
+        self.navigationController?.popToRootViewController(animated: true)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,12 +54,12 @@ class NuevoEjemplarTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 7
     }
 
     /*
@@ -90,4 +117,44 @@ class NuevoEjemplarTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension NuevoEjemplarTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if(pickerView == sexo){
+            return dataSourceSexo.count
+        }
+        
+        if(pickerView == pelo){
+            return dataSourcePelo.count
+        }
+        
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        
+        if(pickerView == sexo){
+            let info = dataSourceSexo[row] as (nombre:String,value:Int)
+            return info.nombre
+        }
+        
+        if(pickerView == pelo){
+            let info = dataSourcePelo[row] as (nombre:String,value:Int)
+            return info.nombre
+        }
+        
+        return nil
+        
+    }
+    
+    
+    
+    
 }

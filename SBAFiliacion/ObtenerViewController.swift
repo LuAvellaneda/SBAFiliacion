@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 
+
+
 class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     var db: PersistenceManager
