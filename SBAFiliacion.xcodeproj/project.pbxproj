@@ -124,17 +124,10 @@
 			children = (
 				A03A953F212B0B7A00802E08 /* EjemplarTableViewController.swift */,
 				806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */,
-			);
-			path = Ficha;
-			sourceTree = "<group>";
-		};
-		806AFE2A21C41CEF001AAAF8 /* EjemplaresListado */ = {
-			isa = PBXGroup;
-			children = (
 				A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */,
 				806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */,
 			);
-			path = EjemplaresListado;
+			path = Ficha;
 			sourceTree = "<group>";
 		};
 		A042C63B2115D2FE00BB27F9 = {
@@ -161,13 +154,13 @@
 				A0E813EB21335BB7004082DE /* Draw */,
 				A0E79C67214DF4F1004828CF /* Fotos */,
 				A0514D7721C06E1B0056AA8F /* CoreData */,
+				806AFE2921C40E68001AAAF8 /* Ficha */,
 				A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */,
 				A0CE13F1212F91B100CD353C /* DibujoViewController.swift */,
 				A042C6472115D2FE00BB27F9 /* AppDelegate.swift */,
 				A042C6492115D2FE00BB27F9 /* HomeViewController.swift */,
 				A042C64B2115D2FE00BB27F9 /* Main.storyboard */,
 				A0C37F3F21C31D1300F57E59 /* HarasFiltrosTableViewController.swift */,
-				806AFE2921C40E68001AAAF8 /* Ficha */,
 				80115A4221C186F700B72F15 /* VeterinarioCollectionViewCell.swift */,
 				A0E417D321C1684800DFA132 /* MainNavigationController.swift */,
 				A0E417CF21C151C200DFA132 /* LoginViewController.swift */,
@@ -176,7 +169,6 @@
 				A06971FD215061C200A75BE6 /* HarasTableViewController.swift */,
 				A0E79C5D214DC6C2004828CF /* EjemplarFichaTableViewCell.swift */,
 				A0E79C65214DC922004828CF /* EjemplarFichaCollectionViewCell.swift */,
-				806AFE2A21C41CEF001AAAF8 /* EjemplaresListado */,
 				A019952D2122541600801DF7 /* ObtenerViewController.swift */,
 				A042C6532115D30000BB27F9 /* LaunchScreen.storyboard */,
 				A042C6562115D30000BB27F9 /* Info.plist */,

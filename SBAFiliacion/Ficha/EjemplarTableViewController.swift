@@ -25,7 +25,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,8 +35,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             return cell
             
         }
-        
-        
         
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
@@ -57,6 +55,11 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         }
         
         if indexPath.row == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "nota", for: indexPath)
+            return cell
+        }
+        
+        if indexPath.row == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "fotos", for: indexPath) as! EjemplarFotoTableViewCell
             return cell
         }
@@ -64,15 +67,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         return UITableViewCell()
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 200
-        } else {
-            return UITableViewAutomaticDimension
-        }
-    }
-    */
     
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
@@ -98,15 +92,16 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     
-    var ejemplar: Ejemplar? {
+    var ejemplar: Ejemplar! {
         didSet {
             
-            navigationItem.title = ejemplar?.nombre
-            navigationItem.prompt = ejemplar?.nombre
             
-            dataSource.append(FichaDetalle("Pelo", "Zaino colorado","pelo"))
+            navigationItem.title = ejemplar.madre
+            navigationItem.prompt = ejemplar.nombre
+            
+            dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
             dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
-            dataSource.append(FichaDetalle("Microchip", "981032110034069","microchip"))
+            dataSource.append(FichaDetalle("Microchip", "adsd","microchip"))
             dataSource.append(FichaDetalle("C", "12/05/1980","calendario"))
             
         }
@@ -175,6 +170,9 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
 
     }
 

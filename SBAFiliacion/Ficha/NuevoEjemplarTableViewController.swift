@@ -29,14 +29,20 @@ class NuevoEjemplarTableViewController: UITableViewController {
         
         let ejemplar = Ejemplar(context: db.context)
         ejemplar.nombre = nombre.text!
-        ejemplar.sexo = "Macho"
-        ejemplar.fotos = Int32(0)
+        ejemplar.padre = padre.text!
+        ejemplar.madre = madre.text!
+        ejemplar.microchip = Int32(microchip.text!) ?? 0
+        ejemplar.sexo = dataSourceSexo[sexo.selectedRow(inComponent: 0)].nombre
+        ejemplar.pelo = dataSourcePelo[pelo.selectedRow(inComponent: 0)].nombre
+        ejemplar.nota = nota.text!
+        ejemplar.fotos = 0
         ejemplar.id = 99
         db.save()
         
         self.navigationController?.popToRootViewController(animated: true)
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

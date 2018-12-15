@@ -74,9 +74,8 @@ class HarasFiltrosTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! EjemplaresTableViewController
         if let indexPath = tableView.indexPathForSelectedRow {
-            //print(data[indexPath.row])
-            var info = data [indexPath.row] as! HarasStruct
             
+            let info = data [indexPath.row]
             destinationVC.porHaras = info.name
             
         }
