@@ -17,6 +17,7 @@ class NuevoEjemplarTableViewController: UITableViewController {
     let dataSourcePelo: [(nombre:String, value:Int)] = [("Alazan",7),("Alazan o Tordillo",3),("Alazan Tostado",2),("Moro",13),("No Consigna",14),("Oscuro",8),("Rosillo",11),("Ruano",15),("Tordillo",9),("Zaino",1),("Zaino Colorado",4),("Zaino Doradillo",6),("Zaino Negro",5),("Zaino o Tordillo",10)]
     
     
+    @IBOutlet weak var fecha: UIDatePicker!
     @IBOutlet weak var nombre: UITextField!
     @IBOutlet weak var padre: UITextField!
     @IBOutlet weak var madre: UITextField!
@@ -27,6 +28,13 @@ class NuevoEjemplarTableViewController: UITableViewController {
     
     @IBAction func guardar(_ sender: UIBarButtonItem) {
         
+        let  date: Date = fecha.date
+        let calendar = Calendar.current
+        
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day,from: date)
+        
         let ejemplar = Ejemplar(context: db.context)
         ejemplar.nombre = nombre.text!
         ejemplar.padre = padre.text!
@@ -35,6 +43,9 @@ class NuevoEjemplarTableViewController: UITableViewController {
         ejemplar.sexo = dataSourceSexo[sexo.selectedRow(inComponent: 0)].nombre
         ejemplar.pelo = dataSourcePelo[pelo.selectedRow(inComponent: 0)].nombre
         ejemplar.nota = nota.text!
+        ejemplar.anio = year.description
+        ejemplar.mes = month.description
+        ejemplar.dia = day.description
         ejemplar.fotos = 0
         ejemplar.id = 99
         db.save()
@@ -65,7 +76,7 @@ class NuevoEjemplarTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 7
+        return 8
     }
 
     /*

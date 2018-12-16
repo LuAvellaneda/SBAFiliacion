@@ -95,14 +95,14 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     var ejemplar: Ejemplar! {
         didSet {
             
-            
             navigationItem.title = ejemplar.madre
-            navigationItem.prompt = ejemplar.nombre
+            navigationItem.prompt = "\(ejemplar.nombre!) - \(ejemplar.sexo!)"
             
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
             dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
-            dataSource.append(FichaDetalle("Microchip", "adsd","microchip"))
-            dataSource.append(FichaDetalle("C", "12/05/1980","calendario"))
+            dataSource.append(FichaDetalle("Microchip",ejemplar.microchip.description,"microchip"))
+            dataSource.append(FichaDetalle("C", ejemplar.anio,"calendario"))
+            
             
         }
     }
