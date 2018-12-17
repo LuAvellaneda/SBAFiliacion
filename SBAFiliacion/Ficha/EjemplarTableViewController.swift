@@ -55,7 +55,10 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         }
         
         if indexPath.row == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "nota", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "nota", for: indexPath) as! NotaTableViewCell
+            
+            cell.nota = ejemplar?.nota!
+            
             return cell
         }
         

@@ -26,6 +26,8 @@ class NuevoEjemplarTableViewController: UITableViewController {
     @IBOutlet weak var pelo: UIPickerView!
     @IBOutlet weak var nota: UITextView!
     
+    public var porHaras: Int32 = 0
+    
     @IBAction func guardar(_ sender: UIBarButtonItem) {
         
         let  date: Date = fecha.date
@@ -36,10 +38,11 @@ class NuevoEjemplarTableViewController: UITableViewController {
         let day = calendar.component(.day,from: date)
         
         let ejemplar = Ejemplar(context: db.context)
+        ejemplar.manual = true
         ejemplar.nombre = nombre.text!
         ejemplar.padre = padre.text!
         ejemplar.madre = madre.text!
-        ejemplar.microchip = Int32(microchip.text!) ?? 0
+        ejemplar.microchip = Int64(microchip.text!) ?? 0
         ejemplar.sexo = dataSourceSexo[sexo.selectedRow(inComponent: 0)].nombre
         ejemplar.pelo = dataSourcePelo[pelo.selectedRow(inComponent: 0)].nombre
         ejemplar.nota = nota.text!
@@ -48,6 +51,7 @@ class NuevoEjemplarTableViewController: UITableViewController {
         ejemplar.dia = day.description
         ejemplar.fotos = 0
         ejemplar.id = 99
+        ejemplar.haras = porHaras
         db.save()
         
         self.navigationController?.popToRootViewController(animated: true)

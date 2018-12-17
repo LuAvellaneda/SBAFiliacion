@@ -2,7 +2,7 @@
 //  Ejemplar+CoreDataProperties.swift
 //  SBAFiliacion
 //
-//  Created by Lucas Avellaneda on 16/12/2018.
+//  Created by Lucas Avellaneda on 17/12/2018.
 //  Copyright © 2018 Lucas Avellaneda. All rights reserved.
 //
 //
@@ -17,13 +17,16 @@ extension Ejemplar {
         return NSFetchRequest<Ejemplar>(entityName: "Ejemplar")
     }
 
+    @NSManaged public var anio: String?
     @NSManaged public var destetado: Bool
+    @NSManaged public var dia: String?
     @NSManaged public var fotos: Int16
     @NSManaged public var haras: Int32
     @NSManaged public var id: Int32
     @NSManaged public var madre: String?
     @NSManaged public var manual: Bool
-    @NSManaged public var microchip: Int32
+    @NSManaged public var mes: String?
+    @NSManaged public var microchip: Int64
     @NSManaged public var muerto: Bool
     @NSManaged public var nombre: String?
     @NSManaged public var nota: String?
@@ -33,8 +36,5 @@ extension Ejemplar {
     @NSManaged public var sexo: String?
     @NSManaged public var trazo: String?
     @NSManaged public var visto: Bool
-    @NSManaged public var anio: String?
-    @NSManaged public var mes: String?
-    @NSManaged public var dia: String?
 
 }

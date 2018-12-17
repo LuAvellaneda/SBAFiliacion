@@ -77,6 +77,7 @@ class HarasFiltrosTableViewController: UITableViewController {
             
             let info = data [indexPath.row]
             destinationVC.porHaras = info.name
+            destinationVC.haras_id = info.id
             
         }
     }

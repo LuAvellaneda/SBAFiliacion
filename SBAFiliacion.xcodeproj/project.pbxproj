@@ -34,6 +34,7 @@
 		A0979BA2211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */; };
 		A0C37F4021C31D1300F57E59 /* HarasFiltrosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C37F3F21C31D1300F57E59 /* HarasFiltrosTableViewController.swift */; };
 		A0CE13F2212F91B100CD353C /* DibujoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CE13F1212F91B100CD353C /* DibujoViewController.swift */; };
+		A0DCA95F21C857EA00B8E51D /* NotaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCA95E21C857EA00B8E51D /* NotaTableViewCell.swift */; };
 		A0E417CE21C14B0000DFA132 /* UsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E417CD21C14B0000DFA132 /* UsuarioViewController.swift */; };
 		A0E417D021C151C200DFA132 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E417CF21C151C200DFA132 /* LoginViewController.swift */; };
 		A0E417D421C1684800DFA132 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E417D321C1684800DFA132 /* MainNavigationController.swift */; };
@@ -78,6 +79,7 @@
 		A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A0C37F3F21C31D1300F57E59 /* HarasFiltrosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarasFiltrosTableViewController.swift; sourceTree = "<group>"; };
 		A0CE13F1212F91B100CD353C /* DibujoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DibujoViewController.swift; sourceTree = "<group>"; };
+		A0DCA95E21C857EA00B8E51D /* NotaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaTableViewCell.swift; sourceTree = "<group>"; };
 		A0E417CD21C14B0000DFA132 /* UsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioViewController.swift; sourceTree = "<group>"; };
 		A0E417CF21C151C200DFA132 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A0E417D321C1684800DFA132 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		806AFE2921C40E68001AAAF8 /* Ficha */ = {
 			isa = PBXGroup;
 			children = (
+				A0DCA95E21C857EA00B8E51D /* NotaTableViewCell.swift */,
 				A03A953F212B0B7A00802E08 /* EjemplarTableViewController.swift */,
 				806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */,
 				A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */,
@@ -155,7 +158,6 @@
 				A0E79C67214DF4F1004828CF /* Fotos */,
 				A0514D7721C06E1B0056AA8F /* CoreData */,
 				806AFE2921C40E68001AAAF8 /* Ficha */,
-				A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */,
 				A0CE13F1212F91B100CD353C /* DibujoViewController.swift */,
 				A042C6472115D2FE00BB27F9 /* AppDelegate.swift */,
 				A042C6492115D2FE00BB27F9 /* HomeViewController.swift */,
@@ -181,6 +183,7 @@
 		A0514D7721C06E1B0056AA8F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */,
 				A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */,
 				A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */,
 			);
@@ -351,6 +354,7 @@
 				A042C6482115D2FE00BB27F9 /* AppDelegate.swift in Sources */,
 				A030E76921287ABC00F455E5 /* EjemplaresTableViewController.swift in Sources */,
 				80115A4321C186F800B72F15 /* VeterinarioCollectionViewCell.swift in Sources */,
+				A0DCA95F21C857EA00B8E51D /* NotaTableViewCell.swift in Sources */,
 				806AFE2821C40B75001AAAF8 /* FormTableViewCell.swift in Sources */,
 				A0CE13F2212F91B100CD353C /* DibujoViewController.swift in Sources */,
 				A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */,

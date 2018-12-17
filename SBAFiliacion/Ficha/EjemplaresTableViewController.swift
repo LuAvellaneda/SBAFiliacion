@@ -82,6 +82,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             self.navigationItem.prompt = porHaras
         }
     }
+    var haras_id: Int32 = 0
     
     required init?(coder aDecoder: NSCoder) {
         db = PersistenceManager.shared
@@ -103,7 +104,10 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.dataSource = db.fetch(Ejemplar.self)
+        
+        self.dataSource = db.fetch(Ejemplar.self, by: haras_id)
+        
+        //self.dataSource = db.fetch(Ejemplar.self)
         tableView.reloadData()
     }
     
@@ -171,6 +175,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         cell.textLabel?.text = dataSource[indexPath.row].madre
         cell.detailTextLabel?.text = dataSource[indexPath.row].nombre
         //cell.backgroundColor = UIColor.green
+        
+        print(dataSource[indexPath.row])
 
         return cell
     }
@@ -236,6 +242,12 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             //fichaViewController.ejemplar = ejemplarSeleccionado
             if let vc = segue.destination.children[0] as? EjemplarTableViewController {
                 vc.ejemplar = ejemplarSeleccionado
+            }
+        }
+        
+        if segue.identifier == "goNuevo" {
+            if let vc = segue.destination as? NuevoEjemplarTableViewController {
+                vc.porHaras = haras_id
             }
         }
         
