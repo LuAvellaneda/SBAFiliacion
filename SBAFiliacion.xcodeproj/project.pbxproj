@@ -16,6 +16,7 @@
 		6FA1EDA1214EB9BE00ACBEC7 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FA1ED9B214EB9BE00ACBEC7 /* Oswald-Medium.ttf */; };
 		6FA1EDA3214EF42200ACBEC7 /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1EDA2214EF42200ACBEC7 /* MapaViewController.swift */; };
 		80115A4321C186F800B72F15 /* VeterinarioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80115A4221C186F700B72F15 /* VeterinarioCollectionViewCell.swift */; };
+		8020E6B221CD5DF000087212 /* ObtenerDetalleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020E6B121CD5DF000087212 /* ObtenerDetalleTableViewController.swift */; };
 		806AFE2821C40B75001AAAF8 /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */; };
 		806AFE2C21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */; };
 		80C46F0121B705CE002AAC80 /* fichanueva.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 80C46F0021B705CE002AAC80 /* fichanueva.jpg */; };
@@ -64,6 +65,7 @@
 		6FA1EDA2214EF42200ACBEC7 /* MapaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		7BEE2EA70768CAA460056DB7 /* Pods_SBAFiliacion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SBAFiliacion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80115A4221C186F700B72F15 /* VeterinarioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeterinarioCollectionViewCell.swift; sourceTree = "<group>"; };
+		8020E6B121CD5DF000087212 /* ObtenerDetalleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerDetalleTableViewController.swift; sourceTree = "<group>"; };
 		806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
 		806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoEjemplarTableViewController.swift; sourceTree = "<group>"; };
 		80C46F0021B705CE002AAC80 /* fichanueva.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fichanueva.jpg; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				A0E79C5D214DC6C2004828CF /* EjemplarFichaTableViewCell.swift */,
 				A0E79C65214DC922004828CF /* EjemplarFichaCollectionViewCell.swift */,
 				A019952D2122541600801DF7 /* ObtenerViewController.swift */,
+				8020E6B121CD5DF000087212 /* ObtenerDetalleTableViewController.swift */,
 				A042C6532115D30000BB27F9 /* LaunchScreen.storyboard */,
 				A042C6562115D30000BB27F9 /* Info.plist */,
 				A042C64E2115D2FE00BB27F9 /* SBAFiliacion.xcdatamodeld */,
@@ -371,6 +374,7 @@
 				A0C37F4021C31D1300F57E59 /* HarasFiltrosTableViewController.swift in Sources */,
 				A0641CC121CC827B002CE3FB /* TareaTableViewCell.swift in Sources */,
 				A042C6482115D2FE00BB27F9 /* AppDelegate.swift in Sources */,
+				8020E6B221CD5DF000087212 /* ObtenerDetalleTableViewController.swift in Sources */,
 				A030E76921287ABC00F455E5 /* EjemplaresTableViewController.swift in Sources */,
 				80115A4321C186F800B72F15 /* VeterinarioCollectionViewCell.swift in Sources */,
 				A0DCA95F21C857EA00B8E51D /* NotaTableViewCell.swift in Sources */,

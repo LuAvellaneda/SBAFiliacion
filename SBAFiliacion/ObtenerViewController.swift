@@ -16,6 +16,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     var db: PersistenceManager
     var dataSource = [[String:Any]]()
     var dataSourceTareas = [[String:Any]]()
+    var dataSourceEjemplares = [[String:Any]]()
     var indiceActual = 0
     
     required init?(coder aDecoder: NSCoder) {
@@ -97,6 +98,14 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tarea = dataSourceTareas[indexPath.row]
+        let lugar = (tarea["lugar"] as! [[String:Any]]).first!
+        let ejemplares = lugar["ejemplares"] as! [[String:Any]]
+        dataSourceEjemplares = ejemplares
+        performSegue(withIdentifier: "showEjemplaresSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
@@ -108,8 +117,8 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         print("viewDidApper")
         self.view.layoutIfNeeded()
         
-        let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
-        //let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
+        //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
+        let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
         URLCache.shared.removeAllCachedResponses()
         
         
@@ -170,14 +179,16 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showEjemplaresSegue" {
+            let vc = segue.destination as! ObtenerDetalleTableViewController
+            vc.dataSource = dataSourceEjemplares
+        }
     }
-    */
 
 }
