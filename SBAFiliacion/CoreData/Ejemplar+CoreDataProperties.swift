@@ -2,7 +2,7 @@
 //  Ejemplar+CoreDataProperties.swift
 //  SBAFiliacion
 //
-//  Created by Lucas Avellaneda on 17/12/2018.
+//  Created by Lucas Avellaneda on 20/12/2018.
 //  Copyright © 2018 Lucas Avellaneda. All rights reserved.
 //
 //
@@ -36,5 +36,6 @@ extension Ejemplar {
     @NSManaged public var sexo: String?
     @NSManaged public var trazo: String?
     @NSManaged public var visto: Bool
+    @NSManaged public var ubicacion: Ubicacion?
 
 }

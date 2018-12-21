@@ -29,6 +29,11 @@
 		A042C6522115D30000BB27F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A042C6512115D30000BB27F9 /* Assets.xcassets */; };
 		A042C6552115D30000BB27F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A042C6532115D30000BB27F9 /* LaunchScreen.storyboard */; };
 		A04FCD55211F0DCB00FAFDF4 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */; };
+		A0641CBA21CC5AB8002CE3FB /* Tarea+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0641CB821CC5AB8002CE3FB /* Tarea+CoreDataClass.swift */; };
+		A0641CBB21CC5AB8002CE3FB /* Tarea+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0641CB921CC5AB8002CE3FB /* Tarea+CoreDataProperties.swift */; };
+		A0641CBE21CC5CC9002CE3FB /* Ubicacion+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0641CBC21CC5CC9002CE3FB /* Ubicacion+CoreDataClass.swift */; };
+		A0641CBF21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0641CBD21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift */; };
+		A0641CC121CC827B002CE3FB /* TareaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0641CC021CC827B002CE3FB /* TareaTableViewCell.swift */; };
 		A06971FE215061C200A75BE6 /* HarasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06971FD215061C200A75BE6 /* HarasTableViewController.swift */; };
 		A0979BA1211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */; };
 		A0979BA2211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */; };
@@ -74,6 +79,11 @@
 		A042C6542115D30000BB27F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A042C6562115D30000BB27F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		A0641CB821CC5AB8002CE3FB /* Tarea+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tarea+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A0641CB921CC5AB8002CE3FB /* Tarea+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tarea+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A0641CBC21CC5CC9002CE3FB /* Ubicacion+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ubicacion+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A0641CBD21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ubicacion+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A0641CC021CC827B002CE3FB /* TareaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TareaTableViewCell.swift; sourceTree = "<group>"; };
 		A06971FD215061C200A75BE6 /* HarasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarasTableViewController.swift; sourceTree = "<group>"; };
 		A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -162,6 +172,7 @@
 				A042C6472115D2FE00BB27F9 /* AppDelegate.swift */,
 				A042C6492115D2FE00BB27F9 /* HomeViewController.swift */,
 				A042C64B2115D2FE00BB27F9 /* Main.storyboard */,
+				A0641CC021CC827B002CE3FB /* TareaTableViewCell.swift */,
 				A0C37F3F21C31D1300F57E59 /* HarasFiltrosTableViewController.swift */,
 				80115A4221C186F700B72F15 /* VeterinarioCollectionViewCell.swift */,
 				A0E417D321C1684800DFA132 /* MainNavigationController.swift */,
@@ -183,6 +194,10 @@
 		A0514D7721C06E1B0056AA8F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A0641CBC21CC5CC9002CE3FB /* Ubicacion+CoreDataClass.swift */,
+				A0641CBD21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift */,
+				A0641CB821CC5AB8002CE3FB /* Tarea+CoreDataClass.swift */,
+				A0641CB921CC5AB8002CE3FB /* Tarea+CoreDataProperties.swift */,
 				A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */,
 				A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */,
 				A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */,
@@ -340,17 +355,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0E417D021C151C200DFA132 /* LoginViewController.swift in Sources */,
+				A0641CBB21CC5AB8002CE3FB /* Tarea+CoreDataProperties.swift in Sources */,
 				A042C64A2115D2FE00BB27F9 /* HomeViewController.swift in Sources */,
+				A0641CBE21CC5CC9002CE3FB /* Ubicacion+CoreDataClass.swift in Sources */,
 				A03A9540212B0B7A00802E08 /* EjemplarTableViewController.swift in Sources */,
 				A0E79C6B214DF5B1004828CF /* EjemplarFotoCollectionViewCell.swift in Sources */,
 				A04FCD55211F0DCB00FAFDF4 /* PersistenceManager.swift in Sources */,
 				A0979BA2211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift in Sources */,
 				A042C6502115D2FE00BB27F9 /* SBAFiliacion.xcdatamodeld in Sources */,
 				A0E79C5E214DC6C2004828CF /* EjemplarFichaTableViewCell.swift in Sources */,
+				A0641CBA21CC5AB8002CE3FB /* Tarea+CoreDataClass.swift in Sources */,
 				6FA1EDA3214EF42200ACBEC7 /* MapaViewController.swift in Sources */,
 				A0E417D421C1684800DFA132 /* MainNavigationController.swift in Sources */,
 				A0E417CE21C14B0000DFA132 /* UsuarioViewController.swift in Sources */,
 				A0C37F4021C31D1300F57E59 /* HarasFiltrosTableViewController.swift in Sources */,
+				A0641CC121CC827B002CE3FB /* TareaTableViewCell.swift in Sources */,
 				A042C6482115D2FE00BB27F9 /* AppDelegate.swift in Sources */,
 				A030E76921287ABC00F455E5 /* EjemplaresTableViewController.swift in Sources */,
 				80115A4321C186F800B72F15 /* VeterinarioCollectionViewCell.swift in Sources */,
@@ -361,6 +380,7 @@
 				A0E79C66214DC922004828CF /* EjemplarFichaCollectionViewCell.swift in Sources */,
 				A0E79C69214DF528004828CF /* EjemplarFotoTableViewCell.swift in Sources */,
 				806AFE2C21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift in Sources */,
+				A0641CBF21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift in Sources */,
 				A0979BA1211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift in Sources */,
 				A06971FE215061C200A75BE6 /* HarasTableViewController.swift in Sources */,
 			);

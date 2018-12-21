@@ -15,6 +15,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     var db: PersistenceManager
     var dataSource = [[String:Any]]()
+    var dataSourceTareas = [[String:Any]]()
     var indiceActual = 0
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,6 +41,8 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         /*
         guardarData(indiceActual)
         */
+        
+    
         
         dataSource.forEach { (info) in
             let ejemplar = Ejemplar(context: db.context)
@@ -79,13 +82,18 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return dataSourceTareas.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = dataSource[indexPath.row]["nombre"] as? String
-        cell.detailTextLabel?.text = dataSource[indexPath.row]["sexo"] as? String
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TareaTableViewCell
+        
+        cell.tituloLabel.text = dataSourceTareas[indexPath.row]["titulo"] as? String
+        cell.descripcionLabel.text = dataSourceTareas[indexPath.row]["descripcion"] as? String
+        
+        
+        //cell.textLabel?.text = dataSourceTareas[indexPath.row]["titulo"] as? String
+        //cell.detailTextLabel?.text = dataSourceTareas[indexPath.row]["descripcion"] as? String
         return cell
     }
     
@@ -100,8 +108,8 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         print("viewDidApper")
         self.view.layoutIfNeeded()
         
-        //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
-        let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
+        let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
+        //let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
         URLCache.shared.removeAllCachedResponses()
         
         
@@ -112,8 +120,17 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 
                 let json = result as! Dictionary<String,Any>
                 
-                print(json)
+                let tarea = json["tarea"] as! [[String : Any]]
                 
+                self.dataSourceTareas = tarea
+                self.tableView.reloadData()
+                /*
+                tarea.forEach{ (info) in
+                    print(info)
+                }
+                */
+                
+                /*
                 let total = json["ejemplares_cantidad"] as! Int32
                 
                 if(total == 0) {
@@ -134,7 +151,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                     self.dataSource = json["ejemplares"] as! [[String:Any]]
                     self.tableView.reloadData()
                 }
-                    
+                */
                 
                 /*
                 UIView.animate(withDuration: 5, animations: {
