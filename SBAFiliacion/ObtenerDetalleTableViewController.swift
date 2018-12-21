@@ -10,6 +10,9 @@ import UIKit
 
 class ObtenerDetalleTableViewController: UITableViewController {
     
+    @IBAction func cancelarButtonItem(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     var dataSource = [[String:Any]]()
     override func viewDidLoad() {
         super.viewDidLoad()

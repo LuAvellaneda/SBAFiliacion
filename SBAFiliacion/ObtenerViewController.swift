@@ -186,7 +186,9 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showEjemplaresSegue" {
-            let vc = segue.destination as! ObtenerDetalleTableViewController
+            let nc = segue.destination as! UINavigationController
+            let vc = nc.viewControllers.first as! ObtenerDetalleTableViewController
+            
             vc.dataSource = dataSourceEjemplares
         }
     }
