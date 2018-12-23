@@ -1,5 +1,5 @@
 //
-//  TareasTableViewController.swift
+//  LugaresTableViewController.swift
 //  SBAFiliacion
 //
 //  Created by Lucas Avellaneda on 23/12/2018.
@@ -8,23 +8,20 @@
 
 import UIKit
 
-class TareasTableViewController: UITableViewController {
+class LugaresTableViewController: UITableViewController {
     
     let db:PersistenceManager = PersistenceManager.shared
-    var dataSource = [Tarea]()
+    var lugares = [Ubicacion]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.dataSource = db.fetch(Tarea.self)
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     // MARK: - Table view data source
@@ -36,18 +33,14 @@ class TareasTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dataSource.count
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showLugaresSegue", sender: self)
+        return lugares.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        cell.textLabel?.text = self.dataSource[indexPath.row].titulo as? String
+        cell.textLabel?.text = lugares[indexPath.row].titulo as? String
 
         return cell
     }
@@ -88,15 +81,14 @@ class TareasTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
-        
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
-    
+    */
 
 }
