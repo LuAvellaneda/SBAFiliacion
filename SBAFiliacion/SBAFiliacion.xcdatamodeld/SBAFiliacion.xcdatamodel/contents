@@ -26,12 +26,12 @@
         <attribute name="descripcion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ubicacion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ubicacion" inverseName="tarea" inverseEntity="Ubicacion" syncable="YES"/>
+        <relationship name="ubicacion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ubicacion" inverseName="tarea" inverseEntity="Ubicacion" syncable="YES"/>
     </entity>
     <entity name="Ubicacion" representedClassName=".Ubicacion" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ejemplar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ejemplar" inverseName="ubicacion" inverseEntity="Ejemplar" syncable="YES"/>
+        <relationship name="ejemplar" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ejemplar" inverseName="ubicacion" inverseEntity="Ejemplar" syncable="YES"/>
         <relationship name="tarea" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tarea" inverseName="ubicacion" inverseEntity="Tarea" syncable="YES"/>
     </entity>
     <elements>

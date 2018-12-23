@@ -9,8 +9,6 @@
 import UIKit
 import Alamofire
 
-
-
 class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     var db: PersistenceManager
@@ -24,12 +22,14 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         super.init(coder: aDecoder)
     }
     
+    
+    
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var obtenerBtn: UIButton!
     @IBOutlet weak var titulo: UILabel!
     @IBOutlet weak var nota: UITextView!
     @IBOutlet weak var fecha: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! 
     @IBOutlet weak var veterinarioImg: UIImageView! {
         didSet {
             veterinarioImg.layer.cornerRadius = veterinarioImg.frame.size.width/2
@@ -43,8 +43,37 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         guardarData(indiceActual)
         */
         
-    
+        dataSourceTareas.forEach { (info) in
+            
+            let tarea = Tarea(context: db.context)
+            tarea.id = info["id"] as! Int64
+            tarea.titulo = info["titulo"] as? String
+            
+            var lugares: [[String:Any]] = info["lugar"] as! [[String : Any]]
+            
+            lugares.forEach({ (lugar) in
+                let ubicacion = Ubicacion(context: db.context)
+                ubicacion.id = lugar["id"] as! Int64
+                ubicacion.titulo = lugar["titulo"] as? String
+                tarea.addToUbicacion(ubicacion)
+                
+                var ejemplares = lugar["ejemplares"] as! [[String: Any]]
+                
+                ejemplares.forEach({ (ejemplar) in
+                    let _ejemplar = Ejemplar(context: db.context)
+                    _ejemplar.id = ejemplar["id"] as! Int32
+                    _ejemplar.nombre = ejemplar["nombre"] as? String
+                    ubicacion.addToEjemplar(_ejemplar)
+                })
+                
+            })
+            
+            db.save()
+            
+            
+        }
         
+        /*
         dataSource.forEach { (info) in
             let ejemplar = Ejemplar(context: db.context)
             ejemplar.nombre = info["nombre"] as? String
@@ -54,6 +83,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             ejemplar.id = info["id"] as! Int32
             db.save()
         }
+         */
         
     }
     
@@ -91,10 +121,8 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
         cell.tituloLabel.text = dataSourceTareas[indexPath.row]["titulo"] as? String
         cell.descripcionLabel.text = dataSourceTareas[indexPath.row]["descripcion"] as? String
+        cell.fechaLabel.text = dataSourceTareas[indexPath.row]["fecha"] as! String
         
-        
-        //cell.textLabel?.text = dataSourceTareas[indexPath.row]["titulo"] as? String
-        //cell.detailTextLabel?.text = dataSourceTareas[indexPath.row]["descripcion"] as? String
         return cell
     }
     
@@ -108,17 +136,17 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
     
         super.viewDidAppear(animated)
-        print("viewDidApper")
         self.view.layoutIfNeeded()
         
-        //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
-        let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
+        let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
+        //let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
         URLCache.shared.removeAllCachedResponses()
         
         

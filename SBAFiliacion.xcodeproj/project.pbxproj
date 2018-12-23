@@ -39,6 +39,7 @@
 		A0979BA1211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */; };
 		A0979BA2211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */; };
 		A0C37F4021C31D1300F57E59 /* HarasFiltrosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C37F3F21C31D1300F57E59 /* HarasFiltrosTableViewController.swift */; };
+		A0CC541421D027FC00B48252 /* TareasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC541321D027FC00B48252 /* TareasTableViewController.swift */; };
 		A0CE13F2212F91B100CD353C /* DibujoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CE13F1212F91B100CD353C /* DibujoViewController.swift */; };
 		A0DCA95F21C857EA00B8E51D /* NotaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCA95E21C857EA00B8E51D /* NotaTableViewCell.swift */; };
 		A0E417CE21C14B0000DFA132 /* UsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E417CD21C14B0000DFA132 /* UsuarioViewController.swift */; };
@@ -90,6 +91,7 @@
 		A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A0C37F3F21C31D1300F57E59 /* HarasFiltrosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarasFiltrosTableViewController.swift; sourceTree = "<group>"; };
+		A0CC541321D027FC00B48252 /* TareasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TareasTableViewController.swift; sourceTree = "<group>"; };
 		A0CE13F1212F91B100CD353C /* DibujoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DibujoViewController.swift; sourceTree = "<group>"; };
 		A0DCA95E21C857EA00B8E51D /* NotaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaTableViewCell.swift; sourceTree = "<group>"; };
 		A0E417CD21C14B0000DFA132 /* UsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				A042C6472115D2FE00BB27F9 /* AppDelegate.swift */,
 				A042C6492115D2FE00BB27F9 /* HomeViewController.swift */,
 				A042C64B2115D2FE00BB27F9 /* Main.storyboard */,
+				A0CC541321D027FC00B48252 /* TareasTableViewController.swift */,
 				A0641CC021CC827B002CE3FB /* TareaTableViewCell.swift */,
 				A0C37F3F21C31D1300F57E59 /* HarasFiltrosTableViewController.swift */,
 				80115A4221C186F700B72F15 /* VeterinarioCollectionViewCell.swift */,
@@ -359,6 +362,7 @@
 			files = (
 				A0E417D021C151C200DFA132 /* LoginViewController.swift in Sources */,
 				A0641CBB21CC5AB8002CE3FB /* Tarea+CoreDataProperties.swift in Sources */,
+				A0CC541421D027FC00B48252 /* TareasTableViewController.swift in Sources */,
 				A042C64A2115D2FE00BB27F9 /* HomeViewController.swift in Sources */,
 				A0641CBE21CC5CC9002CE3FB /* Ubicacion+CoreDataClass.swift in Sources */,
 				A03A9540212B0B7A00802E08 /* EjemplarTableViewController.swift in Sources */,

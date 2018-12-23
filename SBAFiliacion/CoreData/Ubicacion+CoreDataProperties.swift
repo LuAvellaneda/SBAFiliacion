@@ -2,7 +2,7 @@
 //  Ubicacion+CoreDataProperties.swift
 //  SBAFiliacion
 //
-//  Created by Lucas Avellaneda on 20/12/2018.
+//  Created by Lucas Avellaneda on 23/12/2018.
 //  Copyright © 2018 Lucas Avellaneda. All rights reserved.
 //
 //
@@ -19,7 +19,24 @@ extension Ubicacion {
 
     @NSManaged public var id: Int64
     @NSManaged public var titulo: String?
+    @NSManaged public var ejemplar: NSSet?
     @NSManaged public var tarea: Tarea?
-    @NSManaged public var ejemplar: Ejemplar?
+
+}
+
+// MARK: Generated accessors for ejemplar
+extension Ubicacion {
+
+    @objc(addEjemplarObject:)
+    @NSManaged public func addToEjemplar(_ value: Ejemplar)
+
+    @objc(removeEjemplarObject:)
+    @NSManaged public func removeFromEjemplar(_ value: Ejemplar)
+
+    @objc(addEjemplar:)
+    @NSManaged public func addToEjemplar(_ values: NSSet)
+
+    @objc(removeEjemplar:)
+    @NSManaged public func removeFromEjemplar(_ values: NSSet)
 
 }

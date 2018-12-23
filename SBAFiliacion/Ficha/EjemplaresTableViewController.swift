@@ -75,7 +75,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     }
     
     let db: PersistenceManager
-    var dataSource = [Ejemplar]()
+    var dataSource = [Tarea]()
     var ejemplarSeleccionado: Ejemplar?
     var porHaras: String?  {
         didSet{
@@ -105,7 +105,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.dataSource = db.fetch(Ejemplar.self, by: haras_id)
+        self.dataSource = db.fetch(Tarea.self)
         
         //self.dataSource = db.fetch(Ejemplar.self)
         tableView.reloadData()
@@ -172,8 +172,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        cell.textLabel?.text = dataSource[indexPath.row].madre
-        cell.detailTextLabel?.text = dataSource[indexPath.row].nombre
+        cell.textLabel?.text = dataSource[indexPath.row].titulo
+        cell.detailTextLabel?.text = dataSource[indexPath.row].id.description
         //cell.backgroundColor = UIColor.green
         
         print(dataSource[indexPath.row])
@@ -228,8 +228,12 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     */
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ejemplarSeleccionado = dataSource[indexPath.row]
-        performSegue(withIdentifier: "ShowFicha", sender: nil)
+        
+        let tarea = dataSource[indexPath.row]
+        
+        
+        //ejemplarSeleccionado = dataSource[indexPath.row]
+        performSegue(withIdentifier: "showUbicacionesSegue", sender: nil)
     }
 
     

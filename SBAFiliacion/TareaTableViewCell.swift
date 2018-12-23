@@ -10,6 +10,7 @@ import UIKit
 
 class TareaTableViewCell: UITableViewCell {
 
+    @IBOutlet var fechaLabel: UILabel!
     @IBOutlet var tituloLabel: UILabel!
     @IBOutlet var descripcionLabel: UILabel!
     
