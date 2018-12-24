@@ -26,7 +26,7 @@ class NuevoEjemplarTableViewController: UITableViewController {
     @IBOutlet weak var pelo: UIPickerView!
     @IBOutlet weak var nota: UITextView!
     
-    public var porHaras: Int32 = 0
+    public var ubicacion: Ubicacion?
     
     @IBAction func guardar(_ sender: UIBarButtonItem) {
         
@@ -50,11 +50,14 @@ class NuevoEjemplarTableViewController: UITableViewController {
         ejemplar.mes = month.description
         ejemplar.dia = day.description
         ejemplar.fotos = 0
-        ejemplar.id = 99
-        ejemplar.haras = porHaras
+        ejemplar.id = 0
+        
+        ubicacion?.addToEjemplar(ejemplar)
         db.save()
         
-        self.navigationController?.popToRootViewController(animated: true)
+        //self.navigationController?.popToRootViewController(animated: true)
+        //self.navigationController?.bac
+        self.navigationController?.popViewController(animated: true)
         
     }
     

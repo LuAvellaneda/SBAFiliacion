@@ -12,9 +12,7 @@ import AVFoundation
 import Alamofire
 
 class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOutputObjectsDelegate {
-    @IBAction func add(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "filtros", sender: self)
-    }
+    
     
     @IBAction func salir(_ sender : UIStoryboardSegue) {
         print("salir")
@@ -75,7 +73,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     }
     
     let db: PersistenceManager
-    var dataSource = [Tarea]()
+    var dataSource = [Ejemplar]()
+    var ubicacion: Ubicacion?
     var ejemplarSeleccionado: Ejemplar?
     var porHaras: String?  {
         didSet{
@@ -102,14 +101,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.dataSource = db.fetch(Tarea.self)
-        
-        //self.dataSource = db.fetch(Ejemplar.self)
-        tableView.reloadData()
-    }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count > 0 {
@@ -172,11 +163,10 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        cell.textLabel?.text = dataSource[indexPath.row].titulo
-        cell.detailTextLabel?.text = dataSource[indexPath.row].id.description
+        cell.textLabel?.text = dataSource[indexPath.row].nombre
+        cell.detailTextLabel?.text = dataSource[indexPath.row].madre
         //cell.backgroundColor = UIColor.green
         
-        print(dataSource[indexPath.row])
 
         return cell
     }
@@ -229,11 +219,11 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let tarea = dataSource[indexPath.row]
+        //let tarea = dataSource[indexPath.row]
         
         
-        //ejemplarSeleccionado = dataSource[indexPath.row]
-        performSegue(withIdentifier: "showUbicacionesSegue", sender: nil)
+        ejemplarSeleccionado = dataSource[indexPath.row]
+        performSegue(withIdentifier: "ShowFicha", sender: nil)
     }
 
     
@@ -242,6 +232,11 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowFicha" {
+            
+           
+            
+            //segue.destination.performSegue(withIdentifier: "showMaster", sender: self)
+            
             //let fichaViewController = segue.destination as! FichaViewController
             //fichaViewController.ejemplar = ejemplarSeleccionado
             if let vc = segue.destination.children[0] as? EjemplarTableViewController {
@@ -251,7 +246,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         
         if segue.identifier == "goNuevo" {
             if let vc = segue.destination as? NuevoEjemplarTableViewController {
-                vc.porHaras = haras_id
+                vc.ubicacion = ubicacion
             }
         }
         

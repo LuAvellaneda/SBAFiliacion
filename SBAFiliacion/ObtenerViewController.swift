@@ -48,6 +48,8 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let tarea = Tarea(context: db.context)
             tarea.id = info["id"] as! Int64
             tarea.titulo = info["titulo"] as? String
+            tarea.descripcion = info["descripcion"] as? String
+            tarea.fecha = info["fecha"] as? String
             
             var lugares: [[String:Any]] = info["lugar"] as! [[String : Any]]
             
@@ -61,7 +63,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 
                 ejemplares.forEach({ (ejemplar) in
                     let _ejemplar = Ejemplar(context: db.context)
-                    _ejemplar.id = ejemplar["id"] as! Int32
+                    _ejemplar.id = ejemplar["id"] as! Int64
                     _ejemplar.nombre = ejemplar["nombre"] as? String
                     ubicacion.addToEjemplar(_ejemplar)
                 })

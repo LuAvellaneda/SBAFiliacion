@@ -47,8 +47,8 @@ class TareasTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        cell.textLabel?.text = self.dataSource[indexPath.row].titulo as? String
-
+        cell.textLabel?.text = self.dataSource[indexPath.row].titulo
+        cell.detailTextLabel?.text = self.dataSource[indexPath.row].descripcion
         return cell
     }
     
@@ -94,7 +94,17 @@ class TareasTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
+        if segue.identifier == "showLugaresSegue" {
+            
+            if let vc = segue.destination as? LugaresTableViewController {
+                let indexPath = tableView.indexPathForSelectedRow!
+                let tarea = dataSource[indexPath.row]
+                let ubicacion = tarea.ubicacion
+                let ubicaciones:[Ubicacion] = ubicacion?.allObjects as! [Ubicacion]
+                vc.lugares = ubicaciones
+            }
+            
+        }
         
     }
     

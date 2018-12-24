@@ -2,7 +2,7 @@
 //  Tarea+CoreDataProperties.swift
 //  SBAFiliacion
 //
-//  Created by Lucas Avellaneda on 23/12/2018.
+//  Created by Lucas Avellaneda on 24/12/2018.
 //  Copyright © 2018 Lucas Avellaneda. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension Tarea {
     @NSManaged public var descripcion: String?
     @NSManaged public var id: Int64
     @NSManaged public var titulo: String?
+    @NSManaged public var fecha: String?
     @NSManaged public var ubicacion: NSSet?
 
 }

@@ -45,6 +45,10 @@ class LugaresTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showEjemplaresSegue", sender: self)
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -81,14 +85,25 @@ class LugaresTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showEjemplaresSegue" {
+            if let vc = segue.destination as? EjemplaresTableViewController {
+                let indexPath = tableView.indexPathForSelectedRow!
+                let ubicacion = lugares[indexPath.row]
+                let ejemplar = ubicacion.ejemplar
+                let ejemplares = ejemplar?.allObjects as! [Ejemplar]
+                vc.dataSource = ejemplares
+                vc.ubicacion = ubicacion
+                
+            }
+        }
+        
     }
-    */
+    
 
 }
