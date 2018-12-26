@@ -25,44 +25,84 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if(section == 0) {
+            return 2
+        }
+        
+        if(section == 1) {
+            return 4
+        }
+        
+        if(section == 2) {
+            return 1
+        }
+        
         return 7
+        
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
+        
+        if(section == 0) {
+            return "Información"
+        }
+        
+        if(section == 1) {
+            return "Estado ejemplar"
+        }
+        
+        if(section == 2) {
+            return "Fotos"
+        }
+        
+        return ""
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
+        
+        if indexPath.row == 0 && indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ficha", for: indexPath) as! EjemplarFichaTableViewCell
             return cell
-            
         }
         
-        if indexPath.row == 1 {
+        if indexPath.row == 1 && indexPath.section == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "lugar", for: indexPath) as! LugarTableViewCell
+            return cell
+        }
+        
+        if indexPath.row == 0 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
             cell.titulo = "Destetado"
             return cell
         }
         
-        if indexPath.row == 2 {
+        if indexPath.row == 1 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
             cell.titulo = "Sin tarjeta"
             return cell
         }
         
-        if indexPath.row == 3 {
+        if indexPath.row == 2 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
             cell.titulo = "Muerto"
             return cell
         }
         
-        if indexPath.row == 4 {
+        if indexPath.row == 3 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "nota", for: indexPath) as! NotaTableViewCell
-            
             cell.nota = ejemplar?.nota!
-            
             return cell
         }
         
-        if indexPath.row == 5 {
+        if indexPath.row == 0 && indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "fotos", for: indexPath) as! EjemplarFotoTableViewCell
             return cell
         }
@@ -99,13 +139,12 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         didSet {
             
             navigationItem.title = ejemplar.madre
-            navigationItem.prompt = "\(ejemplar.nombre!) - \(ejemplar.sexo!)"
+            //navigationItem.prompt = "\(ejemplar.nombre!) - \(ejemplar.sexo!)"
             
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
             dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
             dataSource.append(FichaDetalle("Microchip",ejemplar.microchip.description,"microchip"))
             dataSource.append(FichaDetalle("C", ejemplar.anio,"calendario"))
-            
             
         }
     }
@@ -152,7 +191,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             }
             
             //Info Ejemplar
-            por.text? = (ejemplar?.por) ?? ""
+            por.text? = (ejemplar?.por) ?? "Por madre (USA) y por padre(USA)"
             
             //Fotos
             let cantidadFotos = (ejemplar?.fotos)!
@@ -173,9 +212,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
-
     }
 
     override func didReceiveMemoryWarning() {
