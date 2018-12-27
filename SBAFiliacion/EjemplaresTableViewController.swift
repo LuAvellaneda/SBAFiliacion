@@ -73,15 +73,15 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     }
     
     let db: PersistenceManager
-    var dataSource = [Ejemplar]()
-    var ubicacion: Ubicacion?
-    var ejemplarSeleccionado: Ejemplar?
-    var porHaras: String?  {
-        didSet{
-            self.navigationItem.prompt = porHaras
+    var dataSource = [Ejemplar]() {
+        didSet {
+            dataSource.sort(by: { (first: Ejemplar, second: Ejemplar) -> Bool in
+                first.nombre! < second.nombre!
+            })
         }
     }
-    var haras_id: Int32 = 0
+    var ubicacion: Ubicacion?
+    var ejemplarSeleccionado: Ejemplar?
     
     required init?(coder aDecoder: NSCoder) {
         db = PersistenceManager.shared

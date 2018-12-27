@@ -72,7 +72,6 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             
             db.save()
             
-            
         }
         
         /*
