@@ -161,9 +161,10 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
-        cell.textLabel?.text = dataSource[indexPath.row].nombre
-        cell.detailTextLabel?.text = dataSource[indexPath.row].madre
+        
+        let data = dataSource[indexPath.row]
+        cell.textLabel?.text = "\(data.nombre!) (2015 M,Z)"
+        cell.detailTextLabel?.text = data.madre
         //cell.backgroundColor = UIColor.green
         
         return cell

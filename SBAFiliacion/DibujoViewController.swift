@@ -89,6 +89,8 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
                 forMainFrameOnly: true
             )
             contentController.addUserScript(trazoScript)
+            
+            print(trazo)
         }
         
         

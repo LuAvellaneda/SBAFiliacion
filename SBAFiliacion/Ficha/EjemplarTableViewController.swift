@@ -22,7 +22,7 @@ struct FichaDetalle{
 
 class EjemplarTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+    let info = ["Addati Juan Carlos. Tel:02211155764789 / 422-5511","Calle 115 Entre 40 y 41 Porton Negro - La Plata", "Ingresado el 28/11/2018","Corre:NO","Lorem ipsum dolor sit er elit lamet, consectetaru"]
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -292,7 +292,7 @@ extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionV
         //return dataSource.count
         
         if ((collectionView as? LugarUICollectionView) != nil) {
-            return 10
+            return info.count
         }
         return dataSource.count
     }
@@ -302,6 +302,8 @@ extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionV
         
         if ((collectionView as? LugarUICollectionView) != nil) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! InfoLugarCollectionViewCell
+            
+            cell.infoLabel.text = info[indexPath.row]
             
             return cell
         } else {

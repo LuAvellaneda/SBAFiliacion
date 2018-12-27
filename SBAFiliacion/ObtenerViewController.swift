@@ -162,6 +162,9 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 
                 self.dataSourceTareas = tarea
                 self.tableView.reloadData()
+                
+                self.obtenerBtn.setTitle("\(self.dataSourceTareas.count)", for: .normal)
+                
                 /*
                 tarea.forEach{ (info) in
                     print(info)

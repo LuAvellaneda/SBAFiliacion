@@ -147,22 +147,43 @@ window.onload = function() {
     
 	tool.onMouseDown = function(event) {
 
-		//alert(event.changedTouches);
-		if(action == "draw"){
-			if(mode == "draw"){
-				path = new Path();
-				path.strokeColor = colorActivo;
-				path.blendMode = 'normal';
-                path.strokeWidth = strockActivo;
-			}
+        var hitOptions = {
+            fill: true,
+            stroke: true,
+            tolerance: 10
+        };
+        var item = project.hitTest(event.point,hitOptions);
 
-			if(mode == "erase"){
-				path = new Path();
-				path.strokeColor = "red";
-				path.blendMode = 'destination-out';
-				path.strokeWidth = 30
-			}
-		}
+
+        if(item != null && item.item.className == "Path") {
+            
+            
+            
+            item.item.selected = true;
+            action = "selected";
+
+        } else {
+            var consola = document.querySelector('.consola');
+            
+            consola.textContent = "aca";
+            action = "draw";
+        
+            if(action == "draw"){
+                if(mode == "draw"){
+                    path = new Path();
+                    path.strokeColor = colorActivo;
+                    path.blendMode = 'normal';
+                    path.strokeWidth = strockActivo;
+                }
+
+                if(mode == "erase"){
+                    path = new Path();
+                    path.strokeColor = "red";
+                    path.blendMode = 'destination-out';
+                    path.strokeWidth = 30
+                }
+            }
+        }
 
 	}
 
@@ -175,7 +196,7 @@ window.onload = function() {
 
 	tool.onMouseUp = function(event) {
 		if(action == "draw"){
-			path.simplify();
+			//path.simplify();
 
 			var lay = projectExport.activeLayer;
 			lay.addChild(path.clone());
@@ -209,7 +230,7 @@ function startHandler(event){
 		action = "zoom";
 
 	} else if(event.targetTouches.length == 1){
-			action = "draw";
+        action = "draw";
 	}
 
 }
@@ -220,9 +241,6 @@ function moveHandler(event){
 	event.preventDefault();
 	var zoom = false;
 
-
-
-
 	if(event.targetTouches.length == 2){
 
 
@@ -230,18 +248,31 @@ function moveHandler(event){
 		var p2 = event.targetTouches[1];
 
 		var zoomScale = Math.sqrt(Math.pow(p2.pageX - p1.pageX, 2) + Math.pow(p2.pageY - p1.pageY, 2));
+        
+        
+        
 		zoomScale = zoomScale * 0.3;
+        
 		if( lastZoomScale ) {
 		   zoom = zoomScale - lastZoomScale;
 		}
 
 		lastZoomScale = zoomScale;
+        
 
 	}
 
 	if(zoom){
-
+        
 		var total = (view.zoom + (zoom/100));
+        
+        if(total < 0.7) {
+            view.zoom = 0.7;
+            total = 0.7;
+        }
+        
+        
+
 		//view.zoom = total;
 
 		var a, beta, pc;
@@ -255,10 +286,10 @@ function moveHandler(event){
 		a = medio.subtract(pc.multiply(beta)).subtract(view.center);
 
 		var offset = medio.subtract(medio2);
-
-		view.zoom = total;
-		view.center = view.center.add(a).add(offset);
-
+        
+        view.zoom = total;
+        view.center = view.center.add(a).add(offset);
+        
 
 	}
 
@@ -343,6 +374,18 @@ function changeStroke(stroke){
     nuevoActivo.classList.add('activo');
 }
 
+function borrar() {
+    var items  = paper.project.getItems({
+                                        selected: true,
+                                        class: Path
+                                        });
+    items.forEach(function(item) {
+            item.remove();
+    });
+}
+    
+
+
 </script>
 </head>
 
@@ -356,6 +399,8 @@ function changeStroke(stroke){
         <a href="javascript:changeStroke(3)" class="btn-stroke sn activo" id="s-3">|</a>
         <a href="javascript:changeStroke(5)" class="btn-stroke sm" id="s-5">||</a>
         <a href="javascript:changeStroke(7)" class="btn-stroke sa" id="s-7">|||</a>
+        <a href="javascript:borrar()" class="btn-borrar">BORRAR</a>
+        <span class="consola"></span>
         
     </div>
     
