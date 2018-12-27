@@ -289,19 +289,31 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
 extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionViewDelegate
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //return dataSource.count
+        
+        if ((collectionView as? LugarUICollectionView) != nil) {
+            return 10
+        }
         return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "item", for: indexPath) as! EjemplarFichaCollectionViewCell
+        if ((collectionView as? LugarUICollectionView) != nil) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! InfoLugarCollectionViewCell
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "item", for: indexPath) as! EjemplarFichaCollectionViewCell
+            
+            let data = dataSource[indexPath.row]
+            cell.iconoString = data.icono
+            cell.info = data.value
+            
+            return cell
+        }
         
-        let data = dataSource[indexPath.row]
-        cell.iconoString = data.icono
-        cell.info = data.value
-        
-        return cell
         
     }
     
@@ -323,6 +335,8 @@ extension EjemplarTableViewController : UICollectionViewDelegate, UICollectionVi
     }
 }
 */
+
+
 
 
 
