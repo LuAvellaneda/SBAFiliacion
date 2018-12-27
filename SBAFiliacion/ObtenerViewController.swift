@@ -51,7 +51,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             tarea.descripcion = info["descripcion"] as? String
             tarea.fecha = info["fecha"] as? String
             
-            var lugares: [[String:Any]] = info["lugar"] as! [[String : Any]]
+            let lugares: [[String:Any]] = info["lugar"] as! [[String : Any]]
             
             lugares.forEach({ (lugar) in
                 let ubicacion = Ubicacion(context: db.context)
@@ -59,7 +59,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 ubicacion.titulo = lugar["titulo"] as? String
                 tarea.addToUbicacion(ubicacion)
                 
-                var ejemplares = lugar["ejemplares"] as! [[String: Any]]
+                let ejemplares = lugar["ejemplares"] as! [[String: Any]]
                 
                 ejemplares.forEach({ (ejemplar) in
                     let _ejemplar = Ejemplar(context: db.context)
@@ -122,7 +122,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
         cell.tituloLabel.text = dataSourceTareas[indexPath.row]["titulo"] as? String
         cell.descripcionLabel.text = dataSourceTareas[indexPath.row]["descripcion"] as? String
-        cell.fechaLabel.text = dataSourceTareas[indexPath.row]["fecha"] as! String
+        cell.fechaLabel.text = dataSourceTareas[indexPath.row]["fecha"] as? String
         
         return cell
     }
@@ -146,8 +146,8 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
         
-        let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
-        //let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
+        //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
+        let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
         URLCache.shared.removeAllCachedResponses()
         
         
@@ -219,6 +219,9 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let vc = nc.viewControllers.first as! ObtenerDetalleTableViewController
             
             vc.dataSource = dataSourceEjemplares
+            
+            let tarea = dataSourceTareas[(tableView.indexPathForSelectedRow?.row)!]
+            vc.titulo = tarea["titulo"] as? String
         }
     }
 
