@@ -14,8 +14,8 @@
 
 .btn-guardar {
     padding:5px;
-    background-color:rgb(252,47,106);
-    color:white;
+    background-color:rgb(41, 233, 73);
+    color:rgb(53, 53, 53);
     border-radius: 4px;
     text-decoration:none;
     display:inline-block;
@@ -23,6 +23,7 @@
     margin-top:8px;
     margin-right:5px;
     float:right;
+    font-weight: bold;
 }
 
 .btn-color {
@@ -84,7 +85,6 @@ var canvas;
 var path;
 var loadImage;
 var action = "draw";
-var mode = "draw";
 var raster;
 var raster_img;
 var colorActivo = "red";
@@ -103,9 +103,7 @@ window.onload = function() {
     canvasExport.height = 1761/2;
     projectExport = new Project(canvasExport);
     raster_img = new Raster(plantilla,new Point(3056/4, 1761/4));
-    if(trazo != "") {
-        projectExport.importJSON(trazo);
-    }
+    
     
     
     //INIT
@@ -117,13 +115,6 @@ window.onload = function() {
         view.update();
     }
     
-    raster.onLoad = function() {
-        //webkit.messageHandlers.loginAction.postMessage( view.matrix );
-        //rvar width = paper.view.size.width;
-        //var scale = (width / raster.bounds.width);
-        //raster.scale(scale);
-    };
-    
     //view.zoom = 0.35;
     
     
@@ -132,8 +123,8 @@ window.onload = function() {
 /*
 	path = new Path.Rectangle([view.center.x-50, view.center.y-50], [100, 100]);
 	path.strokeColor = 'black';
-*/
-	/*
+
+
 	view.onFrame = function(event) {
 			// On each frame, rotate the path by 3 degrees:
 			path.rotate(0.5);
@@ -150,57 +141,54 @@ window.onload = function() {
         var hitOptions = {
             fill: true,
             stroke: true,
-            tolerance: 10
+            tolerance: 12
         };
+        
         var item = project.hitTest(event.point,hitOptions);
-
 
         if(item != null && item.item.className == "Path") {
             
+            if(item.item.selected){
+                item.item.selected = false;
+                action = "draw"
+            } else {
+                item.item.selected = true;
+                action = "selected"
+            }
             
-            
-            item.item.selected = true;
-            action = "selected";
 
         } else {
-            var consola = document.querySelector('.consola');
-            
-            consola.textContent = "aca";
-            action = "draw";
         
             if(action == "draw"){
-                if(mode == "draw"){
-                    path = new Path();
-                    path.strokeColor = colorActivo;
-                    path.blendMode = 'normal';
-                    path.strokeWidth = strockActivo;
-                }
-
-                if(mode == "erase"){
-                    path = new Path();
-                    path.strokeColor = "red";
-                    path.blendMode = 'destination-out';
-                    path.strokeWidth = 30
-                }
+            
+                path = new Path();
+                path.strokeColor = colorActivo;
+                path.blendMode = 'normal';
+                path.strokeWidth = strockActivo;
+                
             }
         }
 
 	}
 
 	tool.onMouseDrag = function(event) {
+        
 		if(action == "draw"){
 			path.add(event.point);
 		}
-
+        
 	}
-
+    
 	tool.onMouseUp = function(event) {
+        
 		if(action == "draw"){
-			//path.simplify();
-
-			var lay = projectExport.activeLayer;
-			lay.addChild(path.clone());
-
+            if(path){
+                path.simplify();
+                //var lay = projectExport.activeLayer;
+                //lay.addChild(path.clone());
+                path = null;
+            }
+			
 		}
 
 	}
@@ -210,14 +198,6 @@ window.onload = function() {
 
 function startHandler(event){
     
-
-    //event.preventDefault();
-    if(event.targetTouches.length == 1){
-	 
-	}
-
-
-
 	if(event.targetTouches.length == 2){
 
 		var p1 = event.targetTouches[0];
@@ -229,8 +209,6 @@ function startHandler(event){
 		medio =  view.viewToProject(medio);
 		action = "zoom";
 
-	} else if(event.targetTouches.length == 1){
-        action = "draw";
 	}
 
 }
@@ -270,10 +248,6 @@ function moveHandler(event){
             view.zoom = 0.7;
             total = 0.7;
         }
-        
-        
-
-		//view.zoom = total;
 
 		var a, beta, pc;
 		beta = view.zoom / total;
@@ -305,46 +279,55 @@ function exportar() {
     //var json = paperScope.project.exportJSON();
     
     var p1 = new Promise(
-                         function(resolve, reject) {
-                         
-                             if(true) {
-                         
-                                //view.zoom = 1;
-                                view.update();
-                         
-                                //var canvasJson = project.exportJSON();
-                                //canvasExportProject.importJSON(canvasJson);
-                                //canvasExportProject.view.update();
-                                //canvasExportProject
-                         
-                                //raster = new Raster(plantilla,new Point(3056/4, 1761/4));
-                                dibujo = canvasExport.toDataURL();
-                                raster_img.remove();
-                                projectExport.view.update();
-                                trazo = canvasExport.toDataURL();
-                                trazoJSON = projectExport.exportJSON();
-                         
-                                var data = {
-                                    trazo: trazo,
-                                    trazoJSON: trazoJSON,
-                                    dibujo: dibujo
-                                }
-                                webkit.messageHandlers.loginAction.postMessage( data );
-                         
-                             }
-                         
-                         }
-             );
+         function(resolve, reject) {
          
-         p1.then(
-             // Registrar el valor de la promesa cumplida
-             function(val) {
-                 webkit.messageHandlers.loginAction.postMessage("desde js");
-             })
-             .catch(
-                // Registrar la razón del rechazo
-                function(reason) {
-                webkit.messageHandlers.loginAction.postMessage(reason.toString());
+             if(true) {
+                
+                var items  = paper.project.getItems({
+                                                 selected: true,
+                                                 class: Path
+                                                 });
+                items.forEach(function(item) {
+                    item.selected = false;
+                });
+                         
+                raster.remove();
+                var exportJSON = paper.project.exportJSON();
+                         
+                projectExport.importJSON(exportJSON);
+                projectExport.view.update();
+                         
+                dibujo = canvasExport.toDataURL();
+                         
+                raster_img.remove();
+                projectExport.view.update();
+                trazo = canvasExport.toDataURL();
+         
+                trazoJSON = projectExport.exportJSON();
+                //raster.remove();
+                //trazoJSON = paper.project.exportJSON();
+         
+                var data = {
+                    trazo: trazo,
+                    trazoJSON: trazoJSON,
+                    dibujo: dibujo
+                }
+                webkit.messageHandlers.loginAction.postMessage( data );
+         
+             }
+         
+         }
+     );
+         
+    p1.then(
+        // Registrar el valor de la promesa cumplida
+        function(val) {
+            webkit.messageHandlers.loginAction.postMessage("desde js");
+        })
+        .catch(
+        // Registrar la razón del rechazo
+        function(reason) {
+            webkit.messageHandlers.loginAction.postMessage(reason.toString());
         }
     );
 }
@@ -399,7 +382,7 @@ function borrar() {
         <a href="javascript:changeStroke(3)" class="btn-stroke sn activo" id="s-3">|</a>
         <a href="javascript:changeStroke(5)" class="btn-stroke sm" id="s-5">||</a>
         <a href="javascript:changeStroke(7)" class="btn-stroke sa" id="s-7">|||</a>
-        <a href="javascript:borrar()" class="btn-borrar">BORRAR</a>
+        <a href="javascript:borrar()" class="btn-borrar" style="margin-left:20px"><img src="trash-solid.svg" width="25"></a>
         <span class="consola"></span>
         
     </div>

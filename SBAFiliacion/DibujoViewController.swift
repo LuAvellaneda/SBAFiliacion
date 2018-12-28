@@ -25,7 +25,6 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "loginAction" {
             
-            
             let messageBody = message.body as! [String:Any]
             let dibujo = messageBody ["dibujo"] as! String
             let trazo = messageBody ["trazo"] as! String
@@ -44,7 +43,6 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             //Guardar el trazo
             print(url_dibujo)
             print(url_thumb)
-            
             ejemplar?.trazo = trazoJSON
             db.save()
             
@@ -61,7 +59,6 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
         super.viewDidLoad()
         
         let trazo = ejemplar?.trazo
-        
         
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
@@ -83,6 +80,7 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
         contentController.addUserScript(userScript)
  
         if(trazo != nil){
+            
             let trazoScript = WKUserScript(
                 source: "var trazo = '\(trazo!)';",
                 injectionTime: WKUserScriptInjectionTime.atDocumentEnd,
@@ -90,7 +88,6 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             )
             contentController.addUserScript(trazoScript)
             
-            print(trazo)
         }
         
         
