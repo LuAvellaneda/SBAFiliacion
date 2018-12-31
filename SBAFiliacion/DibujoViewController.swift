@@ -14,8 +14,8 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
     
     let db: PersistenceManager
     var webView: WKWebView!
-    
     var ejemplar: Ejemplar?
+    var updateController: EjemplaresTableViewController?
     
     required init?(coder aDecoder: NSCoder) {
         db = PersistenceManager.shared
@@ -44,19 +44,20 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             print(url_dibujo)
             print(url_thumb)
             ejemplar?.trazo = trazoJSON
+            ejemplar?.visto = true
             db.save()
             
-            navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
 
         }
     }
-    
-    
+
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        
         
         let trazo = ejemplar?.trazo
         

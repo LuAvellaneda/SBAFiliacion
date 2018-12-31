@@ -101,6 +101,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     }
     
     
+    
+    
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count > 0 {
             let lectura = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
@@ -150,7 +152,11 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Vistos"
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
