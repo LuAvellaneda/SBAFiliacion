@@ -67,13 +67,32 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     
     
-    
+    var secciones = [String]()
     let db: PersistenceManager
+    var revisar = [Ejemplar]()
+    var revisados = [Ejemplar]()
     var dataSource = [Ejemplar]() {
         didSet {
+            
             dataSource.sort(by: { (first: Ejemplar, second: Ejemplar) -> Bool in
                 first.nombre! < second.nombre!
             })
+            
+            revisar = dataSource.filter { (ejemplar) -> Bool in
+                !ejemplar.visto
+            }
+            
+            revisados = dataSource.filter { ejemplar -> Bool in
+                ejemplar.visto
+            }
+            
+            secciones.append("Revisar")
+            
+            if(revisados.count > 0) {
+                secciones.append("Revisados")
+            }
+           
+            
         }
     }
     var ubicacion: Ubicacion?
@@ -97,20 +116,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     }
     
     
-    
-    
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        if metadataObjects.count > 0 {
-            let lectura = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-            if lectura.type == AVMetadataObject.ObjectType.code128 {
-                let valor = lectura.stringValue!
-                print(valor)
-                
-            }
-        }
-    }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -121,25 +126,40 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        
+        return secciones.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Vistos"
+        return secciones[section]
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dataSource.count
+        
+        if(section == 0) {
+            return revisar.count
+        } else {
+            return revisados.count
+        }
+        
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let data = dataSource[indexPath.row]
-        cell.textLabel?.text = "\(data.nombre!) (2015 M,Z)"
-        cell.detailTextLabel?.text = data.madre
+        if(indexPath.section == 0) {
+            let data = revisar[indexPath.row]
+            cell.textLabel?.text = "\(data.nombre!) (2015 M,Z)"
+            cell.detailTextLabel?.text = data.madre
+        } else {
+            let data = revisados[indexPath.row]
+            cell.textLabel?.text = "\(data.nombre!) (2015 M,Z)"
+            cell.detailTextLabel?.text = data.madre
+        }
+        
         //cell.backgroundColor = UIColor.green
         
         return cell
