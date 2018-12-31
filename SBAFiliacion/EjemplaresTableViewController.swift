@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-
 import Alamofire
 
 class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOutputObjectsDelegate {
@@ -67,10 +66,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     
     
-    enum error:Error {
-        case noCameraAvailable
-        case videoInputInitFail
-    }
+    
     
     let db: PersistenceManager
     var dataSource = [Ejemplar]() {
@@ -114,34 +110,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         }
     }
     
-    func scanCode() throws {
-        let session = AVCaptureSession()
-        
-        guard let avCaptureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
-            print("no camera")
-            throw error.noCameraAvailable
-        }
-        
-        guard let avCaptureInput = try? AVCaptureDeviceInput(device: avCaptureDevice) else {
-            throw error.videoInputInitFail
-        }
-        
-        let avCaptureMetadataOutput = AVCaptureMetadataOutput()
-        avCaptureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        
-        session.addInput(avCaptureInput)
-        session.addOutput(avCaptureMetadataOutput)
-        
-        avCaptureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.code128]
-        
-        let avCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-        //avCaptureVideoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        avCaptureVideoPreviewLayer.frame = view.bounds
-        view.layer.addSublayer(avCaptureVideoPreviewLayer)
-        
-        session.startRunning()
-        
-    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
