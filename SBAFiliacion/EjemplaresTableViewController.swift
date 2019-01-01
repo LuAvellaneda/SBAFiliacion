@@ -86,6 +86,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
                 ejemplar.visto
             }
             
+            secciones = [String]()
             secciones.append("Revisar")
             
             if(revisados.count > 0) {
@@ -107,6 +108,13 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "dibujoActualizado"), object: nil, queue: OperationQueue.main) { (notification) in
+            
+            self.dataSource = self.revisados + self.revisar
+            
+            self.tableView.reloadData()
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -214,9 +222,16 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //let tarea = dataSource[indexPath.row]
+        var ejempar: Ejemplar?
+        
+        if (indexPath.section == 0) {
+            ejempar = revisar[indexPath.row]
+        } else {
+            ejempar = revisados[indexPath.row]
+        }
         
         
-        ejemplarSeleccionado = dataSource[indexPath.row]
+        ejemplarSeleccionado = ejempar
         performSegue(withIdentifier: "ShowFicha", sender: nil)
     }
 

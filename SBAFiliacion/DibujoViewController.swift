@@ -47,6 +47,8 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             ejemplar?.visto = true
             db.save()
             
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dibujoActualizado"), object: self)
+            
             self.dismiss(animated: true, completion: nil)
 
         }
