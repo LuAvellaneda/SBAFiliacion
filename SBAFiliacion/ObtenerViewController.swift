@@ -65,6 +65,16 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                     let _ejemplar = Ejemplar(context: db.context)
                     _ejemplar.id = ejemplar["id"] as! Int64
                     _ejemplar.nombre = ejemplar["nombre"] as? String
+                    _ejemplar.anio = ejemplar["anio"] as? String
+                    _ejemplar.mes = ejemplar["mes"] as? String
+                    _ejemplar.dia = ejemplar["dia"] as? String
+                    _ejemplar.sexo = ejemplar["sexo"] as? String
+                    _ejemplar.por = ejemplar["por"] as? String
+                    _ejemplar.padre = ejemplar["padre"] as? String
+                    _ejemplar.madre = ejemplar["madre"] as? String
+                    _ejemplar.microchip = ejemplar["microchip"] as! Int64
+                    _ejemplar.pelo = ejemplar["pelo"] as? String
+                    _ejemplar.id_interno = UUID().uuidString
                     ubicacion.addToEjemplar(_ejemplar)
                 })
                 

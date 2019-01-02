@@ -23,6 +23,7 @@
 		8020E6B221CD5DF000087212 /* ObtenerDetalleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020E6B121CD5DF000087212 /* ObtenerDetalleTableViewController.swift */; };
 		806AFE2821C40B75001AAAF8 /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */; };
 		806AFE2C21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */; };
+		806CB61421DD21BC002AB26C /* EntregarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CB61321DD21BC002AB26C /* EntregarViewController.swift */; };
 		80C46F0121B705CE002AAC80 /* fichanueva.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 80C46F0021B705CE002AAC80 /* fichanueva.jpg */; };
 		A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019952D2122541600801DF7 /* ObtenerViewController.swift */; };
 		A030E76921287ABC00F455E5 /* EjemplaresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */; };
@@ -78,6 +79,7 @@
 		8020E6B121CD5DF000087212 /* ObtenerDetalleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerDetalleTableViewController.swift; sourceTree = "<group>"; };
 		806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
 		806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoEjemplarTableViewController.swift; sourceTree = "<group>"; };
+		806CB61321DD21BC002AB26C /* EntregarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntregarViewController.swift; sourceTree = "<group>"; };
 		80C46F0021B705CE002AAC80 /* fichanueva.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fichanueva.jpg; sourceTree = "<group>"; };
 		A019952D2122541600801DF7 /* ObtenerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerViewController.swift; sourceTree = "<group>"; };
 		A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjemplaresTableViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				A0E79C5D214DC6C2004828CF /* EjemplarFichaTableViewCell.swift */,
 				A0E79C65214DC922004828CF /* EjemplarFichaCollectionViewCell.swift */,
 				A019952D2122541600801DF7 /* ObtenerViewController.swift */,
+				806CB61321DD21BC002AB26C /* EntregarViewController.swift */,
 				8004BF5F21D3C7F3006C6F1F /* ObtenerDetalle */,
 				A042C6532115D30000BB27F9 /* LaunchScreen.storyboard */,
 				A042C6562115D30000BB27F9 /* Info.plist */,
@@ -394,6 +397,7 @@
 				A04FCD55211F0DCB00FAFDF4 /* PersistenceManager.swift in Sources */,
 				A0979BA2211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift in Sources */,
 				A042C6502115D2FE00BB27F9 /* SBAFiliacion.xcdatamodeld in Sources */,
+				806CB61421DD21BC002AB26C /* EntregarViewController.swift in Sources */,
 				A0CC541621D02E0E00B48252 /* LugaresTableViewController.swift in Sources */,
 				A0E32C3021D4544A002D09F1 /* LugarUICollectionView.swift in Sources */,
 				A0E79C5E214DC6C2004828CF /* EjemplarFichaTableViewCell.swift in Sources */,

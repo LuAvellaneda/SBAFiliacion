@@ -11,7 +11,13 @@ import UIKit
 class TareasTableViewController: UITableViewController {
     
     let db:PersistenceManager = PersistenceManager.shared
-    var dataSource = [Tarea]()
+    var dataSource = [Tarea]() {
+        didSet {
+            dataSource.sort(by: { (first: Tarea, second: Tarea) -> Bool in
+                first.titulo! < second.titulo!
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

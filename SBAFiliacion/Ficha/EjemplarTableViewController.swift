@@ -67,7 +67,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         if indexPath.row == 0 && indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ficha", for: indexPath) as! EjemplarFichaTableViewCell
             return cell
@@ -98,9 +97,10 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if indexPath.row == 3 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "nota", for: indexPath) as! NotaTableViewCell
-            cell.nota = ejemplar?.nota!
+            cell.nota = ejemplar?.nota ?? "Sin nota"
             return cell
         }
+        
         
         if indexPath.row == 0 && indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "fotos", for: indexPath) as! EjemplarFotoTableViewCell
@@ -182,9 +182,10 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func viewWillAppear(_ animated: Bool) {
         
-        if let ejemplar_id = ejemplar?.id {
+        
+        if let ejemplar_id = ejemplar?.id_interno {
             let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let dibujo:URL = directorio.appendingPathComponent("dibujo_\(ejemplar_id).png")
+            let dibujo:URL = directorio.appendingPathComponent("d_\(ejemplar_id).png")
             
             if let image: UIImage = UIImage(contentsOfFile: dibujo.path) {
                 self.fichaImagen.image = image
@@ -198,7 +199,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             if(cantidadFotos > 0) {
                 
                 for index in 1...cantidadFotos {
-                    let foto:URL = directorio.appendingPathComponent("foto_\(ejemplar_id)_\(index).png")
+                    let foto:URL = directorio.appendingPathComponent("f_\(ejemplar_id)_\(index).png")
                     let image:UIImage = UIImage(contentsOfFile: foto.path)!
                     fotos.append(image)
                 }
@@ -207,6 +208,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
             
         }
+ 
         
     }
     

@@ -11,7 +11,13 @@ import UIKit
 class LugaresTableViewController: UITableViewController {
     
     let db:PersistenceManager = PersistenceManager.shared
-    var lugares = [Ubicacion]()
+    var lugares = [Ubicacion](){
+        didSet {
+            lugares.sort(by: { (first: Ubicacion, second: Ubicacion) -> Bool in
+                first.titulo! < second.titulo!
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

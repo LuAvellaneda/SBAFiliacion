@@ -19,8 +19,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     @IBAction func openScan (_ sender: UIBarButtonItem) {
         
-        
-        
         /*
         let url_save:String = "http://myproject.com.ar/jc/save.php";
         let params:Parameters = ["nombre":"Lucas","apellido":"Avellaneda"]
@@ -87,7 +85,14 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             }
             
             secciones = [String]()
+            
             secciones.append("Revisar")
+            
+            /*
+            if(revisar.count > 0) {
+                secciones.append("Revisar")
+            }*/
+            
             
             if(revisados.count > 0) {
                 secciones.append("Revisados")
@@ -109,10 +114,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "dibujoActualizado"), object: nil, queue: OperationQueue.main) { (notification) in
-            
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "actualizarListadoEjemplares"), object: nil, queue: OperationQueue.main) { (notification) in
             self.dataSource = self.revisados + self.revisar
-            
             self.tableView.reloadData()
         }
         
@@ -230,7 +233,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             ejempar = revisados[indexPath.row]
         }
         
-        
         ejemplarSeleccionado = ejempar
         performSegue(withIdentifier: "ShowFicha", sender: nil)
     }
@@ -242,8 +244,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowFicha" {
             
-           
-            
+
             //segue.destination.performSegue(withIdentifier: "showMaster", sender: self)
             
             //let fichaViewController = segue.destination as! FichaViewController

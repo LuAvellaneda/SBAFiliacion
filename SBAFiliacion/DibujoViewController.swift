@@ -30,15 +30,16 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             let trazo = messageBody ["trazo"] as! String
             let trazoJSON = messageBody["trazoJSON"] as! String
             
-            let ejemplar_id = ejemplar!.id
+            //let ejemplar_id = ejemplar!.id
+            let id_interno = (ejemplar!.id_interno)!
             
             let b64 = dibujo
             let image = base64Convert(base64String: b64)
             let image_trazo = base64Convert(base64String: trazo)
             
             
-            let url_dibujo = DibujoViewController.storeImageToDocumentDirectory(image: image,fileName: "dibujo_\(ejemplar_id).png")!
-            let url_thumb = DibujoViewController.storeImageToDocumentDirectory(image: image_trazo,fileName: "dibujo_\(ejemplar_id)_trazo.png")!
+            let url_dibujo = DibujoViewController.storeImageToDocumentDirectory(image: image,fileName: "d_\(id_interno).png")!
+            let url_thumb = DibujoViewController.storeImageToDocumentDirectory(image: image_trazo,fileName: "t_\(id_interno)_trazo.png")!
             
             //Guardar el trazo
             print(url_dibujo)
@@ -47,7 +48,7 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             ejemplar?.visto = true
             db.save()
             
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dibujoActualizado"), object: self)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "actualizarListadoEjemplares"), object: self)
             
             self.dismiss(animated: true, completion: nil)
 

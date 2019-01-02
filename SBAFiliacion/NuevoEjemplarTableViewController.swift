@@ -51,12 +51,13 @@ class NuevoEjemplarTableViewController: UITableViewController {
         ejemplar.dia = day.description
         ejemplar.fotos = 0
         ejemplar.id = 0
+        ejemplar.visto = false
+        ejemplar.id_interno = UUID().uuidString
         
         ubicacion?.addToEjemplar(ejemplar)
         db.save()
         
-        //self.navigationController?.popToRootViewController(animated: true)
-        //self.navigationController?.bac
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "actualizarListadoEjemplares"), object: self)
         self.navigationController?.popViewController(animated: true)
         
     }
