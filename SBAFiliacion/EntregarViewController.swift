@@ -56,6 +56,12 @@ class EntregarViewController: UIViewController {
                         if ( self.ejemplares.count > ( self.index + 1 )) {
                             self.index = self.index + 1
                             self.subirEjemplar(for: self.index)
+                        } else {
+                            let alert = UIAlertController(title: "Terminado", message: "Se entregaron todos los trabajos", preferredStyle: .alert)
+                            
+                            alert.addAction(UIAlertAction(title: "Entendido", style: .default, handler: nil))
+                            
+                            self.present(alert, animated: true)
                         }
                         
                         

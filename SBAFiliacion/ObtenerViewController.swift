@@ -39,9 +39,12 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     @IBAction func Obtener() {
         
+        
+        
         /*
         guardarData(indiceActual)
         */
+        
         
         dataSourceTareas.forEach { (info) in
             
@@ -82,7 +85,15 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             
             db.save()
             
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "actualizarTareas"), object: self)
+            let alert = UIAlertController(title: "Trabajos", message: "Se obtuvieron todos los trabajos", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Entendido", style: .default, handler: nil))
+            
+            self.present(alert, animated: true)
+            
         }
+        
         
         /*
         dataSource.forEach { (info) in

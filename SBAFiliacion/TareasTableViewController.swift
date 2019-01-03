@@ -25,6 +25,11 @@ class TareasTableViewController: UITableViewController {
         self.dataSource = db.fetch(Tarea.self)
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "actualizarTareas"), object: nil, queue: OperationQueue.main) { (notification) in
+            self.dataSource = self.db.fetch(Tarea.self)
+            self.tableView.reloadData()
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,6 +47,8 @@ class TareasTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        
+       
         return dataSource.count
     }
     
@@ -51,12 +58,17 @@ class TareasTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
-        cell.textLabel?.text = self.dataSource[indexPath.row].titulo
-        cell.detailTextLabel?.text = self.dataSource[indexPath.row].descripcion
-        return cell
+            cell.textLabel?.text = self.dataSource[indexPath.row].titulo
+            cell.detailTextLabel?.text = self.dataSource[indexPath.row].descripcion
+            return cell
+        
+        
     }
+    
+    
     
 
     /*
