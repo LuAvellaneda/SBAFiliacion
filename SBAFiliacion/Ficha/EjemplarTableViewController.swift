@@ -79,19 +79,28 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if indexPath.row == 0 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
+            cell.id = "destetado"
             cell.titulo = "Destetado"
+            cell.callBack = setCambios(id:val:)
+            
             return cell
         }
         
         if indexPath.row == 1 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
+            cell.id = "sin-tarjeta"
             cell.titulo = "Sin tarjeta"
+            cell.callBack = setCambios(id:val:)
+            
             return cell
         }
         
         if indexPath.row == 2 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
+            cell.id = "muerto"
             cell.titulo = "Muerto"
+            cell.callBack = setCambios(id:val:)
+            
             return cell
         }
         
@@ -178,6 +187,11 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     required init?(coder aDecoder: NSCoder) {
         db = PersistenceManager.shared
         super.init(coder: aDecoder)
+    }
+    
+    func setCambios(id:String,val:Bool){
+        print(id)
+        print(val)
     }
     
     override func viewWillAppear(_ animated: Bool) {

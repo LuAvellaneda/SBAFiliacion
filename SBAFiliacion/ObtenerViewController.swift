@@ -158,8 +158,6 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

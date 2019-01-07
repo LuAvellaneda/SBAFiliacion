@@ -9,9 +9,20 @@
 import UIKit
 
 class FormTableViewCell: UITableViewCell {
+    
+    var callBack: ((_ id:String,_ val:Bool)->())?
 
     @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var controlSwitchOutlet: UISwitch!
+    
+    @IBAction func controlSwitch(_ sender: UISwitch) {
+        
+        callBack?(id!,sender.isOn)
+
+    }
+    
+    var id: String?
     var titulo: String?  {
         didSet {
             label?.text = titulo
