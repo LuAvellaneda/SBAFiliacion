@@ -25,7 +25,7 @@ class FormTableViewCell: UITableViewCell {
     var id: String?
     var valor:Bool? {
         didSet {
-            controlSwitchOutlet.setOn(valor!, animated: false)
+            controlSwitchOutlet.setOn(valor ?? false, animated: false)
         }
     }
     var titulo: String?  {

@@ -26,24 +26,28 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(section == 0) {
+        if(section == 0 && ejemplar != nil) {
             return 2
         }
         
-        if(section == 1) {
+        if(section == 1 && ejemplar != nil) {
             return 4
         }
         
-        if(section == 2) {
+        if(section == 2 && ejemplar != nil) {
             return 1
         }
         
-        return 7
+        return 0
         
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        
+        if (ejemplar == nil) {
+            return 0
+        }
         return 3
     }
     
@@ -104,7 +108,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             cell.id = "muerto"
             cell.titulo = "Muerto"
             cell.callBack = setCambios(id:val:)
-            cell.valor = ejemplar.muerto
+            cell.valor = ejemplar?.muerto
             
             return cell
         }
@@ -151,13 +155,14 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     var ejemplar: Ejemplar! {
         didSet {
-            
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
             navigationItem.title = ejemplar.madre
             
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
             dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
             dataSource.append(FichaDetalle("Microchip",ejemplar.microchip.description,"microchip"))
             dataSource.append(FichaDetalle("C", ejemplar.anio,"calendario"))
+            
             
         }
     }
@@ -199,6 +204,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         
         if let ejemplar_id = ejemplar?.id_interno {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
             let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let dibujo:URL = directorio.appendingPathComponent("d_\(ejemplar_id).png")
             
@@ -229,6 +235,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
