@@ -79,9 +79,13 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if indexPath.row == 0 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
+            
+            
             cell.id = "destetado"
             cell.titulo = "Destetado"
             cell.callBack = setCambios(id:val:)
+            
+            
             
             return cell
         }
@@ -100,6 +104,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             cell.id = "muerto"
             cell.titulo = "Muerto"
             cell.callBack = setCambios(id:val:)
+            cell.valor = ejemplar.muerto
             
             return cell
         }
@@ -148,7 +153,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         didSet {
             
             navigationItem.title = ejemplar.madre
-            //navigationItem.prompt = "\(ejemplar.nombre!) - \(ejemplar.sexo!)"
             
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
             dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
@@ -161,11 +165,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     let db: PersistenceManager
     var dataSource = [FichaDetalle]()
     var imagePicker: UIImagePickerController!
-    var filtro: Int32? {
-        didSet {
-            print("Set haras")
-        }
-    }
     
     var fotos = [UIImage]()
     var celdaFotos = EjemplarFotoTableViewCell()
@@ -190,8 +189,10 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     func setCambios(id:String,val:Bool){
-        print(id)
-        print(val)
+        if( id == "muerto") {
+            ejemplar.muerto = val
+            db.save()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

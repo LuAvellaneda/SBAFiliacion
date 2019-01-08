@@ -39,13 +39,6 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     @IBAction func Obtener() {
         
-        
-        
-        /*
-        guardarData(indiceActual)
-        */
-        
-        
         dataSourceTareas.forEach { (info) in
             
             let tarea = Tarea(context: db.context)
@@ -78,6 +71,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                     _ejemplar.microchip = ejemplar["microchip"] as! Int64
                     _ejemplar.pelo = ejemplar["pelo"] as? String
                     _ejemplar.id_interno = UUID().uuidString
+                    _ejemplar.muerto = false
                     ubicacion.addToEjemplar(_ejemplar)
                 })
                 
@@ -159,6 +153,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
     

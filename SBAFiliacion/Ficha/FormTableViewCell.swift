@@ -23,6 +23,11 @@ class FormTableViewCell: UITableViewCell {
     }
     
     var id: String?
+    var valor:Bool? {
+        didSet {
+            controlSwitchOutlet.setOn(valor!, animated: false)
+        }
+    }
     var titulo: String?  {
         didSet {
             label?.text = titulo
