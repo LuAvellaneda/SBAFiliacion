@@ -84,14 +84,12 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         if indexPath.row == 0 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
             
-            
             cell.id = "destetado"
             cell.titulo = "Destetado"
             cell.callBack = setCambios(id:val:)
             
-            
-            
             return cell
+            
         }
         
         if indexPath.row == 1 && indexPath.section == 1{
@@ -155,14 +153,13 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     var ejemplar: Ejemplar! {
         didSet {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            
             navigationItem.title = ejemplar.madre
             
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
             dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
             dataSource.append(FichaDetalle("Microchip",ejemplar.microchip.description,"microchip"))
             dataSource.append(FichaDetalle("C", ejemplar.anio,"calendario"))
-            
             
         }
     }
@@ -213,7 +210,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             }
             
             //Info Ejemplar
-            por.text? = (ejemplar?.por) ?? "Por madre (USA) y por padre(USA)"
+            por.text? = (ejemplar?.por) ?? "SI VES ESTO... ESTA MAL!"
             
             //Fotos
             let cantidadFotos = (ejemplar?.fotos)!
@@ -242,9 +239,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         

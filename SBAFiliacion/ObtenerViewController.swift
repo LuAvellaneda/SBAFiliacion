@@ -80,9 +80,13 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             db.save()
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "actualizarTareas"), object: self)
-            let alert = UIAlertController(title: "Trabajos", message: "Se obtuvieron todos los trabajos", preferredStyle: .alert)
             
+            let alert = UIAlertController(title: "Trabajos", message: "Se obtuvieron todos los trabajos", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Entendido", style: .default, handler: nil))
+            
+            dataSourceTareas = []
+            tableView.reloadData()
+            self.obtenerBtn.setTitle("", for: .normal)
             
             self.present(alert, animated: true)
             
@@ -143,22 +147,28 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
         let tarea = dataSourceTareas[indexPath.row]
         let lugar = (tarea["lugar"] as! [[String:Any]]).first!
         let ejemplares = lugar["ejemplares"] as! [[String:Any]]
         dataSourceEjemplares = ejemplares
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
         performSegue(withIdentifier: "showEjemplaresSegue", sender: self)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
     
         super.viewDidAppear(animated)
-        self.view.layoutIfNeeded()
         
         //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
         let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
@@ -236,7 +246,6 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             let vc = nc.viewControllers.first as! ObtenerDetalleTableViewController
             
             vc.dataSource = dataSourceEjemplares
-            
             let tarea = dataSourceTareas[(tableView.indexPathForSelectedRow?.row)!]
             vc.titulo = tarea["titulo"] as? String
         }

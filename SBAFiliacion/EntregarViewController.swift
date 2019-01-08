@@ -16,7 +16,12 @@ class EntregarViewController: UIViewController {
     var ejemplares:[Ejemplar] = [Ejemplar]()
     var index = 0
     
-
+    @IBOutlet weak var display: UILabel! {
+        didSet {
+            display?.text = ejemplares.count.description
+        }
+    }
+    
     @IBAction func subirButton(_ sender: UIButton) {
         print("Iniciar")
         index = 0
@@ -25,6 +30,8 @@ class EntregarViewController: UIViewController {
     }
     
     func subirEjemplar(for index:Int){
+        let resto = ejemplares.count - index
+        display.text = "\(resto.description)"
         
         let ejemplar:Ejemplar = ejemplares[index]
         
@@ -57,11 +64,11 @@ class EntregarViewController: UIViewController {
                             self.index = self.index + 1
                             self.subirEjemplar(for: self.index)
                         } else {
+                            
                             let alert = UIAlertController(title: "Terminado", message: "Se entregaron todos los trabajos", preferredStyle: .alert)
-                            
                             alert.addAction(UIAlertAction(title: "Entendido", style: .default, handler: nil))
-                            
                             self.present(alert, animated: true)
+                            
                         }
                         
                         
@@ -81,8 +88,16 @@ class EntregarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
         //Cargo los ejemplares
         ejemplares = db.fetch(Ejemplar.self)
+        display?.text = ejemplares.count.description
+        
     }
     
 
