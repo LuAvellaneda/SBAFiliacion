@@ -30,7 +30,7 @@ class NuevoEjemplarTableViewController: UITableViewController {
     
     @IBAction func guardar(_ sender: UIBarButtonItem) {
         
-        let  date: Date = fecha.date
+        let date: Date = fecha.date
         let calendar = Calendar.current
         
         let year = calendar.component(.year, from: date)

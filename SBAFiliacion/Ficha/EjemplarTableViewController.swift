@@ -71,17 +71,22 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 && indexPath.section == 0{
+        if indexPath.row == 0 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ficha", for: indexPath) as! EjemplarFichaTableViewCell
+            
+            let width = (view.frame.size.width - 30) / 4
+            let layout = cell.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+            layout.itemSize = CGSize(width: width, height: 140)
+            
             return cell
         }
         
-        if indexPath.row == 1 && indexPath.section == 0{
+        if indexPath.row == 1 && indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "lugar", for: indexPath) as! LugarTableViewCell
             return cell
         }
         
-        if indexPath.row == 0 && indexPath.section == 1{
+        if indexPath.row == 0 && indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
             
             cell.id = "destetado"
@@ -125,8 +130,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         return UITableViewCell()
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
     {
@@ -174,6 +177,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var fichaTableView: UITableView!
     @IBOutlet weak var fichaImagen: UIImageView!
     
+    @IBOutlet weak var fechaModificadoLabel: UILabel!
     @IBOutlet weak var por: UILabel!
     
     @IBAction func abrirCamara(_ sender: UIBarButtonItem) {
@@ -191,14 +195,20 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     func setCambios(id:String,val:Bool){
+        
+        let date:NSDate = NSDate()
+        
         if( id == "muerto") {
             ejemplar.muerto = val
+            ejemplar.modificado = date
             db.save()
         }
+        
+        updateFecha()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         
         if let ejemplar_id = ejemplar?.id_interno {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -224,10 +234,20 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
                 
             }
             
+            //Data Ficha
+            updateFecha()
             
         }
- 
         
+    }
+    
+    func updateFecha(){
+        if let fechaModificado = ejemplar.modificado  {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+            let dateString = dateFormatter.string(from: fechaModificado as Date)
+            self.fechaModificadoLabel.text = dateString
+        }
     }
     
     override func viewDidLoad() {
@@ -278,6 +298,21 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
         }
         
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "ShowDibujo" {
+            if ejemplar.muerto {
+                
+                let alert = UIAlertController(title: "Filiación", message: "El ejemplar está muerto", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Entendido", style: .default, handler: nil))
+                self.present(alert, animated: true)
+                
+                return false
+            }
+        }
+        
+        return true
     }
     
     public static func storeImageToDocumentDirectory(image: UIImage, fileName: String) -> URL? {
@@ -333,8 +368,7 @@ extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionV
             cell.info = data.value
             
             return cell
-        }
-        
+        }	
         
     }
     

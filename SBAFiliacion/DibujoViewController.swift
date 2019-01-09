@@ -37,7 +37,6 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             let image = base64Convert(base64String: b64)
             let image_trazo = base64Convert(base64String: trazo)
             
-            
             let url_dibujo = DibujoViewController.storeImageToDocumentDirectory(image: image,fileName: "d_\(id_interno).png")!
             let url_thumb = DibujoViewController.storeImageToDocumentDirectory(image: image_trazo,fileName: "t_\(id_interno)_trazo.png")!
             
@@ -45,6 +44,7 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             print(url_dibujo)
             print(url_thumb)
             ejemplar?.trazo = trazoJSON
+            ejemplar?.modificado = NSDate()
             ejemplar?.visto = true
             db.save()
             

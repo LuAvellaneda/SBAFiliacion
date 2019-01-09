@@ -12,6 +12,7 @@
         <attribute name="manual" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="mes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="microchip" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="modificado" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="muerto" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nombre" attributeType="String" syncable="YES"/>
         <attribute name="nota" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,7 +38,7 @@
         <relationship name="tarea" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tarea" inverseName="ubicacion" inverseEntity="Tarea" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Ejemplar" positionX="208.21875" positionY="3004.87109375" width="128" height="360"/>
+        <element name="Ejemplar" positionX="208.21875" positionY="3004.87109375" width="128" height="375"/>
         <element name="Tarea" positionX="-137.30078125" positionY="3003.26171875" width="128" height="118"/>
         <element name="Ubicacion" positionX="31.84375" positionY="3004" width="128" height="103"/>
     </elements>

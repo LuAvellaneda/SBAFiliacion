@@ -149,7 +149,14 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         // #warning Incomplete implementation, return the number of rows
         
         if(section == 0) {
-            return revisar.count
+            
+            if revisar.count == 0 {
+                return 1
+            } else {
+                return revisar.count
+            }
+            
+            
         } else {
             return revisados.count
         }
@@ -159,12 +166,19 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         if(indexPath.section == 0) {
-            let data = revisar[indexPath.row]
-            cell.textLabel?.text = "\(data.nombre!) (2015 M,Z)"
-            cell.detailTextLabel?.text = data.madre
+            
+            if revisar.count == 0 {
+                cell = tableView.dequeueReusableCell(withIdentifier: "cellTerminado", for: indexPath)
+                cell.textLabel?.text = "TERMINADO"
+            } else {
+                let data = revisar[indexPath.row]
+                cell.textLabel?.text = "\(data.nombre!) (2015 M,Z)"
+                cell.detailTextLabel?.text = data.madre
+            }
+            
         } else {
             let data = revisados[indexPath.row]
             cell.textLabel?.text = "\(data.nombre!) (2015 M,Z)"
