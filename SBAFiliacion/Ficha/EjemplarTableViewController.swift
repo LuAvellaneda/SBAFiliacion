@@ -31,7 +31,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         }
         
         if(section == 1 && ejemplar != nil) {
-            return 4
+            return 5
         }
         
         if(section == 2 && ejemplar != nil) {
@@ -82,8 +82,12 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         }
         
         if indexPath.row == 1 && indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "lugar", for: indexPath) as! LugarTableViewCell
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "lugar", for: indexPath) as! LugarTableViewCell
+            //return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "lugarbeta", for: indexPath)
+            
             return cell
+            
         }
         
         if indexPath.row == 0 && indexPath.section == 1 {
@@ -100,13 +104,22 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         if indexPath.row == 1 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
             cell.id = "sin-tarjeta"
-            cell.titulo = "Sin tarjeta"
+            cell.titulo = "Sin pasaporte"
             cell.callBack = setCambios(id:val:)
             
             return cell
         }
         
         if indexPath.row == 2 && indexPath.section == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
+            cell.id = "sin-denuncia"
+            cell.titulo = "Sin denuncia"
+            cell.callBack = setCambios(id:val:)
+            
+            return cell
+        }
+        
+        if indexPath.row == 3 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
             cell.id = "muerto"
             cell.titulo = "Muerto"
@@ -116,7 +129,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             return cell
         }
         
-        if indexPath.row == 3 && indexPath.section == 1{
+        if indexPath.row == 4 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "nota", for: indexPath) as! NotaTableViewCell
             cell.nota = ejemplar?.nota ?? "Sin nota"
             return cell
@@ -135,12 +148,14 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     {
        
         if indexPath.row == 0 {
+            
             if let cell = cell as? EjemplarFichaTableViewCell {
                 cell.collectionView.dataSource = self
                 cell.collectionView.delegate = self
                 cell.collectionView.reloadData()
                 //cell.collectionView.isScrollEnabled = false
             }
+            
         }
         
         if indexPath.row == 1 {

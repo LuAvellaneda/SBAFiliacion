@@ -17,54 +17,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         print("salir")
     }
     
-    @IBAction func openScan (_ sender: UIBarButtonItem) {
-        
-        /*
-        let url_save:String = "http://myproject.com.ar/jc/save.php";
-        let params:Parameters = ["nombre":"Lucas","apellido":"Avellaneda"]
-        //let fileURL = Bundle.main.url(forResource: "ficha", withExtension: "jpg")!
-        
-        let ejemplares: [Ejemplar] = db.fetch(Ejemplar.self)
-        
-        let ejemplar = ejemplares[0]
-        
-        let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let dibujo:URL = directorio.appendingPathComponent("dibujo_\(ejemplar.id)_trazo.png")
-        
-       let fileURL = dibujo
-       
-        Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(fileURL , withName: "image")
-            for (key, value) in params
-            {
-                multipartFormData.append((value as! String).data(using: String.Encoding.utf8)!, withName: key)
-            }
-        },
-        to: url_save,
-        encodingCompletion: { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    debugPrint(response)
-                }
-                upload.uploadProgress(closure: { //Get Progress
-                    progress in
-                    print(progress.fractionCompleted)
-                })
-            case .failure(let encodingError):
-                print("Error")
-                //print(encodingError)
-            }
-        })
- 
-        */
-
-        
-    }
-    
-    
-    
-    
     var secciones = [String]()
     let db: PersistenceManager
     var revisar = [Ejemplar]()
@@ -87,12 +39,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             secciones = [String]()
             
             secciones.append("Revisar")
-            
-            /*
-            if(revisar.count > 0) {
-                secciones.append("Revisar")
-            }*/
-            
             
             if(revisados.count > 0) {
                 secciones.append("Revisados")
@@ -156,9 +102,10 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
                 return revisar.count
             }
             
-            
         } else {
+            
             return revisados.count
+            
         }
         
     }
