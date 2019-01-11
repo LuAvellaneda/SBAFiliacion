@@ -59,12 +59,10 @@ class TareasTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = self.dataSource[indexPath.row].titulo
-            cell.detailTextLabel?.text = self.dataSource[indexPath.row].descripcion
+            cell.textLabel?.text = "\(self.dataSource[indexPath.row].titulo!) (11)"
+            cell.detailTextLabel?.text = self.dataSource[indexPath.row].fecha
             return cell
-        
         
     }
     

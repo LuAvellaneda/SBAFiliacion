@@ -38,6 +38,7 @@ class LoginViewController: UIViewController,UICollectionViewDelegate,UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+        UserDefaults.standard.set(veterinarios[indexPath.row], forKey: "veterinario_id")
     }
     
 

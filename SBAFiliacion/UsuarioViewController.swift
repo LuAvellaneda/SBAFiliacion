@@ -10,6 +10,15 @@ import UIKit
 
 class UsuarioViewController: UIViewController {
 
+    @IBOutlet weak var imagen: UIImageView! {
+        didSet {
+            let nombreImagen = UserDefaults.standard.integer(forKey: "veterinario_id")
+            let image = UIImage(named: nombreImagen.description)
+            imagen.image = image
+            imagen.layer.masksToBounds = true
+            imagen.layer.cornerRadius = imagen.frame.size.width/2
+        }
+    }
     @IBAction func salir(_ sender: UIBarButtonItem) {
         //dismiss(animated: true, completion: nil)
         UserDefaults.standard.set(false, forKey: "userLogin")

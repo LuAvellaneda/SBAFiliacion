@@ -171,16 +171,22 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         super.viewDidAppear(animated)
         
         //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
-        let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
+        
+        //let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
+        let url = URL(string: "http://192.168.0.105/tablet-exportacion")!
         URLCache.shared.removeAllCachedResponses()
         
+        let veterinario_id = UserDefaults.standard.integer(forKey: "veterinario_id")
         
-        let parameters: Parameters = ["veterinario_id": 1]
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON { (response) in
+        let parameters: Parameters = ["veterinario_id": veterinario_id]
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { (response) in
             
+            print(response)
             if let result = response.result.value {
                 
                 let json = result as! Dictionary<String,Any>
+                
+                
                 
                 let tarea = json["tarea"] as! [[String : Any]]
                 
