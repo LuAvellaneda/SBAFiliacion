@@ -101,6 +101,8 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
         
         self.webView = WKWebView(frame: self.view.bounds, configuration: config)
         webView.uiDelegate = self
+        webView.scrollView.bounces = false
+        webView.allowsBackForwardNavigationGestures = false
         
         self.view.addSubview(webView)
         
@@ -111,6 +113,8 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
         webView.load(request)
         
     }
+    
+    
     
     func base64Convert(base64String: String?) -> UIImage{
         if (base64String?.isEmpty)! {

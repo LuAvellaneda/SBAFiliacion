@@ -10,7 +10,12 @@
 <style>
     * {
         font-family: 'Oswald', sans-serif;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
     }
+.estado-borrando {
+    background-color:rgba(255, 0, 0, 0.507) !important;
+}
 
 .btn-guardar {
     padding:5px;
@@ -88,13 +93,16 @@ var action = "draw";
 var raster;
 var raster_img;
 var colorActivo = "red";
-var strockActivo = 3;
+var strockActivo = 1;
 var canvasExport;
 var projectExport;
-
+var consola;
+var borrando = false;
 
 window.onload = function() {
     
+    //consola = document.getElementById("consola");
+
 	canvas = document.getElementById('myCanvas');
     
     //CANVAS EXPORT
@@ -105,7 +113,6 @@ window.onload = function() {
     raster_img = new Raster(plantilla,new Point(3056/4, 1761/4));
     
     
-    
     //INIT
 	paper.setup(canvas);
     raster = new Raster(plantilla,new Point(3056/4, 1761/4));
@@ -114,6 +121,7 @@ window.onload = function() {
         paper.importJSON(trazo);
         view.update();
     }
+
     
     //view.zoom = 0.35;
     
@@ -135,9 +143,51 @@ window.onload = function() {
 	canvas.addEventListener("touchend",endHandler,false);
 
 	var tool = new Tool();
-    
+
 	tool.onMouseDown = function(event) {
 
+        /*
+        var items  = paper.project.getItems({
+                                        class: Path
+                                        });
+        items.forEach(function(item) {
+                
+                if (item.contains(event.point)) {
+                    item.fillColor = 'red';
+                }
+        });
+        */
+
+        if(borrando) {
+
+            var hitOptions = {
+                fill: true,
+                stroke: true,
+                tolerance: 7
+            };
+
+            var item = project.hitTest(event.point,hitOptions);
+
+            if(item != null && item.item.className == "Path") {
+                
+                item.item.remove();
+                
+
+            }
+
+            return false;
+        }
+
+        //consola.innerHTML = view.projectToView(event.point);
+
+        /*
+        var nPoint = view.projectToView(event.point);
+        if(nPoint.x > 800) {
+            return false;
+        }
+        */
+
+        /*
         var hitOptions = {
             fill: true,
             stroke: true,
@@ -168,11 +218,48 @@ window.onload = function() {
                 
             }
         }
+        */
+
+        if(action == "draw"){
+            
+            path = new Path();
+            path.strokeColor = colorActivo;
+            path.blendMode = 'normal';
+            path.strokeWidth = strockActivo;
+            path.strokeCap = 'round';
+            
+        }
 
 	}
 
 	tool.onMouseDrag = function(event) {
-        
+        /*
+        var nPoint = view.projectToView(event.point);
+        if(nPoint.x > 800) {
+            
+            return false;
+        }
+        */
+        if(borrando) {
+
+            var hitOptions = {
+                fill: true,
+                stroke: true,
+                tolerance: 7
+            };
+
+            var item = project.hitTest(event.point,hitOptions);
+
+            if(item != null && item.item.className == "Path") {
+                
+                item.item.remove();
+                
+
+            }
+
+            return false;
+        }
+
 		if(action == "draw"){
 			path.add(event.point);
 		}
@@ -198,6 +285,7 @@ window.onload = function() {
 
 function startHandler(event){
     
+    //consola.innerHTML = event.targetTouches.length;
 	if(event.targetTouches.length == 2){
 
 		var p1 = event.targetTouches[0];
@@ -209,7 +297,7 @@ function startHandler(event){
 		medio =  view.viewToProject(medio);
 		action = "zoom";
 
-	}
+    }
 
 }
 
@@ -218,7 +306,7 @@ function startHandler(event){
 function moveHandler(event){
 	event.preventDefault();
 	var zoom = false;
-
+    
 	if(event.targetTouches.length == 2){
 
 
@@ -229,7 +317,7 @@ function moveHandler(event){
         
         
         
-		zoomScale = zoomScale * 0.3;
+		zoomScale = zoomScale * 0.9;
         
 		if( lastZoomScale ) {
 		   zoom = zoomScale - lastZoomScale;
@@ -263,9 +351,9 @@ function moveHandler(event){
         
         view.zoom = total;
         view.center = view.center.add(a).add(offset);
-        
 
-	}
+    }
+    
 
 }
 
@@ -358,6 +446,19 @@ function changeStroke(stroke){
 }
 
 function borrar() {
+    
+    var barra = document.getElementById("barra");
+
+    if(borrando){
+        borrando = false;
+        barra.classList.remove('estado-borrando');
+        
+    } else {
+        borrando = true;
+        barra.classList.add('estado-borrando');
+    }
+
+    /*
     var items  = paper.project.getItems({
                                         selected: true,
                                         class: Path
@@ -365,6 +466,7 @@ function borrar() {
     items.forEach(function(item) {
             item.remove();
     });
+    */
 }
     
 
@@ -373,20 +475,21 @@ function borrar() {
 </head>
 
 <body style="padding:0; margin:0">
-    <div style="position:absolute; width:100%; height:40px; background-color:rgb(255,255,255); z-index:99; border-bottom:1px solid #f1f1f1">
+    <div id="barra" style="position:absolute; width:100%; height:40px; background-color:rgba(255, 255, 255, 0.9); z-index:99; border-bottom:1px solid #f1f1f1">
         <a href="javascript:exportar()" class="btn-guardar exportar">GUARDAR</a>
         <a href="javascript:changeColor('red')" class="btn-color red activo" id="red"></a>
         <a href="javascript:changeColor('blue')" class="btn-color blue" id="blue"></a>
         <a href="javascript:changeColor('green')" class="btn-color green" id="green"></a>
         
-        <a href="javascript:changeStroke(3)" class="btn-stroke sn activo" id="s-3">|</a>
-        <a href="javascript:changeStroke(5)" class="btn-stroke sm" id="s-5">||</a>
-        <a href="javascript:changeStroke(7)" class="btn-stroke sa" id="s-7">|||</a>
-        <a href="javascript:borrar()" class="btn-borrar" style="margin-left:20px"><img src="trash-solid.svg" width="25"></a>
-        <span class="consola"></span>
+        <a href="javascript:changeStroke(1)" class="btn-stroke sn activo" id="s-1">|</a>
+        <a href="javascript:changeStroke(3)" class="btn-stroke sm" id="s-3">||</a>
+        <a href="javascript:changeStroke(5)" class="btn-stroke sa" id="s-5">|||</a>
+        <a href="javascript:borrar()" class="btn-borrar" style="margin-left:20px;"><img src="trash-solid.svg" width="20" style="margin-top:7px"></a>
+        <!-- <span id = "consola" class="consola"></span> -->
         
     </div>
     
+    <!-- <div style="right:0; position:absolute; background-color:rgba(0, 0, 0, 0.123); width:200px; height:100%;z-index: 50" id="apoyo"></div>-->
     <canvas resize id="myCanvas" style="width:100%; height:100%; position:absolute; z-index:1; border:0 "></canvas>
 </body>
 </html>
