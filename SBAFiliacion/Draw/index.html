@@ -98,10 +98,11 @@ var canvasExport;
 var projectExport;
 var consola;
 var borrando = false;
+var myInterval;
 
 window.onload = function() {
     
-    //consola = document.getElementById("consola");
+    consola = document.getElementById("consola");
 
 	canvas = document.getElementById('myCanvas');
     
@@ -146,6 +147,8 @@ window.onload = function() {
 
 	tool.onMouseDown = function(event) {
 
+        myVar = setInterval(refill, 2000);
+
         /*
         var items  = paper.project.getItems({
                                         class: Path
@@ -157,6 +160,7 @@ window.onload = function() {
                 }
         });
         */
+
 
         if(borrando) {
 
@@ -278,8 +282,25 @@ window.onload = function() {
 			
 		}
 
+
+
 	}
 
+}
+
+function refill(event){
+
+    clearInterval(myInterval);
+
+    var items  = paper.project.getItems({
+                                        class: Path
+                                        });
+    items.forEach(function(item) {
+            
+            if (item.contains(event.point)) {
+                item.fillColor = 'red';
+            }
+    });
 }
 
 
@@ -485,11 +506,10 @@ function borrar() {
         <a href="javascript:changeStroke(3)" class="btn-stroke sm" id="s-3">||</a>
         <a href="javascript:changeStroke(5)" class="btn-stroke sa" id="s-5">|||</a>
         <a href="javascript:borrar()" class="btn-borrar" style="margin-left:20px;"><img src="trash-solid.svg" width="20" style="margin-top:7px"></a>
-        <!-- <span id = "consola" class="consola"></span> -->
+        <span id = "consola" class="consola"></span>
         
     </div>
     
-    <!-- <div style="right:0; position:absolute; background-color:rgba(0, 0, 0, 0.123); width:200px; height:100%;z-index: 50" id="apoyo"></div>-->
     <canvas resize id="myCanvas" style="width:100%; height:100%; position:absolute; z-index:1; border:0 "></canvas>
 </body>
 </html>
