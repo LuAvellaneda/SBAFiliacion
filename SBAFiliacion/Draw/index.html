@@ -147,7 +147,7 @@ window.onload = function() {
 
 	tool.onMouseDown = function(event) {
 
-        myVar = setInterval(refill, 2000);
+        myInterval = setInterval( function() { refill(event); }, 2000);
 
         /*
         var items  = paper.project.getItems({
@@ -237,6 +237,9 @@ window.onload = function() {
 	}
 
 	tool.onMouseDrag = function(event) {
+        
+        clearInterval(myInterval);
+
         /*
         var nPoint = view.projectToView(event.point);
         if(nPoint.x > 800) {
@@ -272,6 +275,7 @@ window.onload = function() {
     
 	tool.onMouseUp = function(event) {
         
+        clearInterval(myInterval);
 		if(action == "draw"){
             if(path){
                 path.simplify();
@@ -290,7 +294,7 @@ window.onload = function() {
 
 function refill(event){
 
-    clearInterval(myInterval);
+    //clearInterval(myInterval);
 
     var items  = paper.project.getItems({
                                         class: Path

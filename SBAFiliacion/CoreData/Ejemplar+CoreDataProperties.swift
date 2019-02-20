@@ -1,9 +1,8 @@
 //
 //  Ejemplar+CoreDataProperties.swift
-//  SBAFiliacion
+//  
 //
-//  Created by Lukas on 09/01/2019.
-//  Copyright © 2019 Lucas Avellaneda. All rights reserved.
+//  Created by Lukas on 20/02/2019.
 //
 //
 
@@ -28,6 +27,7 @@ extension Ejemplar {
     @NSManaged public var manual: Bool
     @NSManaged public var mes: String?
     @NSManaged public var microchip: Int64
+    @NSManaged public var modificado: NSDate?
     @NSManaged public var muerto: Bool
     @NSManaged public var nombre: String?
     @NSManaged public var nota: String?
@@ -37,7 +37,7 @@ extension Ejemplar {
     @NSManaged public var sexo: String?
     @NSManaged public var trazo: String?
     @NSManaged public var visto: Bool
-    @NSManaged public var modificado: NSDate?
+    @NSManaged public var visto_no: Bool
     @NSManaged public var ubicacion: Ubicacion?
 
 }

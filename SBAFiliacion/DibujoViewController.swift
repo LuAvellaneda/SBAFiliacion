@@ -60,8 +60,6 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
         
         super.viewDidLoad()
         
-        
-        
         let trazo = ejemplar?.trazo
         
         let preferences = WKPreferences()

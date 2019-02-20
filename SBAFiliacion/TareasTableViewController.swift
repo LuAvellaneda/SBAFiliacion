@@ -58,10 +58,20 @@ class TareasTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let ubicaciones:[Ubicacion] = self.dataSource[indexPath.row].ubicacion?.allObjects as! [Ubicacion]
+        
+        var lugares = [String]()
+        ubicaciones.forEach { (ubicacion) in
+            lugares.append(ubicacion.titulo ?? "Sin data")
+        }
+        
+        let lugares_string = lugares.joined(separator: " - ")
+        
        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "\(self.dataSource[indexPath.row].titulo!) (11)"
-            cell.detailTextLabel?.text = self.dataSource[indexPath.row].fecha
+            cell.textLabel?.text = "\(self.dataSource[indexPath.row].titulo!)"
+            cell.detailTextLabel?.text = "\(lugares_string)  (\(self.dataSource[indexPath.row].fecha!))"
             return cell
         
     }

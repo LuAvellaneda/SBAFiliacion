@@ -31,7 +31,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         }
         
         if(section == 1 && ejemplar != nil) {
-            return 5
+            return 6
         }
         
         if(section == 2 && ejemplar != nil) {
@@ -130,6 +130,16 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         }
         
         if indexPath.row == 4 && indexPath.section == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
+            cell.id = "no-visto"
+            cell.titulo = "No visto"
+            cell.callBack = setCambios(id:val:)
+            cell.valor = ejemplar?.visto_no
+            
+            return cell
+        }
+        
+        if indexPath.row == 5 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "nota", for: indexPath) as! NotaTableViewCell
             cell.nota = ejemplar?.nota ?? "Sin nota"
             return cell
@@ -215,6 +225,12 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if( id == "muerto") {
             ejemplar.muerto = val
+            ejemplar.modificado = date
+            db.save()
+        }
+        
+        if( id == "no-visto") {
+            ejemplar.visto_no = val
             ejemplar.modificado = date
             db.save()
         }
@@ -370,12 +386,15 @@ extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionV
     {
         
         if ((collectionView as? LugarUICollectionView) != nil) {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! InfoLugarCollectionViewCell
             
             cell.infoLabel.text = info[indexPath.row]
             
             return cell
+            
         } else {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "item", for: indexPath) as! EjemplarFichaCollectionViewCell
             
             let data = dataSource[indexPath.row]
@@ -383,6 +402,7 @@ extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionV
             cell.info = data.value
             
             return cell
+            
         }	
         
     }
