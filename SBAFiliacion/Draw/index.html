@@ -38,7 +38,7 @@
     display:inline-block;
     border:2px solid white;
     margin-top:8px;
-    margin-left:5px;
+    margin-left:8px;
     float:left;
 }
 
@@ -50,7 +50,7 @@
     display:inline-block;
     border:1px dotted white;
     margin-top:8px;
-    margin-left:5px;
+    margin-left:8px;
     text-align:center;
     font-size:16px;
     text-decoration:none;
@@ -147,7 +147,7 @@ window.onload = function() {
 
 	tool.onMouseDown = function(event) {
 
-        myInterval = setInterval( function() { refill(event); }, 2000);
+        myInterval = setInterval( function() { refill(event); }, 1500);
 
         /*
         var items  = paper.project.getItems({
@@ -465,6 +465,7 @@ function changeStroke(stroke){
     aca[0].classList.remove('activo');
     aca[1].classList.remove('activo');
     aca[2].classList.remove('activo');
+    aca[3].classList.remove('activo');
     
     var nuevoActivo = document.querySelector('#s-'+stroke);
     nuevoActivo.classList.add('activo');
@@ -506,9 +507,10 @@ function borrar() {
         <a href="javascript:changeColor('blue')" class="btn-color blue" id="blue"></a>
         <a href="javascript:changeColor('green')" class="btn-color green" id="green"></a>
         
-        <a href="javascript:changeStroke(1)" class="btn-stroke sn activo" id="s-1">|</a>
-        <a href="javascript:changeStroke(3)" class="btn-stroke sm" id="s-3">||</a>
-        <a href="javascript:changeStroke(5)" class="btn-stroke sa" id="s-5">|||</a>
+        <a href="javascript:changeStroke(1)" class="btn-stroke sn activo" id="s-1">1</a>
+        <a href="javascript:changeStroke(3)" class="btn-stroke sm" id="s-3">2</a>
+        <a href="javascript:changeStroke(5)" class="btn-stroke sa" id="s-5">3</a>
+        <a href="javascript:changeStroke(8)" class="btn-stroke sb" id="s-8">4</a>
         <a href="javascript:borrar()" class="btn-borrar" style="margin-left:20px;"><img src="trash-solid.svg" width="20" style="margin-top:7px"></a>
         <span id = "consola" class="consola"></span>
         

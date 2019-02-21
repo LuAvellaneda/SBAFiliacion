@@ -122,13 +122,13 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
                 cell.textLabel?.text = "TERMINADO"
             } else {
                 let data = revisar[indexPath.row]
-                cell.textLabel?.text = "\(data.nombre!) (2015 M,Z)"
+                cell.textLabel?.text = "\(data.nombre!)"
                 cell.detailTextLabel?.text = data.madre
             }
             
         } else {
             let data = revisados[indexPath.row]
-            cell.textLabel?.text = "\(data.nombre!) (2015 M,Z)"
+            cell.textLabel?.text = "\(data.nombre!)"
             cell.detailTextLabel?.text = data.madre
         }
         

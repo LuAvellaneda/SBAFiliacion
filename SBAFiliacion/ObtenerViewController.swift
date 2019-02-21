@@ -72,6 +72,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                     _ejemplar.pelo = ejemplar["pelo"] as? String
                     _ejemplar.id_interno = UUID().uuidString
                     _ejemplar.muerto = false
+                    _ejemplar.haras_texto = ejemplar["haras_nacimiento"] as? String
                     ubicacion.addToEjemplar(_ejemplar)
                 })
                 

@@ -182,7 +182,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     var ejemplar: Ejemplar! {
         didSet {
             
-            navigationItem.title = ejemplar.madre
+            navigationItem.title = ejemplar.nombre
             
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
             dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
@@ -204,6 +204,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     @IBOutlet weak var fechaModificadoLabel: UILabel!
     @IBOutlet weak var por: UILabel!
+    @IBOutlet weak var criador: UILabel!
     
     @IBAction func abrirCamara(_ sender: UIBarButtonItem) {
     
@@ -252,6 +253,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
             //Info Ejemplar
             por.text? = (ejemplar?.por) ?? "SI VES ESTO... ESTA MAL!"
+            criador.text? = (ejemplar?.haras_texto) ?? "SI VES ESTO... ESTA MAL!"
             
             //Fotos
             let cantidadFotos = (ejemplar?.fotos)!

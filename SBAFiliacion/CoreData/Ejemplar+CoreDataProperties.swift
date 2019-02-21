@@ -2,7 +2,7 @@
 //  Ejemplar+CoreDataProperties.swift
 //  
 //
-//  Created by Lukas on 20/02/2019.
+//  Created by Lukas on 21/02/2019.
 //
 //
 
@@ -38,6 +38,7 @@ extension Ejemplar {
     @NSManaged public var trazo: String?
     @NSManaged public var visto: Bool
     @NSManaged public var visto_no: Bool
+    @NSManaged public var haras_texto: String?
     @NSManaged public var ubicacion: Ubicacion?
 
 }
