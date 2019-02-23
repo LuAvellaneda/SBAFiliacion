@@ -173,8 +173,8 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
         //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
         
-        //let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
-        let url = URL(string: "http://192.168.0.105/tablet-exportacion")!
+        let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
+        //let url = URL(string: "http://192.168.0.105/tablet-exportacion")!
         URLCache.shared.removeAllCachedResponses()
         
         let veterinario_id = UserDefaults.standard.integer(forKey: "veterinario_id")

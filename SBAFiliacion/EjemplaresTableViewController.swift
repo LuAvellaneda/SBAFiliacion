@@ -47,7 +47,11 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             
         }
     }
-    var ubicacion: Ubicacion?
+    var ubicacion: Ubicacion? {
+        didSet {
+            navigationItem.prompt = ubicacion?.titulo
+        }
+    }
     var ejemplarSeleccionado: Ejemplar?
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,6 +63,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "actualizarListadoEjemplares"), object: nil, queue: OperationQueue.main) { (notification) in
             self.dataSource = self.revisados + self.revisar

@@ -59,6 +59,14 @@ class EntregarViewController: UIViewController {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
                         //debugPrint(response)
+                        
+                        if let err = response.error{
+                            let alert = UIAlertController(title: "Error", message: "Sin internet", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Entendido", style: .default, handler: nil))
+                            self.present(alert, animated: true)
+                            return
+                        }
+                        
                         print(index)
                         if ( self.ejemplares.count > ( self.index + 1 )) {
                             self.index = self.index + 1
@@ -77,6 +85,10 @@ class EntregarViewController: UIViewController {
                         progress in
                         //print(progress.fractionCompleted)
                     })
+                    
+                    
+                    
+                    
                 case .failure(let encodingError):
                     //print(encodingError)
                     print("error")

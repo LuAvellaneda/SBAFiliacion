@@ -201,6 +201,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     @IBOutlet weak var fichaTableView: UITableView!
     @IBOutlet weak var fichaImagen: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var fechaModificadoLabel: UILabel!
     @IBOutlet weak var por: UILabel!
@@ -286,6 +287,13 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        scrollView.delegate = self
+        scrollView.maximumZoomScale = 3
+    }
+    
+    override func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.fichaImagen
     }
 
     override func didReceiveMemoryWarning() {
