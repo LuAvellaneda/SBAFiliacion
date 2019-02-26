@@ -21,6 +21,7 @@
 		80115A4321C186F800B72F15 /* VeterinarioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80115A4221C186F700B72F15 /* VeterinarioCollectionViewCell.swift */; };
 		8016D31B21D689880099F902 /* trash-solid.svg in Resources */ = {isa = PBXBuildFile; fileRef = 8016D31A21D689870099F902 /* trash-solid.svg */; };
 		8020E6B221CD5DF000087212 /* ObtenerDetalleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8020E6B121CD5DF000087212 /* ObtenerDetalleTableViewController.swift */; };
+		803964F32225925600E324D2 /* EjemplaresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803964F22225925600E324D2 /* EjemplaresTableViewCell.swift */; };
 		806AFE2821C40B75001AAAF8 /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */; };
 		806AFE2C21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */; };
 		806CB61421DD21BC002AB26C /* EntregarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CB61321DD21BC002AB26C /* EntregarViewController.swift */; };
@@ -77,6 +78,7 @@
 		80115A4221C186F700B72F15 /* VeterinarioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeterinarioCollectionViewCell.swift; sourceTree = "<group>"; };
 		8016D31A21D689870099F902 /* trash-solid.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "trash-solid.svg"; sourceTree = "<group>"; };
 		8020E6B121CD5DF000087212 /* ObtenerDetalleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerDetalleTableViewController.swift; sourceTree = "<group>"; };
+		803964F22225925600E324D2 /* EjemplaresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjemplaresTableViewCell.swift; sourceTree = "<group>"; };
 		806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
 		806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoEjemplarTableViewController.swift; sourceTree = "<group>"; };
 		806CB61321DD21BC002AB26C /* EntregarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntregarViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				A0CC541321D027FC00B48252 /* TareasTableViewController.swift */,
 				A0CC541521D02E0E00B48252 /* LugaresTableViewController.swift */,
 				A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */,
+				803964F22225925600E324D2 /* EjemplaresTableViewCell.swift */,
 				806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */,
 				A0641CC021CC827B002CE3FB /* TareaTableViewCell.swift */,
 				80115A4221C186F700B72F15 /* VeterinarioCollectionViewCell.swift */,
@@ -419,6 +422,7 @@
 				A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */,
 				A0E79C66214DC922004828CF /* EjemplarFichaCollectionViewCell.swift in Sources */,
 				A0E79C69214DF528004828CF /* EjemplarFotoTableViewCell.swift in Sources */,
+				803964F32225925600E324D2 /* EjemplaresTableViewCell.swift in Sources */,
 				806AFE2C21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift in Sources */,
 				A0641CBF21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift in Sources */,
 				A0979BA1211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift in Sources */,

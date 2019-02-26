@@ -12,10 +12,6 @@ import Alamofire
 
 class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-    @IBAction func editarOrden(_ sender: UIBarButtonItem) {
-        tableView.isEditing = true
-    }
-    
     @IBAction func salir(_ sender : UIStoryboardSegue) {
         print("salir")
     }
@@ -46,7 +42,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             if(revisados.count > 0) {
                 secciones.append("Revisados")
             }
-           
             
         }
     }
@@ -74,24 +69,23 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         }
         
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
+
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        
         return secciones.count
     }
     
@@ -121,40 +115,42 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EjemplaresTableViewCell
         
         if(indexPath.section == 0) {
             
             if revisar.count == 0 {
-                cell = tableView.dequeueReusableCell(withIdentifier: "cellTerminado", for: indexPath)
-                cell.textLabel?.text = "TERMINADO"
+                //cell = tableView.dequeueReusableCell(withIdentifier: "cellTerminado", for: indexPath)
+                //cell.textLabel?.text = "TERMINADO"
             } else {
                 let data = revisar[indexPath.row]
-                cell.textLabel?.text = "\(data.nombre!)"
-                cell.detailTextLabel?.text = data.madre
+                cell.ejemplarLabel?.text = "\(data.nombre!)"
+                //cell.detailTextLabel?.text = data.madre
             }
             
         } else {
             let data = revisados[indexPath.row]
-            cell.textLabel?.text = "\(data.nombre!)"
-            cell.detailTextLabel?.text = data.madre
+            cell.ejemplarLabel?.text = "\(data.nombre!)"
+            //cell.detailTextLabel?.text = data.madre
+            
+            if(data.muerto) {
+                cell.ejemplarLabel.textColor = UIColor.red
+            }
         }
-        
-        //cell.backgroundColor = UIColor.green
         
         return cell
     }
     
 
-    
+    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
-    }
+    }*/
     
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
@@ -168,6 +164,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+ */
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Eliminar"
@@ -176,19 +173,19 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     
 
-    
+    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-    }
+    }*/
  
 
-    
+    /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
+    }*/
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -218,7 +215,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             
             //let fichaViewController = segue.destination as! FichaViewController
             //fichaViewController.ejemplar = ejemplarSeleccionado
-            if let vc = segue.destination.children[0] as? EjemplarTableViewController {
+            //if let vc = segue.destination.children[0] as? EjemplarTableViewController {
+            if let vc = segue.destination as? EjemplarTableViewController {
                 vc.ejemplar = ejemplarSeleccionado
             }
         }
