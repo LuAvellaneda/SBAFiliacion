@@ -26,6 +26,7 @@
 		806AFE2C21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */; };
 		806CB61421DD21BC002AB26C /* EntregarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CB61321DD21BC002AB26C /* EntregarViewController.swift */; };
 		80C46F0121B705CE002AAC80 /* fichanueva.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 80C46F0021B705CE002AAC80 /* fichanueva.jpg */; };
+		80D8FC1A2226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D8FC192226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift */; };
 		A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019952D2122541600801DF7 /* ObtenerViewController.swift */; };
 		A030E76921287ABC00F455E5 /* EjemplaresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */; };
 		A03A9540212B0B7A00802E08 /* EjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A953F212B0B7A00802E08 /* EjemplarTableViewController.swift */; };
@@ -83,6 +84,7 @@
 		806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoEjemplarTableViewController.swift; sourceTree = "<group>"; };
 		806CB61321DD21BC002AB26C /* EntregarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntregarViewController.swift; sourceTree = "<group>"; };
 		80C46F0021B705CE002AAC80 /* fichanueva.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fichanueva.jpg; sourceTree = "<group>"; };
+		80D8FC192226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarEjemplarTableViewController.swift; sourceTree = "<group>"; };
 		A019952D2122541600801DF7 /* ObtenerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerViewController.swift; sourceTree = "<group>"; };
 		A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjemplaresTableViewController.swift; sourceTree = "<group>"; };
 		A03A953F212B0B7A00802E08 /* EjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjemplarTableViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */,
 				803964F22225925600E324D2 /* EjemplaresTableViewCell.swift */,
 				806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */,
+				80D8FC192226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift */,
 				A0641CC021CC827B002CE3FB /* TareaTableViewCell.swift */,
 				80115A4221C186F700B72F15 /* VeterinarioCollectionViewCell.swift */,
 				A0E417D321C1684800DFA132 /* MainNavigationController.swift */,
@@ -419,6 +422,7 @@
 				A0DCA95F21C857EA00B8E51D /* NotaTableViewCell.swift in Sources */,
 				806AFE2821C40B75001AAAF8 /* FormTableViewCell.swift in Sources */,
 				A0CE13F2212F91B100CD353C /* DibujoViewController.swift in Sources */,
+				80D8FC1A2226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift in Sources */,
 				A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */,
 				A0E79C66214DC922004828CF /* EjemplarFichaCollectionViewCell.swift in Sources */,
 				A0E79C69214DF528004828CF /* EjemplarFotoTableViewCell.swift in Sources */,

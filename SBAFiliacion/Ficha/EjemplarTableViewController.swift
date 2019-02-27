@@ -72,6 +72,9 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 && indexPath.section == 0 {
+            
+            print("cellForRowAt")
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "ficha", for: indexPath) as! EjemplarFichaTableViewCell
             
             let width = (view.frame.size.width - 30) / 4
@@ -182,6 +185,8 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     var ejemplar: Ejemplar! {
         didSet {
             
+            dataSource = [FichaDetalle]()
+            
             navigationItem.title = ejemplar.nombre
             
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
@@ -207,6 +212,11 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var por: UILabel!
     @IBOutlet weak var criador: UILabel!
     
+    @IBAction func editarButton(_ sender: UIBarButtonItem) {
+        
+        performSegue(withIdentifier: "ShowEditar", sender: nil)
+        
+    }
     @IBAction func abrirCamara(_ sender: UIBarButtonItem) {
     
         imagePicker = UIImagePickerController()
@@ -243,6 +253,8 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func viewWillAppear(_ animated: Bool) {
         
+        tableView.reloadData()
+        
         if let ejemplar_id = ejemplar?.id_interno {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
             let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -270,7 +282,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
             //Data Ficha
             updateFecha()
-            
         }
         
     }
@@ -285,11 +296,13 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         scrollView.delegate = self
         scrollView.maximumZoomScale = 3
+        
     }
     
     override func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -339,6 +352,15 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
         }
         
+        if segue.identifier == "ShowEditar" {
+            let editarEjemplarTableViewController = segue.destination as! EditarEjemplarTableViewController
+            editarEjemplarTableViewController.ejemplar = self.ejemplar
+            editarEjemplarTableViewController.callBack = { nejemplar in
+                self.ejemplar = nejemplar
+            }
+                
+            
+        }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

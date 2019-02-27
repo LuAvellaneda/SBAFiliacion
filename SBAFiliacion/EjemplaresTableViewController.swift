@@ -69,7 +69,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         }
         
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
+        // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -164,13 +164,11 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
- */
+    */
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Eliminar"
     }
-    
-    
     
 
     /*

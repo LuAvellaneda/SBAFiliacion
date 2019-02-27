@@ -2,7 +2,7 @@
 //  Ejemplar+CoreDataProperties.swift
 //  
 //
-//  Created by Lukas on 21/02/2019.
+//  Created by Lukas on 27/02/2019.
 //
 //
 
@@ -21,6 +21,7 @@ extension Ejemplar {
     @NSManaged public var dia: String?
     @NSManaged public var fotos: Int16
     @NSManaged public var haras: Int32
+    @NSManaged public var haras_texto: String?
     @NSManaged public var id: Int64
     @NSManaged public var id_interno: String?
     @NSManaged public var madre: String?
@@ -38,7 +39,8 @@ extension Ejemplar {
     @NSManaged public var trazo: String?
     @NSManaged public var visto: Bool
     @NSManaged public var visto_no: Bool
-    @NSManaged public var haras_texto: String?
+    @NSManaged public var pelo_id: Int16
+    @NSManaged public var sexo_id: Int16
     @NSManaged public var ubicacion: Ubicacion?
 
 }
