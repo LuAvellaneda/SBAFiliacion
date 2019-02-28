@@ -22,7 +22,7 @@ struct FichaDetalle{
 
 class EjemplarTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    let info = ["Addati Juan Carlos. Tel:02211155764789 / 422-5511","Calle 115 Entre 40 y 41 Porton Negro - La Plata", "Ingresado el 28/11/2018","Corre:NO","Lorem ipsum dolor sit er elit lamet, consectetaru"]
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -73,11 +73,9 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if indexPath.row == 0 && indexPath.section == 0 {
             
-            print("cellForRowAt")
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "ficha", for: indexPath) as! EjemplarFichaTableViewCell
             
-            let width = (view.frame.size.width - 30) / 4
+            let width = (view.frame.size.width - 30) / 5
             let layout = cell.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             layout.itemSize = CGSize(width: width, height: 140)
             
@@ -87,7 +85,10 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         if indexPath.row == 1 && indexPath.section == 0 {
             //let cell = tableView.dequeueReusableCell(withIdentifier: "lugar", for: indexPath) as! LugarTableViewCell
             //return cell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "lugarbeta", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "lugarbeta", for: indexPath) as! LugarTableViewCell
+            cell.linea1?.text = "\(ejemplar.lugar_cuidador!). Tel: \(ejemplar.lugar_telefono!)"
+            cell.linea2?.text = "\(ejemplar.lugar_lugar!)"
+            cell.linea3?.text = "\(ejemplar.lugar_observacion ?? "Sin observación")"
             
             return cell
             
@@ -166,7 +167,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
                 cell.collectionView.dataSource = self
                 cell.collectionView.delegate = self
                 cell.collectionView.reloadData()
-                //cell.collectionView.isScrollEnabled = false
             }
             
         }
@@ -194,6 +194,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             dataSource.append(FichaDetalle("Raza", ejemplar.raza ?? "Sin Asignar","raza2"))
             dataSource.append(FichaDetalle("Microchip",ejemplar.microchip.description,"microchip"))
             dataSource.append(FichaDetalle("C", ejemplar.anio,"calendario"))
+            
             
         }
     }
@@ -244,6 +245,12 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if( id == "no-visto") {
             ejemplar.visto_no = val
+            ejemplar.modificado = date
+            db.save()
+        }
+        
+        if( id == "destetado") {
+            ejemplar.destetado = val
             ejemplar.modificado = date
             db.save()
         }
@@ -408,35 +415,20 @@ extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionV
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return dataSource.count
-        
-        if ((collectionView as? LugarUICollectionView) != nil) {
-            return info.count
-        }
+
         return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         
-        if ((collectionView as? LugarUICollectionView) != nil) {
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! InfoLugarCollectionViewCell
-            
-            cell.infoLabel.text = info[indexPath.row]
-            
-            return cell
-            
-        } else {
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "item", for: indexPath) as! EjemplarFichaCollectionViewCell
-            
-            let data = dataSource[indexPath.row]
-            cell.iconoString = data.icono
-            cell.info = data.value
-            
-            return cell
-            
-        }	
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "item", for: indexPath) as! EjemplarFichaCollectionViewCell
+        
+        let data = dataSource[indexPath.row]
+        cell.iconoString = data.icono
+        cell.info = data.value
+        
+        return cell
         
     }
     

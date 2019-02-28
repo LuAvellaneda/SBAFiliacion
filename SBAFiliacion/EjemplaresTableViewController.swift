@@ -24,7 +24,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         didSet {
             
             dataSource.sort(by: { (first: Ejemplar, second: Ejemplar) -> Bool in
-                first.nombre! < second.nombre!
+                first.lugar_lugar! < second.lugar_lugar!
             })
             
             revisar = dataSource.filter { (ejemplar) -> Bool in
@@ -122,20 +122,25 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         if(indexPath.section == 0) {
             
             if revisar.count == 0 {
-                //cell = tableView.dequeueReusableCell(withIdentifier: "cellTerminado", for: indexPath)
+                //cell = tableView.dequeueReusableCell(withIdentifier: "cellTerminado", for: indexPath) as!
                 //cell.textLabel?.text = "TERMINADO"
             } else {
                 let data = revisar[indexPath.row]
                 cell.ejemplarLabel?.text = "\(data.nombre!)"
+                cell.lugarLabel?.text = data.lugar_lugar
+                cell.tipoLabel?.text = data.lugar_tipo
+                cell.correLabel?.text = "-"
                 //cell.detailTextLabel?.text = data.madre
             }
             
         } else {
             let data = revisados[indexPath.row]
             cell.ejemplarLabel?.text = "\(data.nombre!)"
+            cell.lugarLabel?.text = data.lugar_lugar
+            cell.tipoLabel?.text = data.lugar_tipo
+            cell.correLabel?.text = "-"
             //cell.detailTextLabel?.text = data.madre
             
-            print(data.muerto)
             
             if(data.muerto) {
                 cell.ejemplarLabel.textColor = UIColor.red

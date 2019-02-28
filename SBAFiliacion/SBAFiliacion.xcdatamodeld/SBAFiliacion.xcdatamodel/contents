@@ -9,6 +9,12 @@
         <attribute name="haras_texto" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id_interno" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lugar_corre" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lugar_cuidador" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lugar_lugar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lugar_observacion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lugar_telefono" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lugar_tipo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="madre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="manual" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="mes" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,6 +34,7 @@
         <attribute name="trazo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="visto" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="visto_no" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="trabajo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trabajo" inverseName="ejemplar" inverseEntity="Trabajo" syncable="YES"/>
         <relationship name="ubicacion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ubicacion" inverseName="ejemplar" inverseEntity="Ubicacion" syncable="YES"/>
     </entity>
     <entity name="Tarea" representedClassName=".Tarea" syncable="YES">
@@ -37,6 +44,15 @@
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ubicacion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ubicacion" inverseName="tarea" inverseEntity="Ubicacion" syncable="YES"/>
     </entity>
+    <entity name="Trabajo" representedClassName=".Trabajo" syncable="YES">
+        <attribute name="corre" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="cuidador" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lugar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="observacion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telefono" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ejemplar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ejemplar" inverseName="trabajo" inverseEntity="Ejemplar" syncable="YES"/>
+    </entity>
     <entity name="Ubicacion" representedClassName=".Ubicacion" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,8 +60,9 @@
         <relationship name="tarea" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tarea" inverseName="ubicacion" inverseEntity="Tarea" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Ejemplar" positionX="208.21875" positionY="3004.87109375" width="128" height="465"/>
+        <element name="Ejemplar" positionX="208.21875" positionY="3004.87109375" width="128" height="570"/>
         <element name="Tarea" positionX="-137.30078125" positionY="3003.26171875" width="128" height="118"/>
         <element name="Ubicacion" positionX="31.84375" positionY="3004" width="128" height="103"/>
+        <element name="Trabajo" positionX="36" positionY="3159" width="128" height="150"/>
     </elements>
 </model>

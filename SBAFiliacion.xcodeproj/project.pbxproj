@@ -26,6 +26,8 @@
 		806AFE2C21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */; };
 		806CB61421DD21BC002AB26C /* EntregarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CB61321DD21BC002AB26C /* EntregarViewController.swift */; };
 		80B7D75822281C6700D3D432 /* Ejemplar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7D75722281C6700D3D432 /* Ejemplar+CoreDataProperties.swift */; };
+		80B7D75B222829E700D3D432 /* Trabajo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7D759222829E700D3D432 /* Trabajo+CoreDataClass.swift */; };
+		80B7D75C222829E700D3D432 /* Trabajo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7D75A222829E700D3D432 /* Trabajo+CoreDataProperties.swift */; };
 		80C46F0121B705CE002AAC80 /* fichanueva.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 80C46F0021B705CE002AAC80 /* fichanueva.jpg */; };
 		80D8FC1A2226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D8FC192226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift */; };
 		A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019952D2122541600801DF7 /* ObtenerViewController.swift */; };
@@ -84,6 +86,8 @@
 		806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoEjemplarTableViewController.swift; sourceTree = "<group>"; };
 		806CB61321DD21BC002AB26C /* EntregarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntregarViewController.swift; sourceTree = "<group>"; };
 		80B7D75722281C6700D3D432 /* Ejemplar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		80B7D759222829E700D3D432 /* Trabajo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trabajo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		80B7D75A222829E700D3D432 /* Trabajo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trabajo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		80C46F0021B705CE002AAC80 /* fichanueva.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fichanueva.jpg; sourceTree = "<group>"; };
 		80D8FC192226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarEjemplarTableViewController.swift; sourceTree = "<group>"; };
 		A019952D2122541600801DF7 /* ObtenerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 		A0514D7721C06E1B0056AA8F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				80B7D759222829E700D3D432 /* Trabajo+CoreDataClass.swift */,
+				80B7D75A222829E700D3D432 /* Trabajo+CoreDataProperties.swift */,
 				80B7D75722281C6700D3D432 /* Ejemplar+CoreDataProperties.swift */,
 				A0641CBC21CC5CC9002CE3FB /* Ubicacion+CoreDataClass.swift */,
 				A0641CBD21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift */,
@@ -403,6 +409,7 @@
 				A04FCD55211F0DCB00FAFDF4 /* PersistenceManager.swift in Sources */,
 				A042C6502115D2FE00BB27F9 /* SBAFiliacion.xcdatamodeld in Sources */,
 				806CB61421DD21BC002AB26C /* EntregarViewController.swift in Sources */,
+				80B7D75C222829E700D3D432 /* Trabajo+CoreDataProperties.swift in Sources */,
 				A0CC541621D02E0E00B48252 /* LugaresTableViewController.swift in Sources */,
 				A0E32C3021D4544A002D09F1 /* LugarUICollectionView.swift in Sources */,
 				A0E79C5E214DC6C2004828CF /* EjemplarFichaTableViewCell.swift in Sources */,
@@ -426,6 +433,7 @@
 				A0E79C66214DC922004828CF /* EjemplarFichaCollectionViewCell.swift in Sources */,
 				A0E79C69214DF528004828CF /* EjemplarFotoTableViewCell.swift in Sources */,
 				803964F32225925600E324D2 /* EjemplaresTableViewCell.swift in Sources */,
+				80B7D75B222829E700D3D432 /* Trabajo+CoreDataClass.swift in Sources */,
 				806AFE2C21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift in Sources */,
 				A0641CBF21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift in Sources */,
 				A0979BA1211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift in Sources */,

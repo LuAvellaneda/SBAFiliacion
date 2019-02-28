@@ -44,6 +44,13 @@ extension Ejemplar {
     @NSManaged public var visto_no: Bool
     @NSManaged public var raza: String?
     @NSManaged public var raza_id: Int16
+    @NSManaged public var lugar_cuidador: String?
+    @NSManaged public var lugar_tipo: String?
+    @NSManaged public var lugar_telefono: String?
+    @NSManaged public var lugar_lugar: String?
+    @NSManaged public var lugar_corre: NSDate?
+    @NSManaged public var lugar_observacion: String?
     @NSManaged public var ubicacion: Ubicacion?
+    @NSManaged public var trabajo: Trabajo?
 
 }

@@ -11,6 +11,10 @@ import UIKit
 class EjemplaresTableViewCell: UITableViewCell {
 
     @IBOutlet weak var ejemplarLabel: UILabel!
+    @IBOutlet weak var lugarLabel: UILabel!
+    @IBOutlet weak var tipoLabel: UILabel!
+    @IBOutlet weak var correLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -73,6 +73,12 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                     _ejemplar.id_interno = UUID().uuidString
                     _ejemplar.muerto = false
                     _ejemplar.haras_texto = ejemplar["haras_nacimiento"] as? String
+                    _ejemplar.lugar_cuidador = ejemplar["cuidador"] as? String
+                    _ejemplar.lugar_telefono = ejemplar["telefono"] as? String
+                    _ejemplar.lugar_lugar = ejemplar["ubicacion"] as? String
+                    _ejemplar.lugar_tipo = ejemplar["tipo"] as? String
+                    _ejemplar.lugar_observacion = ejemplar["observacion"] as? String
+                    
                     ubicacion.addToEjemplar(_ejemplar)
                 })
                 
@@ -173,8 +179,8 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
         //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
         
-        let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
-        //let url = URL(string: "https://sistema.sba.com/tablet-exportacion")!
+        //let url = URL(string: "http://myproject.com.ar/jc/ejemplares.json")!
+        let url = URL(string: "http://sistema.sba.com/tablet-exportacion")!
         URLCache.shared.removeAllCachedResponses()
         
         let veterinario_id = UserDefaults.standard.integer(forKey: "veterinario_id")

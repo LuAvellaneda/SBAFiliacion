@@ -10,6 +10,9 @@ import UIKit
 
 class LugarTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var linea1: UILabel!
+    @IBOutlet weak var linea2: UILabel!
+    @IBOutlet weak var linea3: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

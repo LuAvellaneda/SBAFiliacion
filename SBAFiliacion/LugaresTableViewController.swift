@@ -19,6 +19,8 @@ class LugaresTableViewController: UITableViewController {
         }
     }
     
+    var tarea:Tarea?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +30,8 @@ class LugaresTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.prompt = tarea?.titulo!
     }
 
     // MARK: - Table view data source

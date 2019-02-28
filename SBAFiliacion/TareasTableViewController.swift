@@ -128,6 +128,7 @@ class TareasTableViewController: UITableViewController {
                 let ubicacion = tarea.ubicacion
                 let ubicaciones:[Ubicacion] = ubicacion?.allObjects as! [Ubicacion]
                 vc.lugares = ubicaciones
+                vc.tarea = tarea
             }
             
         }
