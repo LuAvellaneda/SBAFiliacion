@@ -78,6 +78,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.view.setNeedsDisplay()
+        self.view.setNeedsLayout()
         self.tableView.reloadData()
     }
 
@@ -132,6 +134,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             let data = revisados[indexPath.row]
             cell.ejemplarLabel?.text = "\(data.nombre!)"
             //cell.detailTextLabel?.text = data.madre
+            
+            print(data.muerto)
             
             if(data.muerto) {
                 cell.ejemplarLabel.textColor = UIColor.red

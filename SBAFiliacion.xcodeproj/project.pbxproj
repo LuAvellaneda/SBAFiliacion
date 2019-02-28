@@ -25,6 +25,7 @@
 		806AFE2821C40B75001AAAF8 /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */; };
 		806AFE2C21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */; };
 		806CB61421DD21BC002AB26C /* EntregarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806CB61321DD21BC002AB26C /* EntregarViewController.swift */; };
+		80B7D75822281C6700D3D432 /* Ejemplar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B7D75722281C6700D3D432 /* Ejemplar+CoreDataProperties.swift */; };
 		80C46F0121B705CE002AAC80 /* fichanueva.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 80C46F0021B705CE002AAC80 /* fichanueva.jpg */; };
 		80D8FC1A2226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D8FC192226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift */; };
 		A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019952D2122541600801DF7 /* ObtenerViewController.swift */; };
@@ -44,7 +45,6 @@
 		A0641CC121CC827B002CE3FB /* TareaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0641CC021CC827B002CE3FB /* TareaTableViewCell.swift */; };
 		A06971FE215061C200A75BE6 /* HarasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06971FD215061C200A75BE6 /* HarasTableViewController.swift */; };
 		A0979BA1211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */; };
-		A0979BA2211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */; };
 		A0CC541421D027FC00B48252 /* TareasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC541321D027FC00B48252 /* TareasTableViewController.swift */; };
 		A0CC541621D02E0E00B48252 /* LugaresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC541521D02E0E00B48252 /* LugaresTableViewController.swift */; };
 		A0CE13F2212F91B100CD353C /* DibujoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CE13F1212F91B100CD353C /* DibujoViewController.swift */; };
@@ -83,6 +83,7 @@
 		806AFE2721C40B75001AAAF8 /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
 		806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoEjemplarTableViewController.swift; sourceTree = "<group>"; };
 		806CB61321DD21BC002AB26C /* EntregarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntregarViewController.swift; sourceTree = "<group>"; };
+		80B7D75722281C6700D3D432 /* Ejemplar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		80C46F0021B705CE002AAC80 /* fichanueva.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fichanueva.jpg; sourceTree = "<group>"; };
 		80D8FC192226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarEjemplarTableViewController.swift; sourceTree = "<group>"; };
 		A019952D2122541600801DF7 /* ObtenerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		A0641CC021CC827B002CE3FB /* TareaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TareaTableViewCell.swift; sourceTree = "<group>"; };
 		A06971FD215061C200A75BE6 /* HarasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarasTableViewController.swift; sourceTree = "<group>"; };
 		A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ejemplar+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A0CC541321D027FC00B48252 /* TareasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TareasTableViewController.swift; sourceTree = "<group>"; };
 		A0CC541521D02E0E00B48252 /* LugaresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LugaresTableViewController.swift; sourceTree = "<group>"; };
 		A0CE13F1212F91B100CD353C /* DibujoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DibujoViewController.swift; sourceTree = "<group>"; };
@@ -231,13 +231,13 @@
 		A0514D7721C06E1B0056AA8F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				80B7D75722281C6700D3D432 /* Ejemplar+CoreDataProperties.swift */,
 				A0641CBC21CC5CC9002CE3FB /* Ubicacion+CoreDataClass.swift */,
 				A0641CBD21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift */,
 				A0641CB821CC5AB8002CE3FB /* Tarea+CoreDataClass.swift */,
 				A0641CB921CC5AB8002CE3FB /* Tarea+CoreDataProperties.swift */,
 				A04FCD54211F0DCB00FAFDF4 /* PersistenceManager.swift */,
 				A0979B9F211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift */,
-				A0979BA0211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -401,7 +401,6 @@
 				A03A9540212B0B7A00802E08 /* EjemplarTableViewController.swift in Sources */,
 				A0E79C6B214DF5B1004828CF /* EjemplarFotoCollectionViewCell.swift in Sources */,
 				A04FCD55211F0DCB00FAFDF4 /* PersistenceManager.swift in Sources */,
-				A0979BA2211BBEB1009F7E31 /* Ejemplar+CoreDataProperties.swift in Sources */,
 				A042C6502115D2FE00BB27F9 /* SBAFiliacion.xcdatamodeld in Sources */,
 				806CB61421DD21BC002AB26C /* EntregarViewController.swift in Sources */,
 				A0CC541621D02E0E00B48252 /* LugaresTableViewController.swift in Sources */,
@@ -431,6 +430,7 @@
 				A0641CBF21CC5CC9002CE3FB /* Ubicacion+CoreDataProperties.swift in Sources */,
 				A0979BA1211BBEB1009F7E31 /* Ejemplar+CoreDataClass.swift in Sources */,
 				A06971FE215061C200A75BE6 /* HarasTableViewController.swift in Sources */,
+				80B7D75822281C6700D3D432 /* Ejemplar+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

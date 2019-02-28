@@ -21,6 +21,8 @@
         <attribute name="pelo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pelo_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="por" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="raza" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="raza_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sexo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sexo_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="trazo" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,7 +44,7 @@
         <relationship name="tarea" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tarea" inverseName="ubicacion" inverseEntity="Tarea" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Ejemplar" positionX="208.21875" positionY="3004.87109375" width="128" height="435"/>
+        <element name="Ejemplar" positionX="208.21875" positionY="3004.87109375" width="128" height="465"/>
         <element name="Tarea" positionX="-137.30078125" positionY="3003.26171875" width="128" height="118"/>
         <element name="Ubicacion" positionX="31.84375" positionY="3004" width="128" height="103"/>
     </elements>

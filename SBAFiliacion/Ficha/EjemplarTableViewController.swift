@@ -189,8 +189,9 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
             navigationItem.title = ejemplar.nombre
             
+            dataSource.append(FichaDetalle("Sexo", ejemplar.sexo,"logo"))
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
-            dataSource.append(FichaDetalle("Raza", "Sangre Pura","raza2"))
+            dataSource.append(FichaDetalle("Raza", ejemplar.raza ?? "Sin Asignar","raza2"))
             dataSource.append(FichaDetalle("Microchip",ejemplar.microchip.description,"microchip"))
             dataSource.append(FichaDetalle("C", ejemplar.anio,"calendario"))
             

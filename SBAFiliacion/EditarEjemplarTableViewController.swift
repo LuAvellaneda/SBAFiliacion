@@ -12,11 +12,12 @@ class EditarEjemplarTableViewController: UITableViewController {
     
     let db:PersistenceManager = PersistenceManager.shared
     
-    
+    let dataSourceRaza: [(nombre:String, value:Int)] = [("Anglo Arabe",2), ("Arabe Puro",3),("Sangre Pura Carrera",4)]
     let dataSourceSexo: [(nombre:String, value:Int)] = [("Macho",1), ("Hembra",2)]
     let dataSourcePelo: [(nombre:String, value:Int)] = [("Alazan",7),("Alazan o Tordillo",3),("Alazan Tostado",2),("Moro",13),("No Consigna",14),("Oscuro",8),("Rosillo",11),("Ruano",15),("Tordillo",9),("Zaino",1),("Zaino Colorado",4),("Zaino Doradillo",6),("Zaino Negro",5),("Zaino o Tordillo",10)]
     
     
+    @IBOutlet weak var raza: UIPickerView!
     @IBOutlet weak var sexo: UIPickerView!
     @IBOutlet weak var pelo: UIPickerView!
     @IBOutlet weak var nacimiento: UIDatePicker!
@@ -28,6 +29,10 @@ class EditarEjemplarTableViewController: UITableViewController {
     @IBAction func guardar(_ sender: UIBarButtonItem) {
         
         ejemplar?.pelo = dataSourcePelo[pelo.selectedRow(inComponent: 0)].nombre
+        ejemplar?.sexo = dataSourceSexo[sexo.selectedRow(inComponent: 0)].nombre
+        ejemplar?.raza = dataSourceRaza[raza.selectedRow(inComponent: 0)].nombre
+        ejemplar?.nota = nota.text!
+        
         db.save()
         
         callBack?(ejemplar!)
@@ -67,7 +72,6 @@ class EditarEjemplarTableViewController: UITableViewController {
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "actualizarListadoEjemplares"), object: self)
         self.navigationController?.popViewController(animated: true)
-     
         
     }
     */
@@ -84,6 +88,12 @@ class EditarEjemplarTableViewController: UITableViewController {
             sexo.selectRow(index, inComponent: 0, animated: true)
         }
         
+        let razaEjemplar = ejemplar?.raza
+        if let index = dataSourceRaza.firstIndex(where: { $0.nombre == razaEjemplar }) {
+            raza.selectRow(index, inComponent: 0, animated: true)
+        }
+        
+        nota.text = ejemplar?.nota
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -151,6 +161,10 @@ extension EditarEjemplarTableViewController: UIPickerViewDelegate, UIPickerViewD
             return dataSourcePelo.count
         }
         
+        if(pickerView == raza){
+            return dataSourceRaza.count
+        }
+        
         return 0
     }
     
@@ -164,6 +178,11 @@ extension EditarEjemplarTableViewController: UIPickerViewDelegate, UIPickerViewD
         
         if(pickerView == pelo){
             let info = dataSourcePelo[row] as (nombre:String,value:Int)
+            return info.nombre
+        }
+        
+        if(pickerView == raza){
+            let info = dataSourceRaza[row] as (nombre:String,value:Int)
             return info.nombre
         }
         
