@@ -42,7 +42,7 @@ class NuevoEjemplarTableViewController: UITableViewController {
         ejemplar.nombre = nombre.text!
         ejemplar.padre = padre.text!
         ejemplar.madre = madre.text!
-        ejemplar.microchip = Int64(microchip.text!) ?? 0
+        //ejemplar.microchip = Int64(microchip.text!) ?? 0
         ejemplar.sexo = dataSourceSexo[sexo.selectedRow(inComponent: 0)].nombre
         ejemplar.pelo = dataSourcePelo[pelo.selectedRow(inComponent: 0)].nombre
         ejemplar.nota = nota.text!

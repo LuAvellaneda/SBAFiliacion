@@ -2,7 +2,7 @@
 //  Fotos+CoreDataProperties.swift
 //  SBAFiliacion
 //
-//  Created by Lucas Avellaneda on 05/03/2019.
+//  Created by Lukas on 06/03/2019.
 //  Copyright © 2019 Lucas Avellaneda. All rights reserved.
 //
 //

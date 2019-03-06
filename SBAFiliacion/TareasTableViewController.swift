@@ -71,7 +71,7 @@ class TareasTableViewController: UITableViewController {
        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = "\(self.dataSource[indexPath.row].titulo!)"
-            cell.detailTextLabel?.text = "\(lugares_string)  (\(self.dataSource[indexPath.row].fecha!))"
+            cell.detailTextLabel?.text = "\(lugares_string)  (\(self.dataSource[indexPath.row].fecha!)) - \(self.dataSource[indexPath.row].total.description) ejemplares"
             return cell
         
     }

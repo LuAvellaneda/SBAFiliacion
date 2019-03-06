@@ -46,6 +46,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
             tarea.titulo = info["titulo"] as? String
             tarea.descripcion = info["descripcion"] as? String
             tarea.fecha = info["fecha"] as? String
+            tarea.total = info["total"] as! Int16
             
             let lugares: [[String:Any]] = info["lugar"] as! [[String : Any]]
             
@@ -55,34 +56,62 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 ubicacion.titulo = lugar["titulo"] as? String
                 tarea.addToUbicacion(ubicacion)
                 
-                let ejemplares = lugar["ejemplares"] as! [[String: Any]]
+                let detalles = lugar["detalle"] as! [[String: Any]]
                 
-                ejemplares.forEach({ (ejemplar) in
+                detalles.forEach({ (detalle) in
+                    
                     let _ejemplar = Ejemplar(context: db.context)
+                    
+                    let ejemplar = detalle["ejemplar"] as! [String:Any]
+                    let criador = ejemplar["criador"] as! [String:Any]
+                    let datos_criador = criador["datos"] as! [[String:Any]]
+                    
+                    var criadores = [String]()
+                    datos_criador.forEach({ (data) in
+                        criadores.append(data["nombre"] as! String)
+                    })
+                    
+                    let criadores_txt = criadores.joined(separator: " - ")
+                    
+                    let micros_ejemplar = ejemplar["microchip"] as! [[String:Any]]
+                    var micros = [String]()
+                    micros_ejemplar.forEach({ (micro) in
+                        micros.append(micro["mchip"] as! String)
+                    })
+                    
+                    let micros_txt = micros.joined(separator: " - ")
+                    
+                    
                     _ejemplar.id = ejemplar["id"] as! Int64
                     _ejemplar.nombre = ejemplar["nombre"] as? String
                     _ejemplar.anio = ejemplar["anio"] as? String
                     _ejemplar.mes = ejemplar["mes"] as? String
                     _ejemplar.dia = ejemplar["dia"] as? String
                     _ejemplar.sexo = ejemplar["sexo"] as? String
+                    _ejemplar.sexo_id = ejemplar["sexo_id"] as? String
                     _ejemplar.por = ejemplar["por"] as? String
                     _ejemplar.padre = ejemplar["padre"] as? String
                     _ejemplar.madre = ejemplar["madre"] as? String
-                    _ejemplar.microchip = ejemplar["microchip"] as! Int64
+                    _ejemplar.microchip = micros_txt
                     _ejemplar.pelo = ejemplar["pelo"] as? String
+                    _ejemplar.pelo_id = ejemplar["pelo_id"] as! Int16
                     _ejemplar.id_interno = UUID().uuidString
                     _ejemplar.muerto = false
-                    _ejemplar.haras_texto = ejemplar["haras_nacimiento"] as? String
-                    _ejemplar.lugar_cuidador = ejemplar["cuidador"] as? String
-                    _ejemplar.lugar_telefono = ejemplar["telefono"] as? String
-                    _ejemplar.lugar_lugar = ejemplar["ubicacion"] as? String
-                    _ejemplar.lugar_tipo = ejemplar["tipo"] as? String
-                    _ejemplar.lugar_observacion = ejemplar["observacion"] as? String
+                    _ejemplar.haras_texto = criadores_txt
+                    _ejemplar.lugar_cuidador = detalle["cuidador"] as? String
+                    _ejemplar.lugar_telefono = detalle["telefono"] as? String
+                    _ejemplar.lugar_lugar = detalle["ubicacion"] as? String
+                    _ejemplar.lugar_tipo = detalle["tipo"] as? String
+                    _ejemplar.lugar_observacion = detalle["observacion"] as? String
+                    _ejemplar.raza = ejemplar["raza"] as? String
+                    _ejemplar.raza_id = ejemplar["raza_id"] as! Int16
                     
                     ubicacion.addToEjemplar(_ejemplar)
+                    
                 })
                 
             })
+            
             
             db.save()
             

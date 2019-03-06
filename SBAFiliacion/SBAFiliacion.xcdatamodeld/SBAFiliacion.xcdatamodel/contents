@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Ejemplar" representedClassName=".Ejemplar" syncable="YES">
         <attribute name="anio" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="destetado" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -17,7 +17,7 @@
         <attribute name="madre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="manual" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="mes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="microchip" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="microchip" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modificado" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="muerto" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nombre" attributeType="String" syncable="YES"/>
@@ -29,7 +29,7 @@
         <attribute name="raza" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="raza_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sexo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sexo_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sexo_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trazo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="visto" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="visto_no" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -46,6 +46,7 @@
         <attribute name="fecha" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="ubicacion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ubicacion" inverseName="tarea" inverseEntity="Ubicacion" syncable="YES"/>
     </entity>
     <entity name="Trabajo" representedClassName=".Trabajo" syncable="YES">
@@ -60,14 +61,15 @@
     <entity name="Ubicacion" representedClassName=".Ubicacion" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="titulo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="ejemplar" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ejemplar" inverseName="ubicacion" inverseEntity="Ejemplar" syncable="YES"/>
         <relationship name="tarea" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tarea" inverseName="ubicacion" inverseEntity="Tarea" syncable="YES"/>
     </entity>
     <elements>
         <element name="Ejemplar" positionX="208.21875" positionY="3004.87109375" width="128" height="570"/>
-        <element name="Tarea" positionX="-137.30078125" positionY="3003.26171875" width="128" height="118"/>
-        <element name="Trabajo" positionX="36" positionY="3159" width="128" height="150"/>
-        <element name="Ubicacion" positionX="31.84375" positionY="3004" width="128" height="103"/>
         <element name="Fotos" positionX="36" positionY="3159" width="128" height="75"/>
+        <element name="Tarea" positionX="-137.30078125" positionY="3003.26171875" width="128" height="135"/>
+        <element name="Trabajo" positionX="36" positionY="3159" width="128" height="150"/>
+        <element name="Ubicacion" positionX="31.84375" positionY="3004" width="128" height="120"/>
     </elements>
 </model>

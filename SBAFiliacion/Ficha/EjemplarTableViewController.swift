@@ -48,7 +48,8 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         if (ejemplar == nil) {
             return 0
         }
-        return 3
+        
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
@@ -65,6 +66,10 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             return "Fotos"
         }
         
+        if(section == 3) {
+            return "Modificado"
+        }
+        
         return ""
         
     }
@@ -75,20 +80,21 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ficha", for: indexPath) as! EjemplarFichaTableViewCell
             
-            let width = (view.frame.size.width - 30) / 5
+            let width = (view.frame.size.width - 30) / 4
             let layout = cell.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
             layout.itemSize = CGSize(width: width, height: 140)
             
             return cell
+            
         }
         
         if indexPath.row == 1 && indexPath.section == 0 {
             //let cell = tableView.dequeueReusableCell(withIdentifier: "lugar", for: indexPath) as! LugarTableViewCell
             //return cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "lugarbeta", for: indexPath) as! LugarTableViewCell
-            //cell.linea1?.text = "\(ejemplar.lugar_cuidador!). Tel: \(ejemplar.lugar_telefono!)"
-            //cell.linea2?.text = "\(ejemplar.lugar_lugar!)"
-            //cell.linea3?.text = "\(ejemplar.lugar_observacion ?? "Sin observación")"
+            cell.linea1?.text = "\(ejemplar.lugar_cuidador!). Tel: \(ejemplar.lugar_telefono!)"
+            cell.linea2?.text = "\(ejemplar.lugar_lugar!)"
+            cell.linea3?.text = "\(ejemplar.lugar_observacion ?? "Sin observación")"
             
             return cell
             
@@ -201,7 +207,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             dataSource.append(FichaDetalle("Sexo", ejemplar.sexo,"logo"))
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
             dataSource.append(FichaDetalle("Raza", ejemplar.raza ?? "Sin Asignar","raza2"))
-            dataSource.append(FichaDetalle("Microchip",ejemplar.microchip.description,"microchip"))
+            //dataSource.append(FichaDetalle("Microchip",ejemplar.microchip,"microchip"))
             dataSource.append(FichaDetalle("C", ejemplar.anio,"calendario"))
             
             
@@ -222,18 +228,11 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var fechaModificadoLabel: UILabel!
     @IBOutlet weak var por: UILabel!
     @IBOutlet weak var criador: UILabel!
+    @IBOutlet weak var microchips: UILabel!
     
     @IBAction func editarButton(_ sender: UIBarButtonItem) {
         
         performSegue(withIdentifier: "ShowEditar", sender: nil)
-        
-    }
-    @IBAction func abrirCamara(_ sender: UIBarButtonItem) {
-    
-        imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        self.present(imagePicker, animated: true, completion: nil)
         
     }
     
@@ -284,6 +283,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             //Info Ejemplar
             por.text? = (ejemplar?.por) ?? "POR"
             criador.text? = (ejemplar?.haras_texto) ?? "HARAS"
+            microchips.text? = (ejemplar?.microchip) ?? "MICROCHIPS"
             
             //Fotos
             /*
@@ -433,8 +433,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
 extension EjemplarTableViewController: UICollectionViewDataSource, UICollectionViewDelegate
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return dataSource.count
-
         return dataSource.count
     }
     

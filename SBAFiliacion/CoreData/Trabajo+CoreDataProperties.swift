@@ -2,7 +2,7 @@
 //  Trabajo+CoreDataProperties.swift
 //  SBAFiliacion
 //
-//  Created by Lukas on 28/02/2019.
+//  Created by Lukas on 06/03/2019.
 //  Copyright © 2019 Lucas Avellaneda. All rights reserved.
 //
 //
@@ -17,12 +17,12 @@ extension Trabajo {
         return NSFetchRequest<Trabajo>(entityName: "Trabajo")
     }
 
-    @NSManaged public var cuidador: String?
-    @NSManaged public var tipo: String?
-    @NSManaged public var telefono: String?
-    @NSManaged public var lugar: String?
     @NSManaged public var corre: NSDate?
+    @NSManaged public var cuidador: String?
+    @NSManaged public var lugar: String?
     @NSManaged public var observacion: String?
+    @NSManaged public var telefono: String?
+    @NSManaged public var tipo: String?
     @NSManaged public var ejemplar: Ejemplar?
 
 }

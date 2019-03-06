@@ -1193,7 +1193,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="gBo-y8-2OO">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="gBo-y8-2OO">
                             <rect key="frame" x="0.0" y="0.0" width="768" height="547"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -1215,39 +1215,48 @@
                                     </constraints>
                                 </scrollView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="Por" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsD-Iq-QTn">
-                                    <rect key="frame" x="0.0" y="447" width="768" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="468" width="768" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Criador" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHg-GU-wLX">
-                                    <rect key="frame" x="0.0" y="467.5" width="768" height="18"/>
+                                    <rect key="frame" x="0.0" y="488.5" width="768" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modificado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIJ-Sl-KpH">
-                                    <rect key="frame" x="0.0" y="485.5" width="768" height="517.5"/>
+                                    <rect key="frame" x="0.0" y="506.5" width="768" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Microchip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDP-td-U88">
+                                    <rect key="frame" x="8" y="437" width="752" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="xDP-td-U88" firstAttribute="centerX" secondItem="kml-5W-Id7" secondAttribute="centerX" id="282-CC-1XA"/>
                                 <constraint firstItem="8bZ-Uy-GCr" firstAttribute="leading" secondItem="gBo-y8-2OO" secondAttribute="leading" id="4kw-Qj-s0i"/>
                                 <constraint firstAttribute="trailing" secondItem="8bZ-Uy-GCr" secondAttribute="trailing" id="51j-uD-rnM"/>
+                                <constraint firstItem="xDP-td-U88" firstAttribute="leading" secondItem="gBo-y8-2OO" secondAttribute="leading" constant="8" id="CZB-Ss-fsz"/>
                                 <constraint firstItem="xIJ-Sl-KpH" firstAttribute="top" secondItem="FHg-GU-wLX" secondAttribute="bottom" id="DEd-qR-fUF"/>
                                 <constraint firstAttribute="trailing" secondItem="FHg-GU-wLX" secondAttribute="trailing" id="DEe-jL-ots"/>
                                 <constraint firstItem="FHg-GU-wLX" firstAttribute="leading" secondItem="gBo-y8-2OO" secondAttribute="leading" id="Gb4-S2-J42"/>
+                                <constraint firstItem="dsD-Iq-QTn" firstAttribute="top" secondItem="xDP-td-U88" secondAttribute="bottom" constant="10" id="KMW-aH-9J7"/>
                                 <constraint firstItem="xIJ-Sl-KpH" firstAttribute="leading" secondItem="gBo-y8-2OO" secondAttribute="leading" id="MHe-R7-gAi"/>
                                 <constraint firstAttribute="trailing" secondItem="dsD-Iq-QTn" secondAttribute="trailing" id="MZe-fq-Bie"/>
                                 <constraint firstItem="dsD-Iq-QTn" firstAttribute="leading" secondItem="gBo-y8-2OO" secondAttribute="leading" id="Q8E-MU-fvi"/>
                                 <constraint firstAttribute="bottom" secondItem="xIJ-Sl-KpH" secondAttribute="bottom" constant="20" id="dLn-qd-WmE"/>
                                 <constraint firstItem="8bZ-Uy-GCr" firstAttribute="top" secondItem="gBo-y8-2OO" secondAttribute="top" id="djd-5q-dja"/>
-                                <constraint firstItem="dsD-Iq-QTn" firstAttribute="top" secondItem="8bZ-Uy-GCr" secondAttribute="bottom" constant="15" id="dwl-7N-gTt"/>
                                 <constraint firstItem="FHg-GU-wLX" firstAttribute="top" secondItem="dsD-Iq-QTn" secondAttribute="bottom" id="hCE-8Z-vRf"/>
                                 <constraint firstItem="dsD-Iq-QTn" firstAttribute="leading" secondItem="gBo-y8-2OO" secondAttribute="leading" id="ixt-2k-iQr"/>
                                 <constraint firstAttribute="trailing" secondItem="xIJ-Sl-KpH" secondAttribute="trailing" id="luj-0W-TkN"/>
+                                <constraint firstItem="xDP-td-U88" firstAttribute="top" secondItem="kml-5W-Id7" secondAttribute="bottom" constant="5" id="yeE-mX-mnI"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -1541,11 +1550,6 @@
                                     <segue destination="AZj-5Z-eod" kind="presentation" identifier="ShowDibujo" id="4LC-Z8-eeJ"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem enabled="NO" systemItem="camera" id="Y7V-We-6z4">
-                                <connections>
-                                    <action selector="abrirCamara:" destination="0Yr-PG-B9w" id="VtR-BK-S6y"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem title="Editar" id="pCm-wh-dWf">
                                 <connections>
                                     <action selector="editarButton:" destination="0Yr-PG-B9w" id="Vxc-0x-t1r"/>
@@ -1558,6 +1562,7 @@
                         <outlet property="criador" destination="FHg-GU-wLX" id="wgo-5B-nEG"/>
                         <outlet property="fechaModificadoLabel" destination="xIJ-Sl-KpH" id="Vuv-Pl-o9O"/>
                         <outlet property="fichaImagen" destination="kml-5W-Id7" id="mc6-Rh-dzJ"/>
+                        <outlet property="microchips" destination="xDP-td-U88" id="Eov-Pe-fr0"/>
                         <outlet property="por" destination="dsD-Iq-QTn" id="V40-Vo-OwZ"/>
                         <outlet property="scrollView" destination="8bZ-Uy-GCr" id="jfa-Z9-QOZ"/>
                         <segue destination="5Ni-bY-Mq4" kind="show" identifier="ShowEditar" id="jS2-nX-5N3"/>
