@@ -31,6 +31,8 @@
 		80C46F0121B705CE002AAC80 /* fichanueva.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 80C46F0021B705CE002AAC80 /* fichanueva.jpg */; };
 		80D8FC1A2226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D8FC192226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift */; };
 		A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A019952D2122541600801DF7 /* ObtenerViewController.swift */; };
+		A02E4104222F133100C95AA3 /* Fotos+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02E4102222F133100C95AA3 /* Fotos+CoreDataClass.swift */; };
+		A02E4105222F133100C95AA3 /* Fotos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02E4103222F133100C95AA3 /* Fotos+CoreDataProperties.swift */; };
 		A030E76921287ABC00F455E5 /* EjemplaresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */; };
 		A03A9540212B0B7A00802E08 /* EjemplarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A953F212B0B7A00802E08 /* EjemplarTableViewController.swift */; };
 		A042C6482115D2FE00BB27F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A042C6472115D2FE00BB27F9 /* AppDelegate.swift */; };
@@ -91,6 +93,8 @@
 		80C46F0021B705CE002AAC80 /* fichanueva.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fichanueva.jpg; sourceTree = "<group>"; };
 		80D8FC192226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarEjemplarTableViewController.swift; sourceTree = "<group>"; };
 		A019952D2122541600801DF7 /* ObtenerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObtenerViewController.swift; sourceTree = "<group>"; };
+		A02E4102222F133100C95AA3 /* Fotos+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fotos+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A02E4103222F133100C95AA3 /* Fotos+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fotos+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjemplaresTableViewController.swift; sourceTree = "<group>"; };
 		A03A953F212B0B7A00802E08 /* EjemplarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjemplarTableViewController.swift; sourceTree = "<group>"; };
 		A042C6442115D2FE00BB27F9 /* SBAFiliacion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SBAFiliacion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +239,8 @@
 		A0514D7721C06E1B0056AA8F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A02E4102222F133100C95AA3 /* Fotos+CoreDataClass.swift */,
+				A02E4103222F133100C95AA3 /* Fotos+CoreDataProperties.swift */,
 				80B7D759222829E700D3D432 /* Trabajo+CoreDataClass.swift */,
 				80B7D75A222829E700D3D432 /* Trabajo+CoreDataProperties.swift */,
 				80B7D75722281C6700D3D432 /* Ejemplar+CoreDataProperties.swift */,
@@ -408,11 +414,13 @@
 				A0E79C6B214DF5B1004828CF /* EjemplarFotoCollectionViewCell.swift in Sources */,
 				A04FCD55211F0DCB00FAFDF4 /* PersistenceManager.swift in Sources */,
 				A042C6502115D2FE00BB27F9 /* SBAFiliacion.xcdatamodeld in Sources */,
+				A02E4104222F133100C95AA3 /* Fotos+CoreDataClass.swift in Sources */,
 				806CB61421DD21BC002AB26C /* EntregarViewController.swift in Sources */,
 				80B7D75C222829E700D3D432 /* Trabajo+CoreDataProperties.swift in Sources */,
 				A0CC541621D02E0E00B48252 /* LugaresTableViewController.swift in Sources */,
 				A0E32C3021D4544A002D09F1 /* LugarUICollectionView.swift in Sources */,
 				A0E79C5E214DC6C2004828CF /* EjemplarFichaTableViewCell.swift in Sources */,
+				A02E4105222F133100C95AA3 /* Fotos+CoreDataProperties.swift in Sources */,
 				A0641CBA21CC5AB8002CE3FB /* Tarea+CoreDataClass.swift in Sources */,
 				8004BF6521D3FD60006C6F1F /* InfoLugarCollectionViewCell.swift in Sources */,
 				6FA1EDA3214EF42200ACBEC7 /* MapaViewController.swift in Sources */,

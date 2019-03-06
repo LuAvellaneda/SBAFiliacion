@@ -49,7 +49,7 @@ class NuevoEjemplarTableViewController: UITableViewController {
         ejemplar.anio = year.description
         ejemplar.mes = month.description
         ejemplar.dia = day.description
-        ejemplar.fotos = 0
+        //ejemplar.fotos = 0
         ejemplar.id = 0
         ejemplar.visto = false
         ejemplar.id_interno = UUID().uuidString

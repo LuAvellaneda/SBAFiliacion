@@ -10,6 +10,7 @@ import UIKit
 
 class EjemplarFotoCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var posicionLabel: UILabel!
     @IBOutlet weak var imagen: UIImageView!
     public var caballo:UIImage! {
         didSet {

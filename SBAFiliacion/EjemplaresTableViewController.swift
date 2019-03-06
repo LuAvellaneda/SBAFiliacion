@@ -24,7 +24,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         didSet {
             
             dataSource.sort(by: { (first: Ejemplar, second: Ejemplar) -> Bool in
-                first.lugar_lugar! < second.lugar_lugar!
+                //first.lugar_lugar! < second.lugar_lugar!
+                true
             })
             
             revisar = dataSource.filter { (ejemplar) -> Bool in

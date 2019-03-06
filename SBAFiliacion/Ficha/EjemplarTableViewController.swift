@@ -86,9 +86,9 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             //let cell = tableView.dequeueReusableCell(withIdentifier: "lugar", for: indexPath) as! LugarTableViewCell
             //return cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "lugarbeta", for: indexPath) as! LugarTableViewCell
-            cell.linea1?.text = "\(ejemplar.lugar_cuidador!). Tel: \(ejemplar.lugar_telefono!)"
-            cell.linea2?.text = "\(ejemplar.lugar_lugar!)"
-            cell.linea3?.text = "\(ejemplar.lugar_observacion ?? "Sin observación")"
+            //cell.linea1?.text = "\(ejemplar.lugar_cuidador!). Tel: \(ejemplar.lugar_telefono!)"
+            //cell.linea2?.text = "\(ejemplar.lugar_lugar!)"
+            //cell.linea3?.text = "\(ejemplar.lugar_observacion ?? "Sin observación")"
             
             return cell
             
@@ -152,6 +152,13 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if indexPath.row == 0 && indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "fotos", for: indexPath) as! EjemplarFotoTableViewCell
+            
+            cell.callBackCamera = { (id:Int) ->Void in
+                self.imagePicker = UIImagePickerController()
+                self.imagePicker.sourceType = .camera
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+            
             return cell
         }
         
@@ -171,12 +178,14 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             
         }
         
+        /*
         if indexPath.row == 1 {
             if let cell = cell as? EjemplarFotoTableViewCell {
                 celdaFotos = cell
                 celdaFotos.fotos = fotos
             }
         }
+        */
         
         
     }
@@ -204,7 +213,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     var imagePicker: UIImagePickerController!
     
     var fotos = [UIImage]()
-    var celdaFotos = EjemplarFotoTableViewCell()
+    //var celdaFotos = EjemplarFotoTableViewCell()
     
     @IBOutlet weak var fichaTableView: UITableView!
     @IBOutlet weak var fichaImagen: UIImageView!
@@ -273,10 +282,11 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             }
             
             //Info Ejemplar
-            por.text? = (ejemplar?.por) ?? "SI VES ESTO... ESTA MAL!"
-            criador.text? = (ejemplar?.haras_texto) ?? "SI VES ESTO... ESTA MAL!"
+            por.text? = (ejemplar?.por) ?? "POR"
+            criador.text? = (ejemplar?.haras_texto) ?? "HARAS"
             
             //Fotos
+            /*
             let cantidadFotos = (ejemplar?.fotos)!
             if(cantidadFotos > 0) {
                 
@@ -287,6 +297,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
                 }
                 
             }
+            */
             
             //Data Ficha
             updateFecha()
@@ -324,6 +335,13 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+        if let editedImage = info[.editedImage] as? UIImage {
+            
+            
+            
+        }
+            
+        /*
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         
@@ -341,6 +359,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         celdaFotos.fotos = fotos
         
         picker.dismiss(animated: true, completion: nil)
+ */
         
     }
 

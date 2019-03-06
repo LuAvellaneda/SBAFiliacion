@@ -2,7 +2,7 @@
 //  Ejemplar+CoreDataProperties.swift
 //  SBAFiliacion
 //
-//  Created by Lukas on 28/02/2019.
+//  Created by Lucas Avellaneda on 05/03/2019.
 //  Copyright © 2019 Lucas Avellaneda. All rights reserved.
 //
 //
@@ -20,11 +20,16 @@ extension Ejemplar {
     @NSManaged public var anio: String?
     @NSManaged public var destetado: Bool
     @NSManaged public var dia: String?
-    @NSManaged public var fotos: Int16
     @NSManaged public var haras: Int32
     @NSManaged public var haras_texto: String?
     @NSManaged public var id: Int64
     @NSManaged public var id_interno: String?
+    @NSManaged public var lugar_corre: NSDate?
+    @NSManaged public var lugar_cuidador: String?
+    @NSManaged public var lugar_lugar: String?
+    @NSManaged public var lugar_observacion: String?
+    @NSManaged public var lugar_telefono: String?
+    @NSManaged public var lugar_tipo: String?
     @NSManaged public var madre: String?
     @NSManaged public var manual: Bool
     @NSManaged public var mes: String?
@@ -37,20 +42,15 @@ extension Ejemplar {
     @NSManaged public var pelo: String?
     @NSManaged public var pelo_id: Int16
     @NSManaged public var por: String?
+    @NSManaged public var raza: String?
+    @NSManaged public var raza_id: Int16
     @NSManaged public var sexo: String?
     @NSManaged public var sexo_id: Int16
     @NSManaged public var trazo: String?
     @NSManaged public var visto: Bool
     @NSManaged public var visto_no: Bool
-    @NSManaged public var raza: String?
-    @NSManaged public var raza_id: Int16
-    @NSManaged public var lugar_cuidador: String?
-    @NSManaged public var lugar_tipo: String?
-    @NSManaged public var lugar_telefono: String?
-    @NSManaged public var lugar_lugar: String?
-    @NSManaged public var lugar_corre: NSDate?
-    @NSManaged public var lugar_observacion: String?
-    @NSManaged public var ubicacion: Ubicacion?
     @NSManaged public var trabajo: Trabajo?
+    @NSManaged public var ubicacion: Ubicacion?
+    @NSManaged public var fotos: Fotos?
 
 }
