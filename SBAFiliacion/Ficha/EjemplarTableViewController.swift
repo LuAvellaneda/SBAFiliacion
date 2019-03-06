@@ -38,6 +38,10 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             return 1
         }
         
+        if(section == 3 && ejemplar != nil) {
+            return 1
+        }
+        
         return 0
         
     }
@@ -168,6 +172,28 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             return cell
         }
         
+        if indexPath.row == 0 && indexPath.section == 3{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath)
+            
+            cell.textLabel?.text = "Sin registro"
+            cell.detailTextLabel?.text = ""
+            
+            if let fechaModificado = ejemplar.modificado  {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy"
+                var dateString = dateFormatter.string(from: fechaModificado as Date)
+                cell.textLabel?.text = dateString
+                
+                dateFormatter.dateFormat = "HH:mm"
+                dateString = dateFormatter.string(from: fechaModificado as Date)
+                cell.detailTextLabel?.text = dateString
+            }
+            
+            
+            
+            return cell
+        }
+        
         return UITableViewCell()
     }
     
@@ -225,7 +251,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var fichaImagen: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var fechaModificadoLabel: UILabel!
     @IBOutlet weak var por: UILabel!
     @IBOutlet weak var criador: UILabel!
     @IBOutlet weak var microchips: UILabel!
@@ -263,8 +288,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             db.save()
         }
         
-        updateFecha()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -299,19 +322,8 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             }
             */
             
-            //Data Ficha
-            updateFecha()
         }
         
-    }
-    
-    func updateFecha(){
-        if let fechaModificado = ejemplar.modificado  {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-            let dateString = dateFormatter.string(from: fechaModificado as Date)
-            self.fechaModificadoLabel.text = dateString
-        }
     }
     
     override func viewDidLoad() {
