@@ -126,26 +126,59 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
                 //cell = tableView.dequeueReusableCell(withIdentifier: "cellTerminado", for: indexPath) as!
                 //cell.textLabel?.text = "TERMINADO"
             } else {
+                
                 let data = revisar[indexPath.row]
-                cell.ejemplarLabel?.text = "\(data.nombre!)"
+                cell.ejemplarLabel?.text = "\(data.nombre!) - ( \(data.anio!), \(data.pelo!) ) "
                 cell.lugarLabel?.text = data.lugar_lugar
                 cell.tipoLabel?.text = data.lugar_tipo
-                cell.correLabel?.text = "-"
-                //cell.detailTextLabel?.text = data.madre
+                cell.correLabel?.text = data.corre ?? "no"
+                
+                if(data.sexo_id == "M") {
+                    cell.ejemplarLabel?.textColor = UIColor(red:0.18, green:0.63, blue:0.83, alpha:1.0)
+                }
+                
+                if(data.sexo_id == "H") {
+                    cell.ejemplarLabel?.textColor = UIColor(red:0.61, green:0.09, blue:0.44, alpha:1.0)
+                }
+                
+                
+                
             }
             
         } else {
+            
             let data = revisados[indexPath.row]
-            cell.ejemplarLabel?.text = "\(data.nombre!)"
+            cell.ejemplarLabel?.text = "\(data.nombre!) - ( \(data.anio!), \(data.pelo!) ) "
             cell.lugarLabel?.text = data.lugar_lugar
             cell.tipoLabel?.text = data.lugar_tipo
-            cell.correLabel?.text = "-"
-            //cell.detailTextLabel?.text = data.madre
+            cell.correLabel?.text = data.corre ?? "no"
             
+            var estados = [String]()
             
-            if(data.muerto) {
-                cell.ejemplarLabel.textColor = UIColor.red
+            if(data.muerto){
+                estados.append("Muerto")
             }
+            
+            if(data.destetado){
+                estados.append("Destetado")
+            }
+            
+            if(data.visto_no){
+                estados.append("No visto")
+            }
+            
+            if(data.sin_pasaporte){
+                estados.append("Sin pasaporte")
+            }
+            
+            if(data.sin_denuncia){
+                estados.append("Sin denuncia")
+            }
+            
+            if(estados.count > 0) {
+                cell.estado?.text = estados.joined(separator: " - ")
+            }
+            
         }
         
         return cell

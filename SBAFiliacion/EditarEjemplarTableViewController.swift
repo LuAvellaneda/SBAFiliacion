@@ -12,9 +12,9 @@ class EditarEjemplarTableViewController: UITableViewController {
     
     let db:PersistenceManager = PersistenceManager.shared
     
-    let dataSourceRaza: [(nombre:String, value:Int)] = [("Anglo Arabe",2), ("Arabe Puro",3),("Sangre Pura Carrera",4)]
-    let dataSourceSexo: [(nombre:String, value:Int)] = [("Macho",1), ("Hembra",2)]
-    let dataSourcePelo: [(nombre:String, value:Int)] = [("Alazan",7),("Alazan o Tordillo",3),("Alazan Tostado",2),("Moro",13),("No Consigna",14),("Oscuro",8),("Rosillo",11),("Ruano",15),("Tordillo",9),("Zaino",1),("Zaino Colorado",4),("Zaino Doradillo",6),("Zaino Negro",5),("Zaino o Tordillo",10)]
+    let dataSourceRaza: [(nombre:String, value:Int16)] = [("Anglo Arabe",2), ("Arabe Puro",3),("Sangre Pura Carrera",4)]
+    let dataSourceSexo: [(nombre:String, value:String)] = [("Macho","M"), ("Hembra","H")]
+    let dataSourcePelo: [(nombre:String, value:Int16)] = [("Alazan",7),("Alazan o Tordillo",3),("Alazan Tostado",2),("Moro",13),("No Consigna",14),("Oscuro",8),("Rosillo",11),("Ruano",15),("Tordillo",9),("Zaino",1),("Zaino Colorado",4),("Zaino Doradillo",6),("Zaino Negro",5),("Zaino o Tordillo",10)]
     
     
     @IBOutlet weak var raza: UIPickerView!
@@ -29,8 +29,11 @@ class EditarEjemplarTableViewController: UITableViewController {
     @IBAction func guardar(_ sender: UIBarButtonItem) {
         
         ejemplar?.pelo = dataSourcePelo[pelo.selectedRow(inComponent: 0)].nombre
+        ejemplar?.pelo_id = dataSourcePelo[pelo.selectedRow(inComponent: 0)].value
         ejemplar?.sexo = dataSourceSexo[sexo.selectedRow(inComponent: 0)].nombre
+        ejemplar?.sexo_id = dataSourceSexo[sexo.selectedRow(inComponent: 0)].value
         ejemplar?.raza = dataSourceRaza[raza.selectedRow(inComponent: 0)].nombre
+        ejemplar?.raza_id = dataSourceRaza[raza.selectedRow(inComponent: 0)].value
         ejemplar?.nota = nota.text!
         
         db.save()
@@ -78,18 +81,18 @@ class EditarEjemplarTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let peloEjemplar = ejemplar?.pelo
-        if let index = dataSourcePelo.firstIndex(where: { $0.nombre == peloEjemplar }) {
+        let peloEjemplar = ejemplar?.pelo_id
+        if let index = dataSourcePelo.firstIndex(where: { $0.value == peloEjemplar }) {
             pelo.selectRow(index, inComponent: 0, animated: true)
         }
         
-        let sexoEjemplar = ejemplar?.sexo
-        if let index = dataSourceSexo.firstIndex(where: { $0.nombre == sexoEjemplar }) {
+        let sexoEjemplar = ejemplar?.sexo_id
+        if let index = dataSourceSexo.firstIndex(where: { $0.value == sexoEjemplar }) {
             sexo.selectRow(index, inComponent: 0, animated: true)
         }
         
-        let razaEjemplar = ejemplar?.raza
-        if let index = dataSourceRaza.firstIndex(where: { $0.nombre == razaEjemplar }) {
+        let razaEjemplar = ejemplar?.raza_id
+        if let index = dataSourceRaza.firstIndex(where: { $0.value == razaEjemplar }) {
             raza.selectRow(index, inComponent: 0, animated: true)
         }
         
@@ -172,17 +175,17 @@ extension EditarEjemplarTableViewController: UIPickerViewDelegate, UIPickerViewD
         
         
         if(pickerView == sexo){
-            let info = dataSourceSexo[row] as (nombre:String,value:Int)
+            let info = dataSourceSexo[row] as (nombre:String,value:String)
             return info.nombre
         }
         
         if(pickerView == pelo){
-            let info = dataSourcePelo[row] as (nombre:String,value:Int)
+            let info = dataSourcePelo[row] as (nombre:String,value:Int16)
             return info.nombre
         }
         
         if(pickerView == raza){
-            let info = dataSourceRaza[row] as (nombre:String,value:Int)
+            let info = dataSourceRaza[row] as (nombre:String,value:Int16)
             return info.nombre
         }
         

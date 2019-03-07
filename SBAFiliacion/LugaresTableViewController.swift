@@ -51,6 +51,7 @@ class LugaresTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         cell.textLabel?.text = lugares[indexPath.row].titulo
+        cell.detailTextLabel?.text = "\(lugares[indexPath.row].total.description) ejemplares"
 
         return cell
     }

@@ -54,6 +54,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                 let ubicacion = Ubicacion(context: db.context)
                 ubicacion.id = lugar["id"] as! Int64
                 ubicacion.titulo = lugar["titulo"] as? String
+                ubicacion.total = lugar["total"] as! Int16
                 tarea.addToUbicacion(ubicacion)
                 
                 let detalles = lugar["detalle"] as! [[String: Any]]
@@ -105,6 +106,7 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
                     _ejemplar.lugar_observacion = detalle["observacion"] as? String
                     _ejemplar.raza = ejemplar["raza"] as? String
                     _ejemplar.raza_id = ejemplar["raza_id"] as! Int16
+                    _ejemplar.corre = ejemplar["proxima_carrera"] as? String
                     
                     ubicacion.addToEjemplar(_ejemplar)
                     
@@ -200,6 +202,9 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -208,11 +213,15 @@ class ObtenerViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
         //let url = URL(string: "http://localhost/sbafiliacion/ejemplares.json")!
         
-        let url = URL(string: "http://myproject.com.ar/tablet-exportacion.json")!
-        //let url = URL(string: "http://sistema.sba.com/tablet-exportacion")!
+        //let url = URL(string: "http://myproject.com.ar/tablet-exportacion.json")!
+        let url = URL(string: "http://sistema.sba.com/tablet-exportacion")!
         URLCache.shared.removeAllCachedResponses()
         
         let veterinario_id = UserDefaults.standard.integer(forKey: "veterinario_id")
+        
+        let veterinario_img = UIImage(named: veterinario_id.description)
+        
+        veterinarioImg.image = veterinario_img
         
         let parameters: Parameters = ["veterinario_id": veterinario_id]
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { (response) in

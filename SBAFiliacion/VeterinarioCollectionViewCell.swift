@@ -17,10 +17,10 @@ class VeterinarioCollectionViewCell: UICollectionViewCell {
     public var veterinario:UIImage! {
         didSet {
             
-            let nombreImagen = UserDefaults.standard.integer(forKey: "veterinario_id")
-            let image = UIImage(named: nombreImagen.description)
-            //imagen.image = veterinario
-            imagen.image = image
+            //let nombreImagen = UserDefaults.standard.integer(forKey: "veterinario_id")
+            //let image = UIImage(named: nombreImagen.description)
+            imagen.image = veterinario
+            //imagen.image = image
             imagen.layer.masksToBounds = true
             imagen.layer.cornerRadius = imagen.frame.size.width/2
             

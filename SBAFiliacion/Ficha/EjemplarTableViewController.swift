@@ -110,6 +110,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             cell.id = "destetado"
             cell.titulo = "Destetado"
             cell.callBack = setCambios(id:val:)
+            cell.valor = ejemplar?.destetado
             
             return cell
             
@@ -120,6 +121,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             cell.id = "sin-tarjeta"
             cell.titulo = "Sin pasaporte"
             cell.callBack = setCambios(id:val:)
+            cell.valor = ejemplar?.sin_pasaporte
             
             return cell
         }
@@ -129,6 +131,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             cell.id = "sin-denuncia"
             cell.titulo = "Sin denuncia"
             cell.callBack = setCambios(id:val:)
+            cell.valor = ejemplar?.sin_denuncia
             
             return cell
         }
@@ -175,7 +178,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         if indexPath.row == 0 && indexPath.section == 3{
             let cell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath)
             
-            cell.textLabel?.text = "Sin registro"
+            cell.textLabel?.text = " - - "
             cell.detailTextLabel?.text = ""
             
             if let fechaModificado = ejemplar.modificado  {
@@ -188,8 +191,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
                 dateString = dateFormatter.string(from: fechaModificado as Date)
                 cell.detailTextLabel?.text = dateString
             }
-            
-            
             
             return cell
         }
@@ -233,9 +234,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             dataSource.append(FichaDetalle("Sexo", ejemplar.sexo,"logo"))
             dataSource.append(FichaDetalle("Pelo", ejemplar.pelo,"pelo"))
             dataSource.append(FichaDetalle("Raza", ejemplar.raza ?? "Sin Asignar","raza2"))
-            //dataSource.append(FichaDetalle("Microchip",ejemplar.microchip,"microchip"))
             dataSource.append(FichaDetalle("C", ejemplar.anio,"calendario"))
-            
             
         }
     }
@@ -247,14 +246,13 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     var fotos = [UIImage]()
     //var celdaFotos = EjemplarFotoTableViewCell()
     
-    @IBOutlet weak var fichaTableView: UITableView!
+    
     @IBOutlet weak var fichaImagen: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var por: UILabel!
     @IBOutlet weak var criador: UILabel!
     @IBOutlet weak var microchips: UILabel!
-    
     @IBAction func editarButton(_ sender: UIBarButtonItem) {
         
         performSegue(withIdentifier: "ShowEditar", sender: nil)
@@ -284,6 +282,18 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if( id == "destetado") {
             ejemplar.destetado = val
+            ejemplar.modificado = date
+            db.save()
+        }
+        
+        if( id == "sin_pasaporte") {
+            ejemplar.sin_pasaporte = val
+            ejemplar.modificado = date
+            db.save()
+        }
+        
+        if( id == "sin_denuncia") {
+            ejemplar.sin_denuncia = val
             ejemplar.modificado = date
             db.save()
         }
