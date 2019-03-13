@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Ejemplar" representedClassName=".Ejemplar" syncable="YES">
         <attribute name="anio" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="corre" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,6 +23,7 @@
         <attribute name="muerto" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nombre" attributeType="String" syncable="YES"/>
         <attribute name="nota" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orden" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="padre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pelo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pelo_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -69,7 +70,7 @@
         <relationship name="tarea" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tarea" inverseName="ubicacion" inverseEntity="Tarea" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Ejemplar" positionX="208.21875" positionY="3004.87109375" width="128" height="615"/>
+        <element name="Ejemplar" positionX="208.21875" positionY="3004.87109375" width="128" height="630"/>
         <element name="Fotos" positionX="36" positionY="3159" width="128" height="75"/>
         <element name="Tarea" positionX="-137.30078125" positionY="3003.26171875" width="128" height="135"/>
         <element name="Trabajo" positionX="36" positionY="3159" width="128" height="150"/>
