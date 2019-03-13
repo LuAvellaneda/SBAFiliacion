@@ -2,7 +2,7 @@
 //  Fotos+CoreDataProperties.swift
 //  SBAFiliacion
 //
-//  Created by Lukas on 06/03/2019.
+//  Created by Lucas Avellaneda on 12/03/2019.
 //  Copyright © 2019 Lucas Avellaneda. All rights reserved.
 //
 //
@@ -19,5 +19,6 @@ extension Fotos {
 
     @NSManaged public var id: String?
     @NSManaged public var posicion: Int16
+    @NSManaged public var ejemplar: Ejemplar?
 
 }

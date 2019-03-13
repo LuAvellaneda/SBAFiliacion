@@ -15,6 +15,7 @@ class EjemplaresTableViewCell: UITableViewCell {
     @IBOutlet weak var tipoLabel: UILabel!
     @IBOutlet weak var correLabel: UILabel!
     @IBOutlet weak var estado: UILabel!
+    @IBOutlet weak var cuidador: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

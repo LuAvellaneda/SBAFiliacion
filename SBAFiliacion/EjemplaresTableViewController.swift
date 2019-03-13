@@ -16,6 +16,10 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         print("salir")
     }
     
+    @IBAction func organizarButton(_ sender: UIBarButtonItem) {
+        tableView.isEditing = !tableView.isEditing
+    }
+    
     var secciones = [String]()
     let db: PersistenceManager
     var revisar = [Ejemplar]()
@@ -24,8 +28,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         didSet {
             
             dataSource.sort(by: { (first: Ejemplar, second: Ejemplar) -> Bool in
-                //first.lugar_lugar! < second.lugar_lugar!
-                true
+                first.orden < second.orden
             })
             
             revisar = dataSource.filter { (ejemplar) -> Bool in
@@ -132,6 +135,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
                 cell.lugarLabel?.text = data.lugar_lugar
                 cell.tipoLabel?.text = data.lugar_tipo
                 cell.correLabel?.text = data.corre ?? "no"
+                cell.cuidador?.text = data.lugar_cuidador
                 
                 if(data.sexo_id == "M") {
                     cell.ejemplarLabel?.textColor = UIColor(red:0.18, green:0.63, blue:0.83, alpha:1.0)
@@ -152,6 +156,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             cell.lugarLabel?.text = data.lugar_lugar
             cell.tipoLabel?.text = data.lugar_tipo
             cell.correLabel?.text = data.corre ?? "no"
+            cell.cuidador?.text = data.lugar_cuidador
             
             var estados = [String]()
             
@@ -185,12 +190,20 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
-    }*/
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
     
 
     /*
@@ -208,25 +221,57 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         }    
     }
     */
+
     
+    /*
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Eliminar"
     }
+    */
     
-
-    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }*/
+        
+        let movedObject = self.revisar[fromIndexPath.row]
+        revisar.remove(at: fromIndexPath.row)
+        revisar.insert(movedObject, at: to.row)
+        
+        var pos:Int16 = 1;
+        revisar.forEach { (ejemplar) in
+            ejemplar.orden = pos
+            pos+=1
+            
+            
+        }
+        
+        db.save()
+        
+    }
+    
+    
  
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
-        return true
-    }*/
+        if (indexPath.section == 0) {
+            return true
+        }
+        return false
+    }
+    
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if sourceIndexPath.section != proposedDestinationIndexPath.section {
+            var row = 0
+            if sourceIndexPath.section < proposedDestinationIndexPath.section {
+                row = self.tableView(tableView, numberOfRowsInSection: sourceIndexPath.section) - 1
+            }
+            return IndexPath(row: row, section: sourceIndexPath.section)
+        }
+        return proposedDestinationIndexPath
+    }
+    
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -242,6 +287,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         
         ejemplarSeleccionado = ejempar
         performSegue(withIdentifier: "ShowFicha", sender: nil)
+        
     }
 
     

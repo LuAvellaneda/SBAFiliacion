@@ -28,11 +28,6 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>sistema.sba.com</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
 			<key>192.168.0.105</key>
 			<dict/>
 			<key>localhost</key>
@@ -41,6 +36,11 @@
 				<true/>
 			</dict>
 			<key>myproject.com.ar</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>sistema.sba.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>

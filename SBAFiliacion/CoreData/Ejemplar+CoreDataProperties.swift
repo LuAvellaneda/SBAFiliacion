@@ -2,7 +2,7 @@
 //  Ejemplar+CoreDataProperties.swift
 //  SBAFiliacion
 //
-//  Created by Lukas on 07/03/2019.
+//  Created by Lucas Avellaneda on 12/03/2019.
 //  Copyright © 2019 Lucas Avellaneda. All rights reserved.
 //
 //
@@ -18,6 +18,7 @@ extension Ejemplar {
     }
 
     @NSManaged public var anio: String?
+    @NSManaged public var corre: String?
     @NSManaged public var destetado: Bool
     @NSManaged public var dia: String?
     @NSManaged public var haras: Int32
@@ -46,12 +47,11 @@ extension Ejemplar {
     @NSManaged public var raza_id: Int16
     @NSManaged public var sexo: String?
     @NSManaged public var sexo_id: String?
+    @NSManaged public var sin_denuncia: Bool
+    @NSManaged public var sin_pasaporte: Bool
     @NSManaged public var trazo: String?
     @NSManaged public var visto: Bool
     @NSManaged public var visto_no: Bool
-    @NSManaged public var corre: String?
-    @NSManaged public var sin_denuncia: Bool
-    @NSManaged public var sin_pasaporte: Bool
     @NSManaged public var fotos: Fotos?
     @NSManaged public var trabajo: Trabajo?
     @NSManaged public var ubicacion: Ubicacion?
