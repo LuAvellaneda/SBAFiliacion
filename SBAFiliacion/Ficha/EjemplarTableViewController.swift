@@ -26,19 +26,19 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(section == 0 && ejemplar != nil) {
+        if(section == 0) {
             return 2
         }
         
-        if(section == 1 && ejemplar != nil) {
+        if(section == 1) {
             return 6
         }
         
-        if(section == 2 && ejemplar != nil) {
+        if(section == 2) {
             return 1
         }
         
-        if(section == 3 && ejemplar != nil) {
+        if(section == 3) {
             return 1
         }
         
@@ -47,8 +47,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        
+
         if (ejemplar == nil) {
             return 0
         }
@@ -305,7 +304,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         tableView.reloadData()
         
         if let ejemplar_id = ejemplar?.id_interno {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            
             let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let dibujo:URL = directorio.appendingPathComponent("d_\(ejemplar_id).png")
             
@@ -339,8 +338,6 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
         scrollView.delegate = self
         scrollView.maximumZoomScale = 3
         

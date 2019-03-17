@@ -10,11 +10,7 @@ import UIKit
 import AVFoundation
 import Alamofire
 
-class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOutputObjectsDelegate {
-    
-    @IBAction func salir(_ sender : UIStoryboardSegue) {
-        print("salir")
-    }
+class EjemplaresTableViewController: UITableViewController {
     
     @IBAction func organizarButton(_ sender: UIBarButtonItem) {
         tableView.isEditing = !tableView.isEditing
@@ -22,6 +18,7 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     var secciones = [String]()
     let db: PersistenceManager
+    var dibujo:URL?
     var revisar = [Ejemplar]()
     var revisados = [Ejemplar]()
     var dataSource = [Ejemplar]() {
@@ -31,7 +28,8 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
                 first.orden < second.orden
             })
             
-            revisar = dataSource.filter { (ejemplar) -> Bool in
+            
+            revisar = dataSource.filter { ejemplar -> Bool in
                 !ejemplar.visto
             }
             
@@ -63,7 +61,6 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         
         
@@ -79,13 +76,13 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.view.setNeedsDisplay()
-        self.view.setNeedsLayout()
         self.tableView.reloadData()
     }
+    
+    
+    
 
 
     // MARK: - Table view data source
@@ -117,11 +114,26 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         }
         
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as! EjemplaresTableViewCell
+        
+        var data:Ejemplar!
+        if(indexPath.section == 0) {
+            data = revisar[indexPath.row]
+        } else {
+            data = revisados[indexPath.row]
+        }
+        
+        cell.sexo = data.sexo_id ?? ""
+        
+        
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EjemplaresTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EjemplaresTableViewCell
         
         if(indexPath.section == 0) {
             
@@ -131,20 +143,41 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             } else {
                 
                 let data = revisar[indexPath.row]
-                cell.ejemplarLabel?.text = "\(data.nombre!) - ( \(data.anio!), \(data.pelo!) ) "
+                
+                cell.ejemplarLabel?.text = "\(data.nombre!) ( \(data.anio!) / \(data.pelo!) ) "
                 cell.lugarLabel?.text = data.lugar_lugar
                 cell.tipoLabel?.text = data.lugar_tipo
                 cell.correLabel?.text = data.corre ?? "no"
                 cell.cuidador?.text = data.lugar_cuidador
                 
-                if(data.sexo_id == "M") {
-                    cell.ejemplarLabel?.textColor = UIColor(red:0.18, green:0.63, blue:0.83, alpha:1.0)
+                
+                var estados = [String]()
+                
+                
+                if(data.muerto){
+                    estados.append("Muerto")
                 }
                 
-                if(data.sexo_id == "H") {
-                    cell.ejemplarLabel?.textColor = UIColor(red:0.61, green:0.09, blue:0.44, alpha:1.0)
+                if(data.destetado){
+                    estados.append("Destetado")
                 }
                 
+                if(data.visto_no){
+                    estados.append("No visto")
+                }
+                
+                if(data.sin_pasaporte){
+                    estados.append("Sin pasaporte")
+                }
+                
+                if(data.sin_denuncia){
+                    estados.append("Sin denuncia")
+                }
+                
+                if((data.nota) != nil){
+                    estados.append("Nota")
+                }
+                cell.estados = estados
                 
                 
             }
@@ -158,33 +191,9 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             cell.correLabel?.text = data.corre ?? "no"
             cell.cuidador?.text = data.lugar_cuidador
             
-            var estados = [String]()
-            
-            if(data.muerto){
-                estados.append("Muerto")
-            }
-            
-            if(data.destetado){
-                estados.append("Destetado")
-            }
-            
-            if(data.visto_no){
-                estados.append("No visto")
-            }
-            
-            if(data.sin_pasaporte){
-                estados.append("Sin pasaporte")
-            }
-            
-            if(data.sin_denuncia){
-                estados.append("Sin denuncia")
-            }
-            
-            if(estados.count > 0) {
-                cell.estado?.text = estados.joined(separator: " - ")
-            }
-            
         }
+        
+        
         
         return cell
     }
@@ -205,7 +214,61 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
         return false
     }
     
-
+    /*
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // 1
+        let shareAction = UITableViewRowAction(style: .destructive, title: "Ver" , handler: { (action:UITableViewRowAction, indexPath: IndexPath) -> Void in
+            
+        })
+        // 3
+        let rateAction = UITableViewRowAction(style: .default, title: "Revisar" , handler: { (action:UITableViewRowAction, indexPath:IndexPath) -> Void in
+            
+        })
+        // 5
+        return [shareAction,rateAction]
+    }
+    */
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let ver = verAction(at: indexPath)
+        let revisar = paraRevisar(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [ver,revisar])
+    }
+    
+    func verAction(at indexPath: IndexPath) ->UIContextualAction{
+        let action = UIContextualAction(style: .normal, title: "Imagen") { (action, view, completion) in
+            completion(true)
+            
+            let data = self.revisados[indexPath.row]
+            
+            let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            self.dibujo = directorio.appendingPathComponent("d_\(data.id_interno!).png")
+            
+            /*
+            if let image: UIImage = UIImage(contentsOfFile: dibujo.path) {
+                self.fichaImagen.image = image
+            }
+            */
+            
+            
+            
+            self.performSegue(withIdentifier: "zoom", sender: self)
+        }
+        
+        action.backgroundColor = .magenta
+        return action
+    }
+    
+    func paraRevisar(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Revisar") { (action, view, completion) in
+            completion(true)
+        }
+        
+        action.backgroundColor = .black
+        return action
+    }
+    
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -312,6 +375,36 @@ class EjemplaresTableViewController: UITableViewController, AVCaptureMetadataOut
             if let vc = segue.destination as? NuevoEjemplarTableViewController {
                 vc.ubicacion = ubicacion
             }
+        }
+        
+        if segue.identifier == "zoom" {
+            
+            
+            //if let navigation = segue.destination as? UINavigationController {
+                if let vc = segue.destination as? ZoomViewController {
+                    
+                    let path:String = (self.dibujo?.path)!
+                    
+                    if let image: UIImage = UIImage(contentsOfFile: path) {
+                        
+                        vc.uiImage = image
+                    }
+                    
+                }
+            //}
+            
+            /*
+            if let vc = segue.destination as? ZoomViewController {
+                
+                let path:String = (self.dibujo?.path)!
+                
+                if let image: UIImage = UIImage(contentsOfFile: path) {
+                    
+                    vc.uiImage = image
+                }
+                
+            }
+                */
         }
         
     }

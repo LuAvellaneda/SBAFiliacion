@@ -52,6 +52,7 @@
 		A0CC541421D027FC00B48252 /* TareasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC541321D027FC00B48252 /* TareasTableViewController.swift */; };
 		A0CC541621D02E0E00B48252 /* LugaresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC541521D02E0E00B48252 /* LugaresTableViewController.swift */; };
 		A0CE13F2212F91B100CD353C /* DibujoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CE13F1212F91B100CD353C /* DibujoViewController.swift */; };
+		A0D9514A223F064500E8F1A9 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95149223F064500E8F1A9 /* ZoomViewController.swift */; };
 		A0DCA95F21C857EA00B8E51D /* NotaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCA95E21C857EA00B8E51D /* NotaTableViewCell.swift */; };
 		A0E32C3021D4544A002D09F1 /* LugarUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E32C2F21D4544A002D09F1 /* LugarUICollectionView.swift */; };
 		A0E417CE21C14B0000DFA132 /* UsuarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E417CD21C14B0000DFA132 /* UsuarioViewController.swift */; };
@@ -116,6 +117,7 @@
 		A0CC541321D027FC00B48252 /* TareasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TareasTableViewController.swift; sourceTree = "<group>"; };
 		A0CC541521D02E0E00B48252 /* LugaresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LugaresTableViewController.swift; sourceTree = "<group>"; };
 		A0CE13F1212F91B100CD353C /* DibujoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DibujoViewController.swift; sourceTree = "<group>"; };
+		A0D95149223F064500E8F1A9 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		A0DCA95E21C857EA00B8E51D /* NotaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaTableViewCell.swift; sourceTree = "<group>"; };
 		A0E32C2F21D4544A002D09F1 /* LugarUICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LugarUICollectionView.swift; sourceTree = "<group>"; };
 		A0E417CD21C14B0000DFA132 /* UsuarioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				A0E32C2F21D4544A002D09F1 /* LugarUICollectionView.swift */,
 				A0CC541321D027FC00B48252 /* TareasTableViewController.swift */,
 				A0CC541521D02E0E00B48252 /* LugaresTableViewController.swift */,
+				A0D95149223F064500E8F1A9 /* ZoomViewController.swift */,
 				A030E76821287ABC00F455E5 /* EjemplaresTableViewController.swift */,
 				803964F22225925600E324D2 /* EjemplaresTableViewCell.swift */,
 				806AFE2B21C42242001AAAF8 /* NuevoEjemplarTableViewController.swift */,
@@ -438,6 +441,7 @@
 				A0CE13F2212F91B100CD353C /* DibujoViewController.swift in Sources */,
 				80D8FC1A2226DA9E00A2C9F3 /* EditarEjemplarTableViewController.swift in Sources */,
 				A019952E2122541700801DF7 /* ObtenerViewController.swift in Sources */,
+				A0D9514A223F064500E8F1A9 /* ZoomViewController.swift in Sources */,
 				A0E79C66214DC922004828CF /* EjemplarFichaCollectionViewCell.swift in Sources */,
 				A0E79C69214DF528004828CF /* EjemplarFotoTableViewCell.swift in Sources */,
 				803964F32225925600E324D2 /* EjemplaresTableViewCell.swift in Sources */,
@@ -592,8 +596,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MVUDXFDAN2;
 				INFOPLIST_FILE = SBAFiliacion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -604,7 +608,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -614,8 +618,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MVUDXFDAN2;
 				INFOPLIST_FILE = SBAFiliacion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -626,7 +630,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
