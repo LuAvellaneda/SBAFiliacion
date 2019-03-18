@@ -53,6 +53,10 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
             self.dismiss(animated: true, completion: nil)
 
         }
+        
+        if message.name == "cancelar" {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     
@@ -67,6 +71,7 @@ class DibujoViewController: UIViewController, WKScriptMessageHandler, WKUIDelega
         
         let contentController = WKUserContentController()
         contentController.add(self, name: "loginAction")
+        contentController.add(self, name: "cancelar")
         
         
         let fichaPath = Bundle.main.path(forResource: "fichanueva", ofType: "jpg")

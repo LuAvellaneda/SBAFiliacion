@@ -13,7 +13,9 @@ class ZoomViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView! {
         didSet {
             
+            if(uiImage != nil) {
             imageView.image = uiImage!
+            }
         }
     }
     

@@ -240,20 +240,22 @@ class EjemplaresTableViewController: UITableViewController {
         let action = UIContextualAction(style: .normal, title: "Imagen") { (action, view, completion) in
             completion(true)
             
-            let data = self.revisados[indexPath.row]
+            var data:Ejemplar!
+            if indexPath.section == 0 {
+                data = self.revisar[indexPath.row]
+            } else {
+                data = self.revisados[indexPath.row]
+            }
+            
+           
+            
             
             let directorio:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             self.dibujo = directorio.appendingPathComponent("d_\(data.id_interno!).png")
-            
-            /*
-            if let image: UIImage = UIImage(contentsOfFile: dibujo.path) {
-                self.fichaImagen.image = image
-            }
-            */
-            
-            
-            
+       
             self.performSegue(withIdentifier: "zoom", sender: self)
+            
+            //self.performSegue(withIdentifier: "zoom", sender: self)
         }
         
         action.backgroundColor = .magenta
@@ -265,7 +267,7 @@ class EjemplaresTableViewController: UITableViewController {
             completion(true)
         }
         
-        action.backgroundColor = .black
+        action.backgroundColor = .orange
         return action
     }
     
@@ -310,9 +312,6 @@ class EjemplaresTableViewController: UITableViewController {
         db.save()
         
     }
-    
-    
- 
 
     
     // Override to support conditional rearranging of the table view.
@@ -385,8 +384,8 @@ class EjemplaresTableViewController: UITableViewController {
                     
                     let path:String = (self.dibujo?.path)!
                     
+                    
                     if let image: UIImage = UIImage(contentsOfFile: path) {
-                        
                         vc.uiImage = image
                     }
                     

@@ -801,7 +801,7 @@
                             <barButtonItem systemItem="add" id="xEL-RQ-l87">
                                 <connections>
                                     <action selector="openScan:" destination="VWf-hK-iaJ" id="Zb9-pl-d52"/>
-                                    <segue destination="cNU-fS-A8t" kind="show" identifier="goNuevo" id="c1u-yR-JBR"/>
+                                    <segue destination="cNU-fS-A8t" kind="presentation" identifier="goNuevo" id="c1u-yR-JBR"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="organize" id="0m8-X3-wqo">

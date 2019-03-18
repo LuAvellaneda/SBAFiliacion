@@ -31,6 +31,20 @@
     font-weight: bold;
 }
 
+.btn-cancelar {
+    padding:5px;
+    background-color:red;
+    color:white;
+    border-radius: 4px;
+    text-decoration:none;
+    display:inline-block;
+    font-size:10px;
+    margin-top:8px;
+    margin-right:25px;
+    float:right;
+    font-weight: bold;
+}
+
 .btn-color {
     width:20px;
     height:20px;
@@ -387,6 +401,10 @@ function endHandler(event){
 	action = "draw";
 }
 
+function cancelar(){
+    webkit.messageHandlers.cancelar.postMessage("cancelar");
+}
+
 function exportar() {
     //raster.remove();
     //var json = paperScope.project.exportJSON();
@@ -503,6 +521,7 @@ function borrar() {
 <body style="padding:0; margin:0">
     <div id="barra" style="position:absolute; width:100%; height:40px; background-color:rgba(255, 255, 255, 0.9); z-index:99; border-bottom:1px solid #f1f1f1">
         <a href="javascript:exportar()" class="btn-guardar exportar">GUARDAR</a>
+        <a href="javascript:cancelar()" class="btn-cancelar cancelar">CANCELAR</a>
         <a href="javascript:changeColor('red')" class="btn-color red activo" id="red"></a>
         <a href="javascript:changeColor('blue')" class="btn-color blue" id="blue"></a>
         <a href="javascript:changeColor('green')" class="btn-color green" id="green"></a>
