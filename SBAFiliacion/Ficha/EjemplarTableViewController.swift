@@ -117,7 +117,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if indexPath.row == 1 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
-            cell.id = "sin-tarjeta"
+            cell.id = "sin_pasaporte"
             cell.titulo = "Sin pasaporte"
             cell.callBack = setCambios(id:val:)
             cell.valor = ejemplar?.sin_pasaporte
@@ -127,7 +127,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         
         if indexPath.row == 2 && indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "form", for: indexPath) as! FormTableViewCell
-            cell.id = "sin-denuncia"
+            cell.id = "sin_denuncia"
             cell.titulo = "Sin denuncia"
             cell.callBack = setCambios(id:val:)
             cell.valor = ejemplar?.sin_denuncia
@@ -270,6 +270,7 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         if( id == "muerto") {
             ejemplar.muerto = val
             ejemplar.modificado = date
+            ejemplar.visto = true
             db.save()
         }
         
@@ -282,18 +283,21 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
         if( id == "destetado") {
             ejemplar.destetado = val
             ejemplar.modificado = date
+            ejemplar.visto = true
             db.save()
         }
         
         if( id == "sin_pasaporte") {
             ejemplar.sin_pasaporte = val
             ejemplar.modificado = date
+            ejemplar.visto = true
             db.save()
         }
         
         if( id == "sin_denuncia") {
             ejemplar.sin_denuncia = val
             ejemplar.modificado = date
+            ejemplar.visto = true
             db.save()
         }
         

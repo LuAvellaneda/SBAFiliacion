@@ -153,7 +153,6 @@ class EjemplaresTableViewController: UITableViewController {
                 
                 var estados = [String]()
                 
-                
                 if(data.muerto){
                     estados.append("Muerto")
                 }
@@ -190,6 +189,33 @@ class EjemplaresTableViewController: UITableViewController {
             cell.tipoLabel?.text = data.lugar_tipo
             cell.correLabel?.text = data.corre ?? "no"
             cell.cuidador?.text = data.lugar_cuidador
+            
+            var estados = [String]()
+            
+            if(data.muerto){
+                estados.append("Muerto")
+            }
+            
+            if(data.destetado){
+                estados.append("Destetado")
+            }
+            
+            if(data.visto_no){
+                estados.append("No visto")
+            }
+            
+            if(data.sin_pasaporte){
+                estados.append("Sin pasaporte")
+            }
+            
+            if(data.sin_denuncia){
+                estados.append("Sin denuncia")
+            }
+            
+            if((data.nota) != nil){
+                estados.append("Nota")
+            }
+            cell.estados = estados
             
         }
         
@@ -231,9 +257,15 @@ class EjemplaresTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let ver = verAction(at: indexPath)
-        let revisar = paraRevisar(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [ver,revisar])
+        var acciones = [UIContextualAction]()
+        
+        acciones.append(self.verAction(at: indexPath))
+        
+        if indexPath.section == 1{
+            acciones.append(self.paraRevisar(at: indexPath))
+        }
+        
+        return UISwipeActionsConfiguration(actions: acciones)
     }
     
     func verAction(at indexPath: IndexPath) ->UIContextualAction{
@@ -264,6 +296,8 @@ class EjemplaresTableViewController: UITableViewController {
     
     func paraRevisar(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Revisar") { (action, view, completion) in
+            
+            
             completion(true)
         }
         
