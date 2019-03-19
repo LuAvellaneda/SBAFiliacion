@@ -297,6 +297,13 @@ class EjemplaresTableViewController: UITableViewController {
     func paraRevisar(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Revisar") { (action, view, completion) in
             
+            let ejemplar = self.revisados[indexPath.row]
+            ejemplar.visto = false
+            self.revisados.remove(at: indexPath.row)
+            self.revisar.append(ejemplar)
+            
+            self.dataSource = self.revisados + self.revisar
+            self.tableView.reloadData()
             
             completion(true)
         }

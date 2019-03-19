@@ -683,15 +683,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gMM-0f-fuA">
-                                            <rect key="frame" x="15" y="15" width="2" height="56.5"/>
+                                            <rect key="frame" x="15" y="15" width="1" height="56.5"/>
                                             <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="2" id="5dx-R7-9B2"/>
+                                                <constraint firstAttribute="width" constant="1" id="5dx-R7-9B2"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="GLOBAL PODEROSO ( 16 M, TZ )" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0K-Bi-Jsl">
                                             <rect key="frame" x="25" y="15" width="558.5" height="19.5"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" white="0.1872859589041096" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Stud Lucky Boy - Palermo" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfG-5Q-dqt">
@@ -801,7 +802,7 @@
                             <barButtonItem systemItem="add" id="xEL-RQ-l87">
                                 <connections>
                                     <action selector="openScan:" destination="VWf-hK-iaJ" id="Zb9-pl-d52"/>
-                                    <segue destination="cNU-fS-A8t" kind="presentation" identifier="goNuevo" id="c1u-yR-JBR"/>
+                                    <segue destination="cNU-fS-A8t" kind="show" identifier="goNuevo" id="c1u-yR-JBR"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="organize" id="0m8-X3-wqo">
@@ -829,7 +830,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-Qf-1HO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-default" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-Qf-1HO">
                                 <rect key="frame" x="0.0" y="70" width="768" height="904"/>
                             </imageView>
                         </subviews>
