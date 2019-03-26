@@ -153,6 +153,10 @@ class EjemplaresTableViewController: UITableViewController {
                 
                 var estados = [String]()
                 
+                if(data.manual){
+                    estados.append("Manual")
+                }
+                
                 if(data.muerto){
                     estados.append("Muerto")
                 }
@@ -191,6 +195,10 @@ class EjemplaresTableViewController: UITableViewController {
             cell.cuidador?.text = data.lugar_cuidador
             
             var estados = [String]()
+            
+            if(data.manual){
+                estados.append("Manual")
+            }
             
             if(data.muerto){
                 estados.append("Muerto")

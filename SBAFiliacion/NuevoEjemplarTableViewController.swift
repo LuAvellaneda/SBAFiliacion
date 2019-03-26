@@ -13,8 +13,8 @@ class NuevoEjemplarTableViewController: UITableViewController {
     let db:PersistenceManager = PersistenceManager.shared
     
     
-    let dataSourceSexo: [(nombre:String, value:Int)] = [("Macho",1), ("Hembra",2)]
-    let dataSourcePelo: [(nombre:String, value:Int)] = [("Alazan",7),("Alazan o Tordillo",3),("Alazan Tostado",2),("Moro",13),("No Consigna",14),("Oscuro",8),("Rosillo",11),("Ruano",15),("Tordillo",9),("Zaino",1),("Zaino Colorado",4),("Zaino Doradillo",6),("Zaino Negro",5),("Zaino o Tordillo",10)]
+    let dataSourceSexo: [(nombre:String, value:String)] = [("Macho","M"), ("Hembra","H")]
+    let dataSourcePelo: [(nombre:String, value:Int16)] = [("Alazan",7),("Alazan o Tordillo",3),("Alazan Tostado",2),("Moro",13),("No Consigna",14),("Oscuro",8),("Rosillo",11),("Ruano",15),("Tordillo",9),("Zaino",1),("Zaino Colorado",4),("Zaino Doradillo",6),("Zaino Negro",5),("Zaino o Tordillo",10)]
     
     
     @IBOutlet weak var fecha: UIDatePicker!
@@ -44,7 +44,9 @@ class NuevoEjemplarTableViewController: UITableViewController {
         ejemplar.madre = madre.text!
         //ejemplar.microchip = Int64(microchip.text!) ?? 0
         ejemplar.sexo = dataSourceSexo[sexo.selectedRow(inComponent: 0)].nombre
+        ejemplar.sexo_id = dataSourceSexo[sexo.selectedRow(inComponent: 0)].value
         ejemplar.pelo = dataSourcePelo[pelo.selectedRow(inComponent: 0)].nombre
+        ejemplar.pelo_id = dataSourcePelo[pelo.selectedRow(inComponent: 0)].value
         ejemplar.nota = nota.text!
         ejemplar.anio = year.description
         ejemplar.mes = month.description
@@ -164,12 +166,12 @@ extension NuevoEjemplarTableViewController: UIPickerViewDelegate, UIPickerViewDa
         
         
         if(pickerView == sexo){
-            let info = dataSourceSexo[row] as (nombre:String,value:Int)
+            let info = dataSourceSexo[row] as (nombre:String,value:String)
             return info.nombre
         }
         
         if(pickerView == pelo){
-            let info = dataSourcePelo[row] as (nombre:String,value:Int)
+            let info = dataSourcePelo[row] as (nombre:String,value:Int16)
             return info.nombre
         }
         

@@ -158,9 +158,18 @@ window.onload = function() {
 	canvas.addEventListener("touchend",endHandler,false);
 
 	var tool = new Tool();
-
+    
+    var text = new PointText(new Point(30, 230));
+    text.fillColor = 'red';
+    
+    // Set the content of the text item:
+    //text.content = 'Cicatriz';
+    
 	tool.onMouseDown = function(event) {
-
+        
+        
+        
+        
         myInterval = setInterval( function() { refill(event); }, 1500);
 
         /*

@@ -95,8 +95,8 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             //let cell = tableView.dequeueReusableCell(withIdentifier: "lugar", for: indexPath) as! LugarTableViewCell
             //return cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "lugarbeta", for: indexPath) as! LugarTableViewCell
-            cell.linea1?.text = "\(ejemplar.lugar_cuidador!). Tel: \(ejemplar.lugar_telefono!)"
-            cell.linea2?.text = "\(ejemplar.lugar_lugar!)"
+            cell.linea1?.text = "\(ejemplar.lugar_cuidador ?? "Sin dato "). Tel: \(ejemplar.lugar_telefono ?? " Sin dato ")"
+            cell.linea2?.text = "\(ejemplar.lugar_lugar ?? " Sin dato ")"
             cell.linea3?.text = "\(ejemplar.lugar_observacion ?? "Sin observación")"
             
             return cell
@@ -273,6 +273,8 @@ class EjemplarTableViewController: UITableViewController, UIImagePickerControlle
             ejemplar.visto = true
             db.save()
         }
+        
+        
         
         if( id == "no-visto") {
             ejemplar.visto_no = val
